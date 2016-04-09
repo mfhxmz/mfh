@@ -1,0 +1,207 @@
+body {
+    font-family: 'Microsoft YaHei', sans-serif;
+}
+
+.header {
+    box-shadow: 0 0 10px #696969;
+    z-index: 10;
+    position: relative;
+}
+
+.top-header {
+    margin-top: 60px;
+    margin-bottom: 40px;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    line-height: 61px;
+    font-size: 0;
+    clear: both;
+}
+
+.user-links {
+    font-size: 1rem;
+}
+
+.nav-container {
+    padding: 1em 0;
+}
+
+.content.container {
+    padding-bottom: 0;
+}
+
+.nav-list {
+    margin-left: 0;
+    margin-bottom: 0;
+    display: table;
+    width: 100%;
+}
+
+.nav-list .nav-item {
+    display: table-cell;
+    text-align: center;
+    position: relative;
+}
+
+.nav-item:not(:first-child):before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    left: 0;
+    top: 50%;
+    background-color: grey;
+    transform: translate(-50%, -50%);
+}
+
+
+/*
+.nav-item:first-child{
+  text-align: left;
+}
+.nav-item:last-child{
+  text-align: right;
+}*/
+
+.img-responsive {
+    width: 100%;
+}
+
+.section-title {
+    text-align: center;
+    margin: 40px 0 30px;
+}
+
+.cn-title {
+    font-weight: bold;
+}
+
+.eng-title {
+    margin-top: 0;
+}
+
+.new-prod {
+    background-color: #f7f7f7;
+    padding: 1px 0;
+}
+
+.new-prod .content {
+    margin-bottom: 40px;
+}
+
+.prod-list {
+    margin-bottom: 0;
+}
+
+.prod-card .thumbnail {
+    border: none;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.prod-card .thumbnail .prod-thumbnail {
+    margin: 0;
+    width: 100%;
+}
+
+.prod-card .thumbnail .caption {
+    padding: 20px;
+}
+
+.section-hr {
+    margin: 0;
+}
+
+.col-context-10 .col-xs-2 {
+    width: 20%;
+}
+
+.service-list {
+    margin-bottom: 30px;
+}
+
+.service-card .thumbnail {
+    border: none;
+    border-radius: 0;
+    overflow: hidden;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.service-pic-box {
+    height: 135px;
+    background-image: url(//placeholder.cn/192x135/325/629);
+    background-size: cover;
+    position: relative;
+}
+
+.service-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.service-card .caption {
+    text-align: center;
+    padding-top: 14px;
+    padding-bottom: 10px;
+}
+
+.service-card .caption h4{
+    margin-bottom: 18px;
+}
+
+.service-card .caption p{
+    margin-bottom: 0;
+}
+
+.brand-intro {
+    padding: 1px;
+    background-color: #f7f7f7;
+}
+
+.brand-intro .content {
+    margin-bottom: 40px;
+}
+
+.brand-list {
+    margin: 0;
+    background-color: white;
+    padding: 6px;
+    box-shadow: 0 4px 6px #dddddd;
+}
+
+.brand-logo {
+    padding: 3px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.brand-intro .section-title{
+    margin-bottom: 40px
+}
+
+
+
+.footer {
+    padding: 52px 0 40px;
+    background-color: #1d1d1d;
+}
+
+.footer p{
+    margin: 16px 0 0 0;
+    color: white;
+}
