@@ -1,0 +1,45 @@
+
+.col-context-10 .col-xs-2 {
+    width: 20%;
+}
+
+
+.service-list {
+    margin-bottom: 30px;
+}
+
+.service-card .thumbnail {
+    border: none;
+    border-radius: 0;
+    overflow: hidden;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.service-pic-box {
+    height: 135px;
+    background-image: url(//placeholder.cn/192x135/325/629);
+    background-size: cover;
+    position: relative;
+}
+
+.service-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.service-card .caption {
+    text-align: center;
+    padding-top: 14px;
+    padding-bottom: 10px;
+}
+
+.service-card .caption h4 {
+    margin-bottom: 18px;
+}
+
+.service-card .caption p {
+    margin-bottom: 0;
+}

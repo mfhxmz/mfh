@@ -1,0 +1,51 @@
+/* ie full width hack */
+@-webkit-viewport {
+	width: device-width;
+}
+
+@-moz-viewport {
+	width: device-width;
+}
+
+@-ms-viewport {
+	width: device-width;
+}
+
+@-o-viewport {
+	width: device-width;
+}
+
+@viewport {
+	width: device-width;
+}
+
+/* -----------------------------------------------------------
+ * firefox hack
+ * ----------------------------------------------------------- */
+// remove mozilla select border
+a:focus, button:focus, input:focus, input {
+	outline: none !important;
+}
+
+input::-moz-focus-inner {
+	border: 0;
+}
+
+/*
+ * ie input field clear button shielded
+ */
+input[type=text]::-ms-clear {
+	display: none;
+	width: 0;
+	height: 0;
+}
+
+/*input[type=password]::-ms-reveal {
+	display: none;
+}*/
+
+// remove mozilla select border
+::-moz-selection {
+	background: #b3d4fc;
+	text-shadow: none;
+}
