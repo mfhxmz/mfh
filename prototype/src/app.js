@@ -6,20 +6,19 @@
 require('./lib/loadScreen.css')
 require('./app.scss')
 
-import './common/common'
+import "./common/index";
+import "./modules/home";
+import "./components";
+import bootstrap from "./bootstrap";
 
-import './modules/home'
+import "angular-ui-router";
+import "angular-ui-bootstrap";
+import "angular-animate";
+import "angular-sanitize";
+import "angular-messages";
+import "angular-cookies";
 
-import bootstrap from './bootstrap'
-
-require('angular-ui-router')
-require('angular-ui-bootstrap')
-require('angular-animate')
-require('angular-sanitize')
-require('angular-messages')
-require('angular-cookies')
-
-let angular = require('angular')
+const angular = require('angular')
 let app = angular.module('app', [
         'ngCookies',
         'ngAnimate',
@@ -28,11 +27,9 @@ let app = angular.module('app', [
         'ui.router',
 
         'app.common',
+        'app.components',
 
-        'app.home',
-        'app.about',
-        'app.connect',
-        'app.projects'
+        'app.home'
     ])
 
     .run(function ($rootScope, $log, $state, AppName) {
@@ -71,6 +68,16 @@ let app = angular.module('app', [
             document.querySelector('head').appendChild(msViewPortStyle)
         }
     })
+
+    .component('app', {
+        template: require('./app.html'),
+        controller: function AppController($scope) {
+            this.hero = {
+                name: 'Spawn'
+            }
+        }
+    })
+
 
 bootstrap(app)
 

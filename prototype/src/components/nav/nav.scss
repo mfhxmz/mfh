@@ -1,4 +1,6 @@
-
+app-nav {
+    display: block;
+}
 
 .header {
     box-shadow: 0 0 10px #696969;
@@ -15,6 +17,10 @@
     line-height: 61px;
     font-size: 0;
     clear: both;
+}
+
+.share-links .share-icon:nth-child(n+1) {
+    margin-left: 21px;
 }
 
 .user-links {
@@ -54,14 +60,11 @@
     transform: translate(-50%, -50%);
 }
 
-
 @media screen and (max-width: 1400px) {
 
 }
 
-
-
-@media screen and  (max-width: 1080px) {
+@media screen and (max-width: 1080px) {
     .share-links {
         display: none
     }

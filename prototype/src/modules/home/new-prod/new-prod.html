@@ -5,40 +5,7 @@
     </header>
     <div class="content container">
         <ul class="prod-list list-unstyled row">
-            <li class="prod-card col-sm-6 col-md-3">
-                <div class="thumbnail">
-                    <img class="prod-thumbnail" src="//placeholder.cn/240x210/255/6e9" alt="prod">
-                    <div class="caption">
-                        <h4 class="prod-name">允许对长的不可分割</h4>
-                        <p class="prod-intro">允许对长的不可分割的单词进行分割并换行到下一行</p>
-                        <p><span><i class="vote">*</i> <span class="vote-count">5</span></span>
-                        </p>
-                    </div>
-                </div>
-            </li>
-            <li class="prod-card col-sm-6 col-md-3">
-                <div class="thumbnail">
-                    <img class="prod-thumbnail" src="//placeholder.cn/240x210/255/6e9" alt="prod">
-                    <div class="caption">
-                        <h4 class="prod-name">允许对长的不可分割</h4>
-                        <p class="prod-intro">允许对长的不可分割的单词进行分割并换行到下一行</p>
-                        <p><span><i class="vote">*</i> <span class="vote-count">5</span></span>
-                        </p>
-                    </div>
-                </div>
-            </li>
-            <li class="prod-card col-sm-6 col-md-3">
-                <div class="thumbnail">
-                    <img class="prod-thumbnail" src="//placeholder.cn/240x210/255/6e9" alt="prod">
-                    <div class="caption">
-                        <h4 class="prod-name">允许对长的不可分割</h4>
-                        <p class="prod-intro">允许对长的不可分割的单词进行分割并换行到下一行</p>
-                        <p><span><i class="vote">*</i> <span class="vote-count">5</span></span>
-                        </p>
-                    </div>
-                </div>
-            </li>
-            <li class="prod-card col-sm-6 col-md-3">
+            <li class="prod-card col-sm-6 col-md-3" ng-repeat="item in [].constructor(4) track by $index">
                 <div class="thumbnail">
                     <img class="prod-thumbnail" src="//placeholder.cn/240x210/255/6e9" alt="prod">
                     <div class="caption">
