@@ -24,7 +24,7 @@ module.exports = {
 	entry: {
 		main: [
 			'babel-polyfill',
-			'./app/app.js'
+			'./app.js'
 		]
 	},
 	output: {
@@ -38,7 +38,7 @@ module.exports = {
 	devtool: null,
 	profile: true,
 	module: {
-		preLoaders: [
+		/*preLoaders: [
 			{ test: /\.(sass|scss)$/, loader: 'stylelint' },
 			{
 				test: /\.js?$/,
@@ -47,14 +47,14 @@ module.exports = {
 				],
 				loaders: ['eslint-loader']
 			}
-		],
+		],*/
 		loaders: [
 			{
 				test: /\.js?$/,
 				include: [
 					path.resolve(__dirname, './src')
 				],
-				loaders: ['ng-annotate-loader', 'babel-loader', 'eslint-loader']
+				loaders: ['ng-annotate-loader', 'babel-loader']
 			},
 			{
 				test: /\.css$/,

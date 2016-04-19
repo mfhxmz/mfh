@@ -19,7 +19,7 @@ module.exports = {
 			'babel-polyfill',
 			'webpack-dev-server/client?' + webpackServerURL + '/',
 			'webpack/hot/dev-server',
-			'./app/app.js'
+			'./app.js'
 		]
 	},
 	output: {
@@ -27,7 +27,7 @@ module.exports = {
 		publicPath: 'http://localhost:' + 3000 + '/',
 		filename: '[name].js',
 		devtoolModuleFilenameTemplate: function (info) {
-			return "file://" + info.absoluteResourcePath
+			return "file:///" + info.absoluteResourcePath
 		}
 	},
 	debug: true,
