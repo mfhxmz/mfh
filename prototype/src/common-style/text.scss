@@ -1,0 +1,12 @@
+$text-selection-color: #e89edd;
+
+.text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+::selection {
+    background: $text-selection-color;
+}

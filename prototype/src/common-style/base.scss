@@ -1,10 +1,10 @@
 $font-family: 'Microsoft YaHei', sans-serif;
 $page-background-color: #e9e4e9;
 $default-font-color: #2a2c35;
-$text-selection-color: #e89edd;
+
 
 html {
-    overflow: hidden;
+    height: 100%;
 }
 
 body {
@@ -18,24 +18,6 @@ body {
     font-family: $font-family;
 }
 
-.full-fill {
-    width: 100%;
-    height: 100%;
-}
-
-.text-ellipsis {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-::selection {
-    background: $text-selection-color;
-}
-
-.full-height {
-    height: 100%;
-}
 
 a {
     transition: all .15s ease-in;
