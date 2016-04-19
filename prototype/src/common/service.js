@@ -8,14 +8,13 @@ angular.module('app.service', [])
 	.constant('ServerAPI', {
 
 	})
-	.constant('serverAddress', __SERVERADDR__)
 	.constant('APIVersion', 'v1')
 	.constant('AuthCache', {
 		key: null
 	})
-	.config(function (ServerAPI, APIVersion, serverAddress) {
+	.config(function (ServerAPI, APIVersion) {
 		angular.forEach(ServerAPI, function (api, name) {
-			ServerAPI[name] = `${serverAddress}/${APIVersion}${api}`
+			ServerAPI[name] = `/${APIVersion}${api}`
 		})
 	})
 	.factory('netWorkService', function ($http, $httpParamSerializerJQLike, $q, ServerAPI, AuthCache) {
