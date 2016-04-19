@@ -3,7 +3,7 @@
  */
 'use strict';
 
-let angular = require('angular')
+const angular = require('angular')
 
 angular.module('app.config', [])
     /* -----------------------------------------------------------
@@ -45,9 +45,6 @@ angular.module('app.config', [])
      * 设置非法路径跳转
      * ----------------------------------------------------------- */
     .config(function ($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise(function ($injector) {
-            let $state = $injector.get("$state");
-            let defaultState = $injector.get("defaultState");
-            $state.go(defaultState);
-        })
+        // todo specify a 404 page
+        $urlRouterProvider.otherwise('/')
     })

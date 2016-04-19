@@ -5,7 +5,7 @@
 
 import loadScreen from '../lib/loadScreen.js'
 
-let angular = require('angular')
+const angular = require('angular')
 
 function bootstrap(app) {
     angular.element(document).ready(function () {

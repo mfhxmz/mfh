@@ -3,9 +3,9 @@
  */
 'use strict';
 
-let angular = require('angular')
-let $ = require('jquery')
-let Promise = require('bluebird')
+const angular = require('angular')
+const $ = require('jquery')
+const Promise = require('bluebird')
 
 Promise.config({
     // Enables all warnings except forgotten return statements.

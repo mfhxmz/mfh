@@ -9,7 +9,7 @@ import './filter'
 import './service'
 import './directive'
 
-let angular = require('angular')
+const angular = require('angular')
 
 angular.module('app.common', [
         'app.constant',

@@ -3,7 +3,7 @@
  */
 'use strict';
 
-let angular = require('angular')
+const angular = require('angular')
 
 angular.module('app.constant', [])
     .constant('DEBUG_MODE', __DEV__)

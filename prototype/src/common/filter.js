@@ -3,8 +3,8 @@
  */
 'use strict';
 
-let angular = require('angular')
-let $ = require('jquery')
+const angular = require('angular')
+const $ = require('jquery')
 
 angular.module('app.filter', [])
 /**
