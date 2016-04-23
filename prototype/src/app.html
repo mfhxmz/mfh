@@ -1,5 +1,5 @@
-<app-nav></app-nav>
+<app-nav collapsed="$ctrl.isCollapsed"></app-nav>
 
-<app-home></app-home>
+<ui-view class="main-ui-view" ng-class="{'nav-no-collapsed': !$ctrl.isCollapsed}"></ui-view>
 
 <app-footer></app-footer>

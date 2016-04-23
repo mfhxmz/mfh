@@ -1,7 +1,14 @@
 @charset "UTF-8";
-@import "~bootstrap-sass/assets/stylesheets/bootstrap/variables";
 @import "common-style/common";
 
 app {
     display: block;
+}
+
+.main-ui-view {
+    margin-top: 0;
+    display: block;
+    &.nav-no-collapsed {
+        margin-top: 90px;
+    }
 }

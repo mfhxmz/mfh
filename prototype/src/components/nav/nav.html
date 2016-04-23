@@ -1,29 +1,36 @@
-<section class="header">
-    <div class="content container">
-        <div class="top-header">
-            <div class="share-links pull-left">
-                <img class="share-icon" src="//placeholder.cn/21x21/255/6e9" alt="weixin">
-                <img class="share-icon" src="//placeholder.cn/21x21/255/6e9" alt="weibo">
-            </div>
-            <img class="logo" src="//placeholder.cn/283x61/255/6e9" alt="mfh">
+<section class="navbar"
+         ng-class="{'navbar-fixed-top': !$ctrl.collapsed}">
+    <div class="navbar-content">
+        <div class="container">
+            <div class="navbar-header">
+                <div class="share-links pull-left">
+                    <img class="share-icon" src="//placeholder.cn/21x21/255/6e9" alt="weixin">
+                    <img class="share-icon" src="//placeholder.cn/21x21/255/6e9" alt="weibo">
+                </div>
+                <img class="logo" src="//placeholder.cn/283x60/255/6e9" alt="mfh">
 
-            <div class="user-links pull-right">
-                <a href="/login">登录</a> | <a href="/register">注册</a>
+                <div class="user-links pull-right">
+                    <a href="/login">登录</a> | <a href="/register">注册</a>
+                </div>
+
+                <button class="hamburger hamburger--spring hidden-md hidden-lg" type="button"
+                        ng-class="{'is-active': !$ctrl.collapsed}"
+                        ng-click="$ctrl.collapsed = !$ctrl.collapsed">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
             </div>
         </div>
     </div>
-    <hr class="section-hr">
-    <nav class="nav-container">
-        <div class="content container">
-            <ul class="nav-list list-inline">
-                <li class="nav-item">hello world</li>
-                <li class="nav-item">hello world</li>
-                <li class="nav-item">hello world</li>
-                <li class="nav-item">hello world</li>
-                <li class="nav-item">hello world</li>
-                <li class="nav-item">hello world</li>
-                <li class="nav-item">hello world</li>
-                <li class="nav-item" style="color:#ff6dee">hello world</li>
+    <hr class="section-hr hidden-xs hidden-sm">
+    <nav class="navbar-collapse" uib-collapse="$ctrl.collapsed">
+        <div class="nav-content container">
+            <ul class="navbar-nav-list list-inline" ng-click="$ctrl.collapsed = true">
+                <li class="nav-item" ui-sref-active="active"
+                    ng-repeat="(key, val) in $ctrl.navList track by key">
+                    <a ui-sref="{{::key}}">{{::val}}</a>
+                </li>
             </ul>
         </div>
     </nav>
