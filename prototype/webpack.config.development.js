@@ -17,18 +17,15 @@ module.exports = {
 	entry: {
 		main: [
 			'babel-polyfill',
-			'webpack-dev-server/client?' + webpackServerURL + '/',
+			'webpack-dev-server/client?/',
 			'webpack/hot/dev-server',
 			'./app.js'
 		]
 	},
 	output: {
 		path: path.join(__dirname, 'dist'),
-		publicPath: 'http://localhost:' + 3000 + '/',
-		filename: '[name].js',
-		devtoolModuleFilenameTemplate: function (info) {
-			return "file:///" + info.absoluteResourcePath
-		}
+		publicPath: '',
+		filename: '[name].js'
 	},
 	debug: true,
 	devtool: 'source-map',
@@ -36,7 +33,7 @@ module.exports = {
 		// Tell the webpack dev server from where to find the files to serve.
 		contentBase: path.join(__dirname, 'dist'),
 		colors: true,
-		publicPath: webpackServerURL + '/',
+		publicPath: '',
 		host: 'localhost',
 		port: 8080,
 		hot: true,
@@ -96,6 +93,18 @@ module.exports = {
 					'file?name=[name].[ext]'
 				]
 			},
+            {
+                test: /\.(woff|woff2|ttf|eot)(\?.+)?$/,
+                loaders: [
+                    'file?name=font/[name].[ext]'
+                ]
+            },
+            {
+                test: /\.(svg)(.+)$/,
+                loaders: [
+                    'file?name=font/[name].[ext]'
+                ]
+            },
 			{
 				test: /\.ico$/,
 				include: [
@@ -134,7 +143,8 @@ module.exports = {
 		new BrowserSyncPlugin({
 				host: 'localhost',
 				port: 3000,
-				proxy: webpackServerURL
+				proxy: webpackServerURL,
+                ws: true
 			},
 			{
 				reload: false
