@@ -1,0 +1,36 @@
+@import "prod-list";
+
+prod-card2 {
+    display: block;
+    margin-bottom: 30px;
+}
+
+prod-card2 .thumbnail {
+    border: none;
+    border-radius: 2px;
+    overflow: hidden;
+    padding: 9px 9px 0;
+    margin-bottom: 0;
+}
+
+prod-card2 .thumbnail .prod-thumbnail {
+    margin: 0;
+    width: 100%;
+}
+
+prod-card2 .thumbnail .caption {
+    margin: 27px 5px;
+    padding: 0;
+    position: relative;
+}
+
+prod-card2 .prod-intro {
+    margin-bottom: 0;
+    margin-right: 5em;
+}
+
+prod-card2 .discount {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}

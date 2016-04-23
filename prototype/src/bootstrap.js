@@ -3,7 +3,7 @@
  */
 'use strict';
 
-import loadScreen from './lib/loadScreen.js'
+import loadScreen from "./lib/loadScreen.js";
 
 const angular = require('angular')
 

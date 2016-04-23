@@ -1,7 +1,10 @@
+brands {
+    display: block;
+}
 
 .brand-intro {
     padding: 1px;
-    background-color: #f7f7f7;
+    background-color: #f0f0f0;
 }
 
 .brand-intro .content {
@@ -12,7 +15,7 @@
     margin: 0;
     background-color: white;
     padding: 6px;
-    box-shadow: 0 4px 6px #ddd;
+    box-shadow: 0 4px 10px #ddd;
 }
 
 .brand-logo {

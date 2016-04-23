@@ -6,10 +6,8 @@
 require('./lib/loadScreen.css')
 require('./app.scss')
 
-import "./common/index";
-import "./modules/home";
+import "./common";
 import "./components";
-import bootstrap from "./bootstrap";
 
 import "angular-ui-router";
 import "angular-ui-bootstrap";
@@ -18,6 +16,17 @@ import "angular-sanitize";
 import "angular-messages";
 import "angular-cookies";
 
+import "./modules/home";
+import "./modules/appInfo";
+import "./modules/coinInfo";
+import "./modules/newProd";
+import "./modules/hotProd";
+import "./modules/download";
+import "./modules/consult";
+import "./modules/aim";
+
+import bootstrap from "./bootstrap";
+
 const angular = require('angular')
 let app = angular.module('app', [
         'ngCookies',
@@ -25,11 +34,19 @@ let app = angular.module('app', [
         'ngSanitize',
         'ngMessages',
         'ui.router',
+        'ui.bootstrap',
 
         'app.common',
         'app.components',
 
-        'app.home'
+        'mf.home',
+        'mf.appInfo',
+        'mf.coinInfo',
+        'mf.newProd',
+        'mf.hotProd',
+        'mf.download',
+        'mf.consult',
+        'mf.aim'
     ])
 
     .run(function ($rootScope, $log, $state, AppName) {
@@ -72,9 +89,6 @@ let app = angular.module('app', [
     .component('app', {
         template: require('./app.html'),
         controller: function AppController($scope) {
-            this.hero = {
-                name: 'Spawn'
-            }
         }
     })
 

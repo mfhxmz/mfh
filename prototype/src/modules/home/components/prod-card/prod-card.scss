@@ -1,0 +1,22 @@
+@import "prod-list";
+
+prod-card {
+    display: block;
+    margin-bottom: 30px;
+}
+prod-card .thumbnail {
+    border: none;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+prod-card .thumbnail .prod-thumbnail {
+    margin: 0;
+    width: 100%;
+}
+
+prod-card .thumbnail .caption {
+    padding: 20px;
+}

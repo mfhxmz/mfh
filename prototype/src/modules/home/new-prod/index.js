@@ -5,13 +5,15 @@
 
 require('./new-prod.scss')
 
+require('../components/prod-card')
+
 const angular = require('angular')
 
-angular.module('app.home')
+angular.module('mf.home')
     .component('newProd', {
         template: require('./new-prod.html'),
-        controller: function() {
-
+        controller: function () {
+            this.list = [].constructor(4)
         }
     })
 

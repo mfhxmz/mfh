@@ -1,0 +1,127 @@
+@import "../../common-style/util";
+
+app-info {
+    display: block;
+}
+
+.app-info-sec {
+    width: 100%;
+    height: 800px;
+    position: relative;
+}
+
+app-info h1, app-info img {
+    position: absolute;
+}
+
+#title1 {
+    text-align: center;
+    top: 116px;
+    width: 100%;
+    z-index: 1;
+}
+
+#title2 {
+    text-align: center;
+    top: 166px;
+    width: 100%;
+}
+
+#app-info-2-1 {
+    bottom: 0;
+    margin: auto;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+#app-info-2-2 {
+    bottom: 0;
+    width: 100%;
+}
+
+#title3 {
+    top: 356px;
+    right: 435px;
+    z-index: 3;
+}
+
+#app-info-3-1 {
+    top: 225px;
+    left: 330px;
+    z-index: 2;
+}
+
+#app-info-3-2 {
+    bottom: 54px;
+    width: 100%;
+}
+
+#title4 {
+    top: 156px;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+}
+
+#app-info-4-1, #app-info-4-2 {
+    @include stick-bottom-center();
+}
+
+#app-info-4-1 {
+    z-index: 1;
+}
+
+#app-info-4-2 {
+    max-width: 100%;
+}
+
+#title5 {
+    top: 127px;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+}
+
+#app-info-5-1, #app-info-5-2 {
+    @include stick-bottom-center();
+}
+
+#app-info-5-1 {
+    z-index: 1;
+}
+
+#app-info-5-2 {
+    max-width: 100%;
+}
+
+#app-info-6 {
+    padding-top: 1px;
+}
+
+.download-content {
+    text-align: center;
+    margin-top: 134px;
+}
+
+#title6 {
+    position: static;
+}
+
+.dl-links {
+    margin-top: 20px;
+
+    button:nth-child(n+2) {
+        margin-left: 20px;
+    }
+}
+
+#app-qr-code {
+    @include stick-top-center(260px);
+    z-index: 10
+}
+
+#app-info-6-1 {
+    @include stick-bottom-center();
+    max-width: 100%;
+}

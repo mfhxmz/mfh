@@ -7,10 +7,10 @@ require('./service.scss')
 
 const angular = require('angular')
 
-angular.module('app.home')
+angular.module('mf.home')
     .component('services', {
         template: require('./service.html'),
-        controller: function() {
+        controller: function () {
 
         }
     })

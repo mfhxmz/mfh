@@ -5,13 +5,17 @@
 
 require('./hot-prod.scss')
 
+require('../components/prod-card')
+
 const angular = require('angular')
 
-angular.module('app.home')
+angular.module('mf.home')
     .component('hotProd', {
         template: require('./hot-prod.html'),
-        controller: function() {
-
+        controller: function () {
+            const vm = this
+            
+            vm.list=[].constructor(8)
         }
     })
 

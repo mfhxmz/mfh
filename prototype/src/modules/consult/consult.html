@@ -1,0 +1,18 @@
+<section class="banner-box">
+    <img class="img-responsive" src="//placeholder.cn/1600x400/ff6dee" alt="weibo">
+</section>
+
+<section class="prod-box">
+    <header class="section-title">
+        <h4 class="eng-title">Activity Consultant</h4>
+        <h4 class="cn-title">- 活动 + 咨询 -</h4>
+    </header>
+    <div class="content container">
+        <ul class="prod-list list-unstyled row">
+            <prod-card2 class="col-sm-6"
+                        ng-repeat="prod in $ctrl.list track by $index"
+                        card-info="prod">
+            </prod-card2>
+        </ul>
+    </div>
+</section>

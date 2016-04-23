@@ -7,10 +7,21 @@ require('./home.scss')
 
 const angular = require('angular')
 
-angular.module('app.home', [])
-    .component('appHome', {
+angular.module('mf.home', [])
+    .config(function ($stateProvider, $urlRouterProvider, NavList) {
+        $stateProvider.state('home', {
+            url: '/home',
+            component: 'home',
+            data: { pageTitle: 'Home' }
+        })
+
+        $urlRouterProvider.when('/', '/home')
+
+        NavList['home'] = '主页'
+    })
+    .component('home', {
         template: require('./home.html'),
-        controller: function() {
+        controller: function () {
 
         }
     })
