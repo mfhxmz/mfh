@@ -12,9 +12,10 @@ import "./components";
 import "angular-ui-router";
 import "angular-ui-bootstrap";
 import "angular-animate";
-import "angular-sanitize";
+//import "angular-sanitize";
 import "angular-messages";
 import "angular-cookies";
+import "imports?this=>window!jquery.scrollbar";
 
 import "./modules/home";
 import "./modules/appInfo";
@@ -31,10 +32,11 @@ const angular = require('angular')
 let app = angular.module('app', [
         'ngCookies',
         'ngAnimate',
-        'ngSanitize',
+        //'ngSanitize',
         'ngMessages',
         'ui.router',
         'ui.bootstrap',
+        'jQueryScrollbar',
 
         'app.common',
         'app.components',
@@ -85,10 +87,13 @@ let app = angular.module('app', [
             document.querySelector('head').appendChild(msViewPortStyle)
         }
     })
-
+    .controller('RootController', function($scope) {
+        
+    })
     .component('app', {
         template: require('./app.html'),
         controller: function AppController($scope) {
+
         }
     })
 

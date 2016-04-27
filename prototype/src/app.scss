@@ -1,8 +1,14 @@
 @charset "UTF-8";
+@import "~jquery.scrollbar/jquery.scrollbar.css";
 @import "common-style/common";
 
 app {
     display: block;
+}
+
+.scrollbar-dynamic {
+    max-height: 100%;
+    overflow: auto;
 }
 
 .main-ui-view {
