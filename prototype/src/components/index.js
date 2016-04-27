@@ -5,7 +5,7 @@
 
 const angular = require('angular')
 
-angular.module('app.components',[])
+angular.module('app.components', [])
 
 require('./nav')
 require('./footer')

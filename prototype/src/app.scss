@@ -3,18 +3,18 @@
 @import "common-style/common";
 
 app {
-    display: block;
+	display: block;
 }
 
 .scrollbar-dynamic {
-    max-height: 100%;
-    overflow: auto;
+	max-height: 100%;
+	overflow: auto;
 }
 
 .main-ui-view {
-    margin-top: 0;
-    display: block;
-    &.nav-no-collapsed {
-        margin-top: 90px;
-    }
+	margin-top: 0;
+	display: block;
+	&.nav-no-collapsed {
+		margin-top: 90px;
+	}
 }

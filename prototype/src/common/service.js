@@ -5,9 +5,7 @@ const angular = require('angular')
 const _ = require('lodash')
 
 angular.module('app.service', [])
-	.constant('ServerAPI', {
-
-	})
+	.constant('ServerAPI', {})
 	.constant('APIVersion', 'v1')
 	.constant('AuthCache', {
 		key: null

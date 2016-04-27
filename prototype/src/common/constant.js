@@ -6,5 +6,5 @@
 const angular = require('angular')
 
 angular.module('app.constant', [])
-    .constant('DEBUG_MODE', __DEV__)
-    .constant('AppName', 'JETS Lab')
+	.constant('DEBUG_MODE', __DEV__)
+	.constant('AppName', 'JETS Lab')

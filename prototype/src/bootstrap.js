@@ -8,15 +8,15 @@ import loadScreen from "./lib/loadScreen.js";
 const angular = require('angular')
 
 function bootstrap(app) {
-    angular.element(document).ready(function () {
-        console.log('angular.bootstrap', '### ' + app.name + ' ###', 'modules:', app.requires)
+	angular.element(document).ready(function () {
+		console.log('angular.bootstrap', '### ' + app.name + ' ###', 'modules:', app.requires)
 
-        angular.bootstrap(document, [app.name], {
-            strictDi: true
-        })
+		angular.bootstrap(document, [app.name], {
+			strictDi: true
+		})
 
-        loadScreen.loaded()
-    })
+		loadScreen.loaded()
+	})
 }
 
 export default bootstrap

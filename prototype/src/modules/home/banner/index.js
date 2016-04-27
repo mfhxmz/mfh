@@ -8,9 +8,9 @@ require('./banner.scss')
 const angular = require('angular')
 
 angular.module('mf.home')
-    .component('banner', {
-        template: require('./banner.html'),
-        controller: function () {
+	.component('banner', {
+		template: require('./banner.html'),
+		controller: function () {
 
-        }
-    })
+		}
+	})

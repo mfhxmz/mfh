@@ -8,9 +8,9 @@ require('./brands.scss')
 const angular = require('angular')
 
 angular.module('mf.home')
-    .component('brands', {
-        template: require('./brands.html'),
-        controller: function () {
+	.component('brands', {
+		template: require('./brands.html'),
+		controller: function () {
 
-        }
-    })
+		}
+	})

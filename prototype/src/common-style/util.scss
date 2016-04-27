@@ -2,60 +2,59 @@
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/variables";
 
 @mixin fill-parent($top:0, $right:0, $bottom:0, $left:0) {
-    position: absolute;
-    top: $top;
-    right: $right;
-    bottom: $bottom;
-    left: $left;
+	position: absolute;
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
 }
 
-
 @mixin stick-top($top:0, $right:0, $left:0) {
-    position: absolute;
-    top: $top;
-    right: $right;
-    left: $left;
+	position: absolute;
+	top: $top;
+	right: $right;
+	left: $left;
 }
 
 @mixin stick-top-center($top:0, $right:0, $left:0) {
-    position: absolute;
-    top: $top;
-    right: $right;
-    left: $left;
-    margin-left: auto;
-    margin-right: auto;
+	position: absolute;
+	top: $top;
+	right: $right;
+	left: $left;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 @mixin stick-bottom($bottom:0, $right:0, $left:0) {
-    position: absolute;
-    right: $right;
-    bottom: $bottom;
-    left: $left;
+	position: absolute;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
 }
 
 @mixin stick-bottom-center($bottom:0, $right:0, $left:0) {
-    position: absolute;
-    right: $right;
-    bottom: $bottom;
-    left: $left;
-    margin-left: auto;
-    margin-right: auto;
+	position: absolute;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 @mixin stick-center($bottom:0, $right:0, $left:0) {
-    @include fill-parent();
-    margin: auto;
+	@include fill-parent();
+	margin: auto;
 }
 
 @mixin stick-horizontal-center {
-    position: absolute;
-    right: 0;
-    left: 0;
-    margin-left: auto;
-    margin-right: auto;
+	position: absolute;
+	right: 0;
+	left: 0;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 @mixin list-unstyled {
-    padding-left: 0;
-    list-style: none;
+	padding-left: 0;
+	list-style: none;
 }

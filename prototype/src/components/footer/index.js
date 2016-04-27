@@ -8,9 +8,9 @@ require('./footer.scss')
 const angular = require('angular')
 
 angular.module('app.components')
-    .component('appFooter', {
-        template: require('./footer.html'),
-        controller: function($scope) {
+	.component('appFooter', {
+		template: require('./footer.html'),
+		controller: function ($scope) {
 
-        }
-    })
+		}
+	})

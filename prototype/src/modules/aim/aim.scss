@@ -1,77 +1,78 @@
 @import "../../common-style/util";
 
 aim {
-    display: block;
+	display: block;
 }
 
 .aim-sec {
-    height: 690px;
-    position: relative;
-    &:nth-child(odd) {
-        background-color: #fbfbfb;
-    }
+	height: 690px;
+	position: relative;
+	&:nth-child(odd) {
+		background-color: #fbfbfb;
+	}
 }
 
 #aim-1 .container {
-    padding: 128px 0;
+	padding: 128px 0;
 }
 
 #aim-1, #aim-2 {
-    .content {
-        margin-top: 80px;
-    }
+	.content {
+		margin-top: 80px;
+	}
 }
 
 #aim-2 .container {
-    padding: 58px 0;
+	padding: 58px 0;
 }
 
 #aim-3 .container {
-    padding: 200px 0;
+	padding: 200px 0;
 }
 
 #aim-3 .content {
-    position: relative;
-    z-index: 5;
+	position: relative;
+	z-index: 5;
 }
 
 #aim-3-1 {
-    position: absolute;
-    bottom: 0;
-    right: 415px;
-    z-index: 1;
+	position: absolute;
+	bottom: 0;
+	right: 415px;
+	z-index: 1;
 }
 
 #aim-3-2 {
-    position: absolute;
-    bottom: 54px;
-    right: 227px;
+	position: absolute;
+	bottom: 54px;
+	right: 227px;
 }
 
 #aim-4 .content {
-    position: relative;
-    margin-top: 240px;
-    z-index: 5;
-    .title {
-        text-align: center;
-    }
+	position: relative;
+	margin-top: 240px;
+	z-index: 5;
+	.title {
+		text-align: center;
+	}
 }
 
 #aim-4-1 {
-    @include stick-bottom-center();
+	@include stick-bottom-center();
 }
+
 #aim-5 {
-    padding-top:1px;
+	padding-top: 1px;
 }
 
 #aim-5 .content {
-    position: relative;
-    margin-top: 300px;
-    z-index: 5;
-    text-align: center;
+	position: relative;
+	margin-top: 300px;
+	z-index: 5;
+	text-align: center;
 }
 
 #aim-5-1 {
-    @include stick-top-center(136px);
+	@include stick-top-center(136px);
 }
 

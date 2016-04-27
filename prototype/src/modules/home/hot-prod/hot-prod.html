@@ -1,15 +1,15 @@
 <section class="hot-prod">
-    <header class="section-title">
-        <h4 class="eng-title">Hot Products</h4>
-        <h4 class="cn-title">- 爆品 + 推荐 -</h4>
-    </header>
-    <div class="content container">
-        <ul class="prod-list list-unstyled row">
-            <prod-card class="col-xs-6 col-md-3"
-                       ng-repeat="prod in $ctrl.list track by $index"
-                       card-info="prod" template="$ctrl.captionTpl">
-            </prod-card>
-        </ul>
-        <hr class="section-hr">
-    </div>
+	<header class="section-title">
+		<h4 class="eng-title">Hot Products</h4>
+		<h4 class="cn-title">- 爆品 + 推荐 -</h4>
+	</header>
+	<div class="content container">
+		<ul class="prod-list list-unstyled row">
+			<prod-card class="col-xs-6 col-md-3"
+			           ng-repeat="prod in $ctrl.list track by $index"
+			           card-info="prod" template="$ctrl.captionTpl">
+			</prod-card>
+		</ul>
+		<hr class="section-hr">
+	</div>
 </section>

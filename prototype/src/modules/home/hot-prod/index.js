@@ -10,12 +10,12 @@ const captionUrl = require('../caption.tpl.html')
 const angular = require('angular')
 
 angular.module('mf.home')
-    .component('hotProd', {
-        template: require('./hot-prod.html'),
-        controller: function () {
-            const vm = this
-            vm.captionTpl = captionUrl
-            vm.list=[].constructor(8)
-        }
-    })
+	.component('hotProd', {
+		template: require('./hot-prod.html'),
+		controller: function () {
+			const vm = this
+			vm.captionTpl = captionUrl
+			vm.list = [].constructor(8)
+		}
+	})
 

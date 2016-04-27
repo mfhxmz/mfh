@@ -2,146 +2,146 @@
 @import "hamburger-menu";
 
 app-nav {
-    display: block;
+	display: block;
 }
 
 .navbar {
-    z-index: 10;
-    position: relative;
-    border: 0;
-    margin-bottom: 0;
+	z-index: 10;
+	position: relative;
+	border: 0;
+	margin-bottom: 0;
 }
 
 .navbar-header {
-    width: 100%;
-    display: inline-block;
-    line-height: 61px;
-    font-size: 0;
-    clear: both;
+	width: 100%;
+	display: inline-block;
+	line-height: 61px;
+	font-size: 0;
+	clear: both;
 }
 
 .logo {
-    height: 60px;
+	height: 60px;
 }
 
 .share-links .share-icon:nth-child(n+2) {
-    margin-left: 21px;
+	margin-left: 21px;
 }
 
 .user-links {
-    font-size: 1rem;
+	font-size: 1rem;
 }
 
 .navbar > .content {
-    padding-bottom: 0;
+	padding-bottom: 0;
 }
 
 .nav-item.active a {
-    color: rebeccapurple;
+	color: rebeccapurple;
 }
 
 // 大屏导航样式
 @media (min-width: $screen-md-min) {
-    .navbar-header {
-        margin-top: 60px;
-        margin-bottom: 40px;
-        text-align: center;
-    }
+	.navbar-header {
+		margin-top: 60px;
+		margin-bottom: 40px;
+		text-align: center;
+	}
 
-    .navbar-collapse.collapse {
-        padding: 1em 0;
-    }
+	.navbar-collapse.collapse {
+		padding: 1em 0;
+	}
 
-    .navbar-nav-list {
-        margin-left: 0;
-        margin-bottom: 0;
-        display: table;
-        width: 100%;
-    }
+	.navbar-nav-list {
+		margin-left: 0;
+		margin-bottom: 0;
+		display: table;
+		width: 100%;
+	}
 
-    .navbar-nav-list .nav-item {
-        display: table-cell;
-        text-align: center;
-        position: relative;
-    }
+	.navbar-nav-list .nav-item {
+		display: table-cell;
+		text-align: center;
+		position: relative;
+	}
 
-    .nav-item:not(:first-child):before {
-        content: '';
-        display: block;
-        position: absolute;
-        width: 3px;
-        height: 3px;
-        left: 0;
-        top: 50%;
-        background-color: grey;
-        transform: translate(-50%, -50%);
-    }
+	.nav-item:not(:first-child):before {
+		content: '';
+		display: block;
+		position: absolute;
+		width: 3px;
+		height: 3px;
+		left: 0;
+		top: 50%;
+		background-color: grey;
+		transform: translate(-50%, -50%);
+	}
 }
 
 // 小屏导航样式
 @media screen and (max-width: $screen-sm-max) {
-    .navbar-fixed-top {
-        height: 100vh;
-        top: 0;
-        background-color: transparentize(black, 0.5);
-        width: 100%;
-        z-index: 500;
-        position: fixed;
-    }
+	.navbar-fixed-top {
+		height: 100vh;
+		top: 0;
+		background-color: transparentize(black, 0.5);
+		width: 100%;
+		z-index: 500;
+		position: fixed;
+	}
 
-    .navbar-content {
-        background-color: white;
-    }
+	.navbar-content {
+		background-color: white;
+	}
 
-    .container > .navbar-header {
-        text-align: right;
-        margin: 15px 0;
-    }
+	.container > .navbar-header {
+		text-align: right;
+		margin: 15px 0;
+	}
 
-    .share-links, .user-links {
-        display: none
-    }
+	.share-links, .user-links {
+		display: none
+	}
 
-    .logo {
-        float: left;
-    }
+	.logo {
+		float: left;
+	}
 
-    .navbar-header .hamburger {
-        line-height: 1em;
-        vertical-align: middle;
-    }
+	.navbar-header .hamburger {
+		line-height: 1em;
+		vertical-align: middle;
+	}
 
-    .navbar-collapse {
-        background-color: white;
-        border: 0;
-    }
+	.navbar-collapse {
+		background-color: white;
+		border: 0;
+	}
 
-    .navbar-collapse.collapse{
-        display: none!important;
-    }
+	.navbar-collapse.collapse {
+		display: none !important;
+	}
 
-    .collapse.in {
-        display: block!important;
-    }
+	.collapse.in {
+		display: block !important;
+	}
 
-    .navbar-nav-list {
-        display: block;
-    }
+	.navbar-nav-list {
+		display: block;
+	}
 
-    .nav-item {
-        display: block;
-        width: 100%;
-        padding: 15px;
+	.nav-item {
+		display: block;
+		width: 100%;
+		padding: 15px;
 
-        &:not(:last-child) {
-            border-bottom: 1px solid #ccc;
-        }
-    }
+		&:not(:last-child) {
+			border-bottom: 1px solid #ccc;
+		}
+	}
 
-    .nav-item a {
-        display: block;
-        width: 100%;
-    }
+	.nav-item a {
+		display: block;
+		width: 100%;
+	}
 }
 
 
