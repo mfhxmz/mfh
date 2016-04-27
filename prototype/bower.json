@@ -1,0 +1,21 @@
+{
+  "name": "mfh-fe",
+  "description": "creative lab",
+  "main": "index.js",
+  "authors": [
+    "e-cloud"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/mfhxmz/mfh",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-viewport-watch": "^0.1.4"
+  }
+}
