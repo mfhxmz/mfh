@@ -5,6 +5,9 @@
 
 require('./hot-prod.scss')
 
+const url = require('./caption3.tpl.html')
+
+
 const angular = require('angular')
 
 angular.module('mf.hotProd', [])
@@ -21,5 +24,6 @@ angular.module('mf.hotProd', [])
         template: require('./hot-prod.html'),
         controller: function () {
             this.list = [].constructor(8)
+            this.captionTpl = url
         }
     })

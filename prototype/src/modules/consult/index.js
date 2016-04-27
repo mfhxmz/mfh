@@ -5,6 +5,8 @@
 
 require('./consult.scss')
 
+const url = require('./caption2.tpl.html')
+
 const angular = require('angular')
 
 angular.module('mf.consult', [])
@@ -21,5 +23,6 @@ angular.module('mf.consult', [])
         template: require('./consult.html'),
         controller: function () {
             this.list = [].constructor(8)
+            this.captionTpl = url
         }
     })

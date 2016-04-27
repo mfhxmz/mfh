@@ -1,11 +1,4 @@
-@import "prod-list";
-
-prod-card2 {
-    display: block;
-    margin-bottom: 30px;
-}
-
-prod-card2 .thumbnail {
+prod-card.wide .thumbnail {
     border: none;
     border-radius: 2px;
     overflow: hidden;
@@ -13,23 +6,18 @@ prod-card2 .thumbnail {
     margin-bottom: 0;
 }
 
-prod-card2 .thumbnail .prod-thumbnail {
-    margin: 0;
-    width: 100%;
-}
-
-prod-card2 .thumbnail .caption {
+prod-card.wide .thumbnail .caption {
     margin: 27px 5px;
     padding: 0;
     position: relative;
 }
 
-prod-card2 .prod-intro {
+prod-card.wide .caption .prod-intro {
     margin-bottom: 0;
     margin-right: 5em;
 }
 
-prod-card2 .discount {
+prod-card.wide .caption .corner {
     position: absolute;
     bottom: 0;
     right: 0;

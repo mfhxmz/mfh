@@ -9,4 +9,4 @@ angular.module('app.components',[])
 
 require('./nav')
 require('./footer')
-require('./prod-card2')
+require('./prod-card')

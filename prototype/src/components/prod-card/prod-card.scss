@@ -4,6 +4,7 @@ prod-card {
     display: block;
     margin-bottom: 30px;
 }
+
 prod-card .thumbnail {
     border: none;
     border-radius: 5px;
@@ -20,3 +21,5 @@ prod-card .thumbnail .prod-thumbnail {
 prod-card .thumbnail .caption {
     padding: 20px;
 }
+
+@import "prod-card-wide";

@@ -4,6 +4,7 @@
 'use strict'
 
 require('./new-prod.scss')
+const url = require('../hotProd/caption3.tpl.html')
 
 const angular = require('angular')
 
@@ -21,5 +22,6 @@ angular.module('mf.newProd', [])
         template: require('./new-prod.html'),
         controller: function () {
             this.list = [].constructor(8)
+            this.captionTpl = url
         }
     })

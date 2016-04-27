@@ -5,7 +5,7 @@
 
 require('./new-prod.scss')
 
-require('../components/prod-card')
+const captionUrl = require('../caption.tpl.html')
 
 const angular = require('angular')
 
@@ -14,6 +14,7 @@ angular.module('mf.home')
         template: require('./new-prod.html'),
         controller: function () {
             this.list = [].constructor(4)
+            this.captionTpl = captionUrl
         }
     })
 

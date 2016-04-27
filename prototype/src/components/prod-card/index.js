@@ -8,10 +8,11 @@ require('./prod-card.scss')
 const angular = require('angular')
 
 angular.module('app.components')
-    .component('prodCard2', {
+    .component('prodCard', {
         template: require('./prod-card.html'),
         bindings: {
-            cardInfo: '<'
+            cardInfo: '<',
+            template: '<'
         },
         controller: function () {
 

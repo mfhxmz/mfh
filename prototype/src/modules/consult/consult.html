@@ -9,10 +9,10 @@
     </header>
     <div class="content container">
         <ul class="prod-list list-unstyled row">
-            <prod-card2 class="col-sm-6"
+            <prod-card class="wide col-sm-6"
                         ng-repeat="prod in $ctrl.list track by $index"
-                        card-info="prod">
-            </prod-card2>
+                        card-info="prod" template="$ctrl.captionTpl">
+            </prod-card>
         </ul>
     </div>
 </section>
