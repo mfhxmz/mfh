@@ -48,7 +48,7 @@ app-nav {
         text-align: center;
     }
 
-    .navbar-collapse {
+    .navbar-collapse.collapse {
         padding: 1em 0;
     }
 
@@ -116,6 +116,13 @@ app-nav {
         border: 0;
     }
 
+    .navbar-collapse.collapse{
+        display: none!important;
+    }
+
+    .collapse.in {
+        display: block!important;
+    }
 
     .navbar-nav-list {
         display: block;
