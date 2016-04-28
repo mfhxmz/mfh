@@ -118,6 +118,7 @@ app-nav {
 
 	.navbar-collapse.collapse {
 		display: none !important;
+		overflow: auto !important;
 	}
 
 	.collapse.in {

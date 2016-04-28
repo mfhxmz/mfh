@@ -28,13 +28,24 @@
 	<div id="app-dl" class="download-content">
 		<h1 id="title6">从这里开始探索世界</h1>
 		<div class="dl-links">
-			<button class="btn-apple-dl">AppStore 下载</button>
-			<button class="btn-android-dl">Android 下载</button>
-			<button class="btn-qr-code"></button>
+			<button class="btn btn-lg btn-default btn-apple-dl"><i
+				class="glyphicon glyphicon-heart"></i> AppStore 下载
+			</button>
+			<button class="btn btn-lg btn-default btn-android-dl"><i
+				class="glyphicon glyphicon-heart"></i> Android 下载
+			</button>
+			<button class="btn btn-lg btn-default btn-qr-code"
+			        ng-class="{active: $ctrl.showQrCode}"
+			        ng-click="$ctrl.showQrCode = !$ctrl.showQrCode"><i
+				class="glyphicon glyphicon-qrcode"></i></button>
 		</div>
 	</div>
 
-	<img id="app-qr-code" src="//placeholder.cn/200x200/239d2e" alt="">
+	<img class="dl-qrcode"
+	     ng-show="$ctrl.showQrCode"
+	     id="app-qr-code"
+	     src="//placeholder.cn/200x200/239d2e"
+	     alt="dl-qrcode">
 
 	<img id="app-info-6-1" src="//placeholder.cn/727x489/231d2e" alt="weibo">
 </section>

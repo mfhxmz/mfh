@@ -111,7 +111,26 @@ app-info h1, app-info img {
 .dl-links {
 	margin-top: 20px;
 
-	button:nth-child(n+2) {
+	.btn {
+		border: 0;
+		background-color: black;
+		color: white;
+		&:hover,
+		&:active,
+		&.active {
+			background-color: #ad8fff;
+		}
+		&:active,
+		&.active {
+			background-image: none;
+		}
+
+		.glyphicon {
+			top: 3px;
+		}
+	}
+
+	.btn:nth-child(n+2) {
 		margin-left: 20px;
 	}
 }
@@ -119,6 +138,24 @@ app-info h1, app-info img {
 #app-qr-code {
 	@include stick-top-center(260px);
 	z-index: 10
+}
+
+.dl-qrcode {
+	opacity: 1;
+	&.ng-hide-add,
+	&.ng-hide-remove {
+		transition: 0.5s ease-in-out all;
+
+	}
+
+	&.ng-hide-add {
+		opacity: 0;
+		animation: 0.5s bounceOut;
+	}
+
+	&.ng-hide-remove {
+		animation: 0.5s fadeInDown;
+	}
 }
 
 #app-info-6-1 {

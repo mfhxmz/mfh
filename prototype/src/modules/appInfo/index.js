@@ -8,7 +8,7 @@ require('./appInfo.scss')
 const angular = require('angular')
 
 angular.module('mf.appInfo', [])
-	.config(function ($stateProvider, NavList) {
+	.config(function ($stateProvider, NavList, PageIDs) {
 		$stateProvider.state('appInfo', {
 			url: '/appInfo',
 			component: 'appInfo',
@@ -23,6 +23,7 @@ angular.module('mf.appInfo', [])
 		})
 
 		NavList['appInfo'] = 'App介绍'
+		PageIDs.appInfo = 'appInfo'
 	})
 	.component('appInfo', {
 		template: require('./appInfo.html'),
@@ -32,5 +33,7 @@ angular.module('mf.appInfo', [])
 				$anchorScroll()
 				scrollTo.to = null
 			})
+
+			this.showQrCode = false
 		}
 	})
