@@ -73,6 +73,15 @@ angular.module('app.service', [])
 			activityProdList: function () {
 			},
 			linkList: function () {
+			},
+			fakeSlides: function(ctrl) {
+				ctrl.slides = []
+				for (var i = 0; i < 4; i++) {
+					ctrl.slides.push({
+						image: `http://placeholder.cn/1600x400/fe${i * 2 + 1}d38`,
+						id: i
+					})
+				}
 			}
 		}
 	})

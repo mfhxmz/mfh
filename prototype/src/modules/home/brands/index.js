@@ -10,7 +10,24 @@ const angular = require('angular')
 angular.module('mf.home')
 	.component('brands', {
 		template: require('./brands.html'),
-		controller: function () {
+		controller: function (ProductService) {
+			const vm = this
 
+			initMethods()
+			initListeners()
+			initScope()
+
+			function initListeners() {}
+
+			function initMethods() {}
+
+			function initScope() {}
+
+			function init() {
+				ProductService.brandList()
+					.then(function (list) {
+						vm.brandList = list
+					})
+			}
 		}
 	})

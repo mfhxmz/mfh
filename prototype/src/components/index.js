@@ -10,3 +10,5 @@ angular.module('app.components', [])
 require('./nav')
 require('./footer')
 require('./prod-card')
+require('./banner')
+

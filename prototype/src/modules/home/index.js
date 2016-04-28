@@ -8,7 +8,7 @@ require('./home.scss')
 const angular = require('angular')
 
 angular.module('mf.home', [])
-	.config(function ($stateProvider, $urlRouterProvider, NavList) {
+	.config(function ($stateProvider, $urlRouterProvider, NavList, PageIDs) {
 		$stateProvider.state('home', {
 			url: '/home',
 			component: 'home',
@@ -18,15 +18,27 @@ angular.module('mf.home', [])
 		$urlRouterProvider.when('/', '/home')
 
 		NavList['home'] = '主页'
+		PageIDs.home = 'home'
 	})
 	.component('home', {
 		template: require('./home.html'),
-		controller: function () {
+		controller: function (PageIDs) {
+			const vm = this
 
+			initMethods()
+			initListeners()
+			initScope()
+
+			function initListeners() {}
+
+			function initMethods() {}
+
+			function initScope() {
+				vm.pageID = PageIDs.newProd
+			}
 		}
 	})
 
-require('./banner')
 require('./new-prod')
 require('./hot-prod')
 require('./services')

@@ -24,3 +24,4 @@ angular.module('app.constant', [])
 	.constant('AuthCache', {
 		key: null
 	})
+	.constant('PageIDs', {})

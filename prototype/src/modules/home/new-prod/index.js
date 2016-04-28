@@ -12,9 +12,31 @@ const angular = require('angular')
 angular.module('mf.home')
 	.component('newProd', {
 		template: require('./new-prod.html'),
-		controller: function () {
-			this.list = [].constructor(4)
-			this.captionTpl = captionUrl
+		controller: function (ProductService) {
+			const vm = this
+
+			initMethods()
+			initListeners()
+			initScope()
+
+			function initListeners() {}
+
+			function initMethods() {}
+
+			function initScope() {
+				vm.list = [].constructor(4)
+				vm.captionTpl = captionUrl
+				vm.vote = function (id) {
+					ProductService.vote(id)
+				}
+			}
+
+			function init() {
+				ProductService.newProdList(4)
+					.then(function (list) {
+						vm.brandList = list
+					})
+			}
 		}
 	})
 

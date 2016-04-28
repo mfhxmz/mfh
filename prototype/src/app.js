@@ -12,6 +12,7 @@ import "angular-ui-router";
 import "angular-ui-bootstrap";
 import "angular-animate";
 import "angular-messages";
+import "angular-touch";
 import "angular-cookies";
 import "imports?this=>window!jquery.scrollbar";
 import "./modules/home";
@@ -31,6 +32,7 @@ let app = angular.module('app', [
 		'ngAnimate',
 		//'ngSanitize',
 		'ngMessages',
+		'ngTouch',
 		'ui.router',
 		'ui.bootstrap',
 		'jQueryScrollbar',

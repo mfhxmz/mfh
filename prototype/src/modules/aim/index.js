@@ -8,7 +8,7 @@ require('./aim.scss')
 const angular = require('angular')
 
 angular.module('mf.aim', [])
-	.config(function ($stateProvider, NavList) {
+	.config(function ($stateProvider, NavList, PageIDs) {
 		$stateProvider.state('aim', {
 			url: '/aim',
 			component: 'aim',
@@ -16,6 +16,7 @@ angular.module('mf.aim', [])
 		})
 
 		NavList['aim'] = 'MF宗旨'
+		PageIDs.aim = 'aim'
 	})
 	.component('aim', {
 		template: require('./aim.html'),
