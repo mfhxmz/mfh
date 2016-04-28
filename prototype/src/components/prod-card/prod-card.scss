@@ -22,4 +22,13 @@ prod-card .thumbnail .caption {
 	padding: 20px;
 }
 
+.caption .vote {
+	cursor: pointer;
+}
+
+.caption .voted {
+	color: red;
+	cursor: auto;
+}
+
 @import "prod-card-wide";

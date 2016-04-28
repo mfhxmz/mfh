@@ -11,7 +11,7 @@ angular.module('app.components')
 	.component('prodCard', {
 		template: require('./prod-card.html'),
 		bindings: {
-			cardInfo: '<',
+			prodInfo: '<',
 			template: '<'
 		},
 		controller: function () {

@@ -1,3 +1,6 @@
 <h4 class="prod-name">允许对长的不可分割</h4>
 <p class="prod-intro">允许对长的不可分割的单词进行分割并换行到下一行</p>
-<span><i class="vote">*</i> <span class="vote-count">5</span></span>
+<span>
+	<i class="vote glyphicon glyphicon-heart"
+	   ng-click="$ctrl.vote($ctrl.prodInfo.id)"
+	   ng-class="{voted: false}"></i> <span class="vote-count">{{$ctrl.prodInfo.vote}}</span></span>
