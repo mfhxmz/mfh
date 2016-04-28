@@ -5,19 +5,41 @@ const angular = require('angular')
 const _ = require('lodash')
 
 angular.module('app.service', [])
-	.constant('ServerAPI', {})
-	.constant('APIVersion', 'v1')
-	.constant('AuthCache', {
-		key: null
+	.factory('APIService', function ($http, $httpParamSerializerJQLike, $q, ServerAPI, AuthCache) {
+		return {
+			bannerList: function () {
+				return $http.get(ServerAPI.BANNER_LIST)
+			},
+			hotProdList: function () {
+				return $http.get(ServerAPI.HOT_PROD_LIST)
+			},
+			newProdList: function () {
+				return $http.get(ServerAPI.NEW_PROD_LIST)
+			},
+			brandList: function () {
+				return $http.get(ServerAPI.BRAND_LIST)
+			},
+			activityProdList: function () {
+				return $http.get(ServerAPI.ACTIVITY_PROD_LIST)
+			},
+			linkList: function () {
+				return $http.get(ServerAPI.LINK_LIST)
+			},
+			login: function (data) {
+				return $http.post(ServerAPI.LOGIN)
+			},
+			register: function (data) {
+				return $http.post(ServerAPI.REGISTER)
+			},
+			logout: function () {
+				return $http.put(ServerAPI.LOGOUT)
+			},
+			vote: function (data) {
+				return $http.put(ServerAPI.VOTE)
+			}
+		}
 	})
-	.config(function (ServerAPI, APIVersion) {
-		angular.forEach(ServerAPI, function (api, name) {
-			ServerAPI[name] = `/${APIVersion}${api}`
-		})
-	})
-	.factory('netWorkService', function ($http, $httpParamSerializerJQLike, $q, ServerAPI, AuthCache) {
 
-	})
 	/* -----------------------------------------------------------
 	 * 对匹配的http请求及响应进行中间处理
 	 * ----------------------------------------------------------- */
@@ -34,5 +56,33 @@ angular.module('app.service', [])
 
 				return config || $q.when(config)
 			}
+		}
+	})
+	.factory('ProductService', function (APIService) {
+		return {
+			vote: function () {
+			},
+			bannerList: function () {
+			},
+			hotProdList: function () {
+			},
+			newProdList: function () {
+			},
+			brandList: function () {
+			},
+			activityProdList: function () {
+			},
+			linkList: function () {
+			}
+		}
+	})
+	.factory('AuthService', function (APIService) {
+		return {
+			login: function () {
+			},
+			register: function () {
+			},
+			logout: function () {
+			},
 		}
 	})

@@ -4,6 +4,7 @@
 'use strict';
 
 const angular = require('angular')
+const _ = require('lodash')
 
 angular.module('app.config', [])
 	/* -----------------------------------------------------------
@@ -47,4 +48,10 @@ angular.module('app.config', [])
 	.config(function ($stateProvider, $urlRouterProvider) {
 		// todo specify a 404 page
 		$urlRouterProvider.otherwise('/')
+	})
+
+	.config(function (ServerAPI, APIVersion) {
+		angular.forEach(ServerAPI, function (api, name) {
+			ServerAPI[name] = `/${APIVersion}${api}`
+		})
 	})
