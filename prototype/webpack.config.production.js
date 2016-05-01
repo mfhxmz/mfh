@@ -54,6 +54,7 @@ module.exports = {
 				include: [
 					path.resolve(__dirname, './src')
 				],
+				exclude: /(node_modules|bower_components)/,
 				loaders: ['ng-annotate-loader', 'babel-loader']
 			},
 			{
@@ -61,11 +62,15 @@ module.exports = {
 				loader: extractCSS.extract(['css', 'postcss'])
 			},
 			{
+				test: /angular\.js$/,
+				loader: "imports?JQuery=jquery"
+			},
+			{
 				test: /\.scss$/,
 				include: [
 					path.resolve(__dirname, './src')
 				],
-				loader: extractSASS.extract(['css', 'postcss', 'resolve-url', 'sass'])
+				loader: extractSASS.extract(['css', 'postcss', 'resolve-url', 'sass?sourceMap'])
 			},
 			{
 				test: /index\.html$/,
@@ -76,7 +81,7 @@ module.exports = {
 			},
 			{
 				test: /\.html$/,
-				exclude: /index\.html$/,
+				exclude: [/index\.html$/, /\.tpl\.html$/],
 				include: [
 					path.resolve(__dirname, './src')
 				],
@@ -86,12 +91,19 @@ module.exports = {
 				loader: `html?attrs=link:href img:src use:xlink:href`
 			},
 			{
+				test: /\.tpl\.html$/,
+				include: [
+					path.resolve(__dirname, './src')
+				],
+				loader: `ngtemplate?relativeTo=${path.resolve(__dirname, './src')}!html?attrs=link:href img:src use:xlink:href`
+			},
+			{
 				test: /\.(jpe?g|png|gif|svg)$/i,
 				include: [
 					path.resolve(__dirname, './src')
 				],
 				loaders: [
-					'file?hash=sha512&digest=hex&name=[name]_[hash:8].[ext]',
+					'file?hash=sha512&digest=hex&name=[hash:10].[ext]',
 					'image-webpack?' + JSON.stringify({
 						progressive: true, // for jpg
 						optimizationLevel: 7, // for png
@@ -108,6 +120,12 @@ module.exports = {
 				]
 			},
 			{
+				test: /\.(woff|woff2|ttf|eot)(\?.+)?$/,
+				loaders: [
+					'file?name=font/[name].[ext]'
+				]
+			},
+			{
 				test: /\.ico$/,
 				include: [
 					path.resolve(__dirname, './src')
@@ -121,7 +139,9 @@ module.exports = {
 		new webpack.optimize.DedupePlugin(),
 		new webpack.ProvidePlugin({
 			jQuery: 'jquery',
-			$: 'jquery'
+			$: 'jquery',
+			'window.scrollMonitor': 'scrollMonitor',
+			'window.jQuery': 'jquery'
 		}),
 		new webpack.DefinePlugin(Object.assign({}, projectConf.globals, {
 			__DEV__: false
@@ -140,15 +160,23 @@ module.exports = {
 		new SplitByPathPlugin([
 			{
 				name: 'vendor',
-				path: path.join(__dirname, 'node_modules')
+				path: [
+					path.join(__dirname, 'node_modules'),
+					path.join(__dirname, 'bower_components')
+				]
 			}
 		]),
-		new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
+		new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
+		new webpack.ResolverPlugin(
+			new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin('bower.json', ['main'])
+		)
 	],
 	resolve: {
 		extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx'],
+		root: [path.join(__dirname, 'bower_components')],
 		alias: {
-			'blueimp-load-image': 'blueimp-load-image/js/load-image.js'
+			'blueimp-load-image': 'blueimp-load-image/js/load-image.js',
+			angular: require.resolve('angular')
 		}
 	},
 	node: {
