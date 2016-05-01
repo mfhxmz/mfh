@@ -8,12 +8,14 @@ require('./app.scss')
 
 import "./common";
 import "./components";
-import "angular-ui-router";
-import "angular-ui-bootstrap";
 import "angular-animate";
 import "angular-messages";
 import "angular-touch";
 import "angular-cookies";
+import "angular-ui-router";
+import "angular-ui-bootstrap";
+//import "angular-viewport-watch";
+//import "angular-lazy-image";
 import "imports?this=>window!jquery.scrollbar";
 import "./modules/home";
 import "./modules/appInfo";
@@ -33,8 +35,11 @@ let app = angular.module('app', [
 		//'ngSanitize',
 		'ngMessages',
 		'ngTouch',
+
 		'ui.router',
 		'ui.bootstrap',
+		//'angularViewportWatch',
+		//'afkl.lazyImage',
 		'jQueryScrollbar',
 
 		'app.common',

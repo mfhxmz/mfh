@@ -11,6 +11,11 @@ prod-card .thumbnail {
 	overflow: hidden;
 	padding: 0;
 	margin-bottom: 0;
+
+	.afkl-lazy-wrapper {
+		width: 100%;
+		min-height: 50%;
+	}
 }
 
 prod-card .thumbnail .prod-thumbnail {
