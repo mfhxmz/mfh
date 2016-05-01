@@ -95,3 +95,32 @@ angular.module('app.service', [])
 			},
 		}
 	})
+	/* -----------------------------------------------------------
+	 * 将modal与state整合封装成路由配置
+	 * ----------------------------------------------------------- */
+	.provider('modalState', function ($stateProvider) {
+		var provider = this
+		this.$get = function () {
+			return provider
+		}
+		this.state = function (stateName, options) {
+			var modalInstance
+			$stateProvider.state(stateName, {
+				url: options.url,
+				onEnter: function ($uibModal, $state) {
+					modalInstance = $uibModal.open(options)
+					modalInstance.result.finally(function () {
+						modalInstance = null
+						if ($state.$current.name === stateName) {
+							$state.go(options.toState || '^')
+						}
+					})
+				},
+				onExit: function () {
+					if (modalInstance) {
+						modalInstance.close()
+					}
+				}
+			})
+		}
+	})
