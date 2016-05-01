@@ -11,6 +11,8 @@ const webpackServerURL = 'http://localhost:8080'
 
 let extractCSS = new ExtractTextPlugin('[contentHash:8].css')
 
+let outputPath = path.join(__dirname, 'dist')
+
 module.exports = {
 	context: path.resolve(__dirname, 'src'),
 	entry: {
@@ -22,18 +24,18 @@ module.exports = {
 		]
 	},
 	output: {
-		path: path.join(__dirname, 'dist'),
+		path: outputPath,
 		pathinfo: true,
-		publicPath: '',
+		publicPath: webpackServerURL + '/',
 		filename: '[name].js'
 	},
 	debug: true,
 	devtool: 'source-map',
 	devServer: {
 		// Tell the webpack dev server from where to find the files to serve.
-		contentBase: path.join(__dirname, 'dist'),
+		contentBase: outputPath,
 		colors: true,
-		publicPath: '',
+		publicPath: webpackServerURL + '/',
 		host: 'localhost',
 		port: 8080,
 		hot: true,
@@ -100,7 +102,7 @@ module.exports = {
 				test: /\.(jpe?g|png|gif|svg)$/i,
 
 				loaders: [
-					'file?name=[name].[ext]'
+					'file?name=[hash].[ext]'
 				]
 			},
 			{
@@ -121,6 +123,10 @@ module.exports = {
 					path.resolve(__dirname, './src')
 				],
 				loader: 'file?name=[name].[ext]'
+			},
+			{
+				test: /scrollMonitor/,
+				loader: 'imports?define=>false'
 			}
 		]
 	},
@@ -166,6 +172,7 @@ module.exports = {
 	],
 	resolve: {
 		extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx'],
+		root: [path.join(__dirname, 'bower_components')],
 		alias: {
 			'blueimp-load-image': 'blueimp-load-image/js/load-image.js',
 			angular: require.resolve('angular')
