@@ -1,5 +1,10 @@
-mf-home {
+@import "../../common-style/util";
+
+home {
 	display: block;
+	.prod-pane, .intro-pane {
+		@include prevent-margin-collapse-overflow();
+	}
 }
 
 .img-responsive {
@@ -15,10 +20,79 @@ mf-home {
 	margin: 40px 0 30px;
 }
 
-.cn-title {
+.cn-title, .cn-title-sm {
 	font-weight: bold;
+	display: none;
 }
 
 .eng-title {
 	margin-top: 0;
+}
+
+@media (min-width: $screen-md-min) {
+	.cn-title {
+		display: inherit;
+	}
+}
+
+@media (max-width: $screen-sm-max) {
+
+	.cn-title-sm {
+		display: inherit;
+	}
+
+	home {
+		background-color: #f7f7f7;
+		.prod-pane > .container {
+			width: auto;
+			padding: 0 30px;
+		}
+		.intro-pane > .container {
+			padding: 0;
+			width: auto;
+		}
+	}
+	.prod-pane {
+		.section-title {
+			background-color: white;
+			margin: 30px;
+			border-radius: 3px;
+			position: relative;
+			&:before {
+				content: '';
+				display: block;
+				background-image: url(./title.png);
+				background-repeat: no-repeat;
+				height: 48px;
+				background-size: contain;
+				background-position: center;
+				width: 250px;
+				@include stick-center()
+			}
+			.cn-title-sm {
+				line-height: 2em;
+				position: relative;
+				z-index: 1;
+				color: white;
+			}
+		}
+
+		.eng-title {
+			display: none;
+		}
+	}
+
+	.intro-pane {
+		background: white;
+
+		.section-title {
+			margin-bottom: 0;
+		}
+
+		.cn-title-sm {
+			text-align: left;
+			margin: 0 0 0 30px;
+		}
+	}
+
 }

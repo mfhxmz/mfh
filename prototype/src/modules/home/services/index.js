@@ -11,7 +11,6 @@ angular.module('mf.home')
 	.component('services', {
 		template: require('./service.html'),
 		controller: function () {
-
 		}
 	})
 

@@ -1,9 +1,13 @@
+@import "../../../common-style/util";
+
 new-prod {
 	display: block;
-	background-color: #f7f7f7;
-	padding: 1px 0;
 }
 
-new-prod .content {
-	margin-bottom: 40px;
+@media (min-width: $screen-md-min) {
+
+	.content {
+		margin-bottom: 40px;
+	}
+
 }

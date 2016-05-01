@@ -1,27 +1,52 @@
+@import "../../../common-style/util";
+
 brands {
 	display: block;
 }
 
 .brand-intro {
-	padding: 1px;
-	background-color: #f0f0f0;
+	@include prevent-margin-collapse-overflow();
 }
 
-.brand-intro .content {
-	margin-bottom: 40px;
+@media (min-width: $screen-md-min) {
+	.brand-intro {
+		background-color: #f0f0f0;
+	}
+
+	.brand-logo {
+		padding: 3px;
+	}
+
+	.brand-intro .section-title {
+		margin-bottom: 40px
+	}
+
+	.brand-list {
+		margin: 0;
+		background-color: white;
+		padding: 6px;
+		box-shadow: 0 4px 10px #ddd;
+	}
+
+	.brand-intro .content {
+		margin-bottom: 40px;
+	}
 }
 
-.brand-list {
-	margin: 0;
-	background-color: white;
-	padding: 6px;
-	box-shadow: 0 4px 10px #ddd;
-}
+@media (max-width: $screen-sm-max) {
+	.brand-intro {
+		margin-top: 30px;
+	}
 
-.brand-logo {
-	padding: 3px;
-}
+	.brand-logo {
+		padding: 6px;
+	}
 
-.brand-intro .section-title {
-	margin-bottom: 40px
+	.brand-list {
+		margin: 30px 24px;
+	}
+
+	.brand-intro .content {
+		margin-bottom: 10px;
+	}
 }

@@ -1,6 +1,34 @@
+@import "../../../common-style/util";
+
 hot-prod {
 	display: block;
-	prod-card .thumbnail {
-		border: 1px solid #e0e0e0;
+}
+
+hot-prod prod-card {
+	position: relative;
+	&:after {
+		content: '';
+		position: absolute;
+		top: 10px;
+		right: 5px;
+		width: 60px;
+		height: 34px;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-image: url("./hot.png");
 	}
 }
+
+@media (min-width: $screen-md-min) {
+	.hot-prod {
+		background-color: white;
+	}
+
+	hot-prod prod-card .thumbnail {
+		border: 1px solid #e0e0e0;
+
+	}
+
+}
+
+

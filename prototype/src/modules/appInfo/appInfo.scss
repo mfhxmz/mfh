@@ -2,59 +2,38 @@
 
 app-info {
 	display: block;
+	background-color: white;
 }
 
 .app-info-sec {
 	width: 100%;
-	height: 800px;
 	position: relative;
+	overflow: hidden;
 }
 
-app-info h1, app-info img {
-	position: absolute;
-}
-
-#title1 {
-	text-align: center;
-	top: 116px;
-	width: 100%;
-	z-index: 1;
-}
-
-#title2 {
-	text-align: center;
-	top: 166px;
-	width: 100%;
+#app-info-1 {
+	background-image: url("./img/1.背景.png");
+	background-position: center;
 }
 
 #app-info-2-1 {
-	bottom: 0;
-	margin: auto;
-	left: 0;
-	right: 0;
+	@include stick-bottom-center();
 	z-index: 1;
 }
 
 #app-info-2-2 {
+	position: absolute;
 	bottom: 0;
+	transform: translateX(-50%);
+	left: 50%;
 	width: 100%;
+	min-width: 800px;
 }
 
-#title3 {
-	top: 356px;
-	right: 435px;
-	z-index: 3;
-}
-
-#app-info-3-1 {
-	top: 225px;
-	left: 330px;
-	z-index: 2;
-}
-
-#app-info-3-2 {
-	bottom: 54px;
-	width: 100%;
+#app-info-3 {
+	background-image: url("./img/3.背景.png");
+	background-repeat: no-repeat;
+	background-position: center 80%;
 }
 
 #title4 {
@@ -64,7 +43,8 @@ app-info h1, app-info img {
 	z-index: 2;
 }
 
-#app-info-4-1, #app-info-4-2 {
+#app-info-4-1,
+#app-info-4-2 {
 	@include stick-bottom-center();
 }
 
@@ -84,15 +64,11 @@ app-info h1, app-info img {
 }
 
 #app-info-5-1, #app-info-5-2 {
-	@include stick-bottom-center();
+	@include stick-bottom-center(-135px);
 }
 
 #app-info-5-1 {
 	z-index: 1;
-}
-
-#app-info-5-2 {
-	max-width: 100%;
 }
 
 #app-info-6 {
@@ -150,7 +126,7 @@ app-info h1, app-info img {
 
 	&.ng-hide-add {
 		opacity: 0;
-		animation: 0.5s bounceOut;
+		animation: 0.5s zoomOut;
 	}
 
 	&.ng-hide-remove {
@@ -161,4 +137,94 @@ app-info h1, app-info img {
 #app-info-6-1 {
 	@include stick-bottom-center();
 	max-width: 100%;
+}
+
+@media (min-width: $screen-md-min) {
+	app-info h1,
+	app-info img {
+		position: absolute;
+	}
+
+	.app-info-sec {
+		height: 800px;
+	}
+
+	#title1 {
+		text-align: center;
+		top: 116px;
+		width: 100%;
+		z-index: 1;
+	}
+
+	#title2 {
+		text-align: center;
+		top: 166px;
+		width: 100%;
+	}
+
+	#title3 {
+		top: 356px;
+		right: 435px;
+		z-index: 3;
+	}
+
+	#app-info-3-1 {
+		position: absolute;
+		top: 225px;
+		left: 20%;
+		z-index: 2;
+	}
+
+	#app-info-4-1,
+	#app-info-4-2 {
+		max-height: 500px;
+	}
+
+
+	#app-info-6-1 {
+		max-height: 500px;
+	}
+}
+
+@media (max-width: $screen-sm-max) {
+
+	app-info h1 {
+		margin-top: 120px;
+		text-align: center;
+	}
+
+	.app-info-sec {
+		height: 900px;
+	}
+
+	.app-info-sec {
+		border-bottom: 1px solid #f0f0f0;
+	}
+
+	#app-info-1 {
+		background-image: url("./img/1.背景.png");
+		background-size: cover;
+		background-position: center;
+	}
+
+	#app-info-3-1 {
+		@include stick-top-center(225px);
+	}
+
+	#app-info-4-2 {
+		bottom: 20%;
+	}
+
+	#app-info-5-1 {
+		bottom: 0;
+	}
+
+	#app-info-5-2 {
+		bottom: 5%;
+		max-width: 500px;
+	}
+
+	#app-info-6-1 {
+		bottom: 5%;
+	}
 }

@@ -1,13 +1,30 @@
+@import "../../common-style/util";
+
 app-footer {
 	display: block;
 }
 
 .footer {
 	padding: 52px 0 40px;
-	background-color: #1d1d1d;
 }
 
 .footer p {
 	margin: 16px 0 0 0;
-	color: white;
 }
+
+@media (min-width: $screen-md-min) {
+	.footer {
+		background-color: #1d1d1d;
+	}
+
+	.footer p {
+		color: white;
+	}
+}
+
+@media (max-width: $screen-sm-max) {
+	.footer p {
+		color: black;
+	}
+}
+

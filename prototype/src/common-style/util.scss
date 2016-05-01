@@ -58,3 +58,15 @@
 	padding-left: 0;
 	list-style: none;
 }
+
+@mixin prevent-margin-collapse-overflow {
+	overflow: hidden;
+}
+
+@mixin prevent-margin-collapse-border {
+	border-top:1px solid transparent
+}
+
+@mixin prevent-margin-collapse-padding {
+	padding-top:1px;
+}

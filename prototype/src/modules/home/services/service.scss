@@ -1,13 +1,17 @@
+@import "../../../common-style/util";
+
+$service-card-border-color: #e0e0e0;
+
 services {
 	display: block;
 }
 
-.col-context-10 .col-xs-2 {
-	width: 20%;
-}
-
 .service-list {
 	margin-bottom: 30px;
+}
+
+.service-aim {
+	background-color: white;
 }
 
 .service-card .thumbnail {
@@ -18,31 +22,96 @@ services {
 	margin-bottom: 0;
 }
 
-.service-pic-box {
-	height: 135px;
-	background-image: url(//placeholder.cn/192x135/325/629);
-	background-color: lightgrey;
-	background-size: cover;
-	position: relative;
-}
-
-.service-icon {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
-.service-card .caption {
-	text-align: center;
-	padding-top: 14px;
-	padding-bottom: 10px;
-}
-
-.service-card .caption h4 {
-	margin-bottom: 18px;
-}
-
-.service-card .caption p {
+.service-card .service-intro {
 	margin-bottom: 0;
+}
+
+@media (min-width: $screen-md-min) {
+	.col-context-10 .col-md-2 {
+		width: 20%;
+	}
+
+	.service-pic-box {
+		height: 135px;
+		background-image: url(http://placeholder.cn/192x135/325/629);
+		background-color: lightgrey;
+		background-size: cover;
+		position: relative;
+	}
+
+	.service-icon {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.service-card .caption {
+		text-align: center;
+		padding-top: 14px;
+		padding-bottom: 10px;
+	}
+
+	.service-card .service-slogan {
+		margin-bottom: 18px;
+	}
+}
+
+@media (max-width: $screen-sm-max) {
+
+	.service-list {
+		margin: 30px 30px 0;
+	}
+
+	.service-card {
+
+		padding: 0;
+
+		&:nth-child(2n+2) {
+			border-bottom: 1px solid $service-card-border-color;
+
+			&:last-child {
+				border-bottom: 0;
+			}
+
+			.thumbnail {
+				margin-left: 30px;
+			}
+		}
+		&:nth-child(2n+1) {
+			border-right: 1px solid $service-card-border-color;
+			border-bottom: 1px solid $service-card-border-color;
+
+			&:last-child {
+				border-bottom: 0;
+			}
+		}
+
+		&:first-child, &:nth-child(2) {
+			.thumbnail {
+				margin-top: 0;
+			}
+		}
+
+		.thumbnail {
+			margin: 40px 0;
+		}
+
+		.service-pic-box {
+			float: left;
+		}
+
+		.service-icon {
+			margin-right: 30px;
+		}
+
+		.caption {
+			padding: 0;
+			float: left;
+		}
+
+		.service-slogan {
+			margin-top: 0;
+		}
+	}
 }

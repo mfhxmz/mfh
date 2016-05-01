@@ -21,7 +21,9 @@ angular.module('mf.home')
 
 			function initMethods() {}
 
-			function initScope() {}
+			function initScope() {
+				vm.brandList = [].constructor(20)
+			}
 
 			function init() {
 				ProductService.brandList()

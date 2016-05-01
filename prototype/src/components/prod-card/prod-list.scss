@@ -1,4 +1,11 @@
+@import "../../common-style/util";
+
 .prod-list {
 	display: block;
-	margin-bottom: 10px;
+}
+
+@media (max-width: $screen-sm-max) {
+	.prod-list {
+		margin-bottom: 0;
+	}
 }
