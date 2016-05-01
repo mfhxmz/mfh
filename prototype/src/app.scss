@@ -15,7 +15,9 @@ app {
 .main-ui-view {
 	margin-top: 0;
 	display: block;
-	&.nav-no-collapsed {
-		margin-top: 90px;
+	@media screen and (max-width: $screen-sm-max) {
+		&.nav-no-collapsed {
+			margin-top: 90px;
+		}
 	}
 }

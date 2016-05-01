@@ -1,6 +1,7 @@
 $font-family: 'Microsoft YaHei Light', sans-serif;
-$page-background-color: white;
+$page-background-color: #f0f0f0;
 $default-font-color: #2a2c35;
+$link-hover-color: #ee8dd7;
 
 html {
 	height: 100%;
@@ -20,6 +21,6 @@ body {
 a {
 	transition: all .15s ease-in;
 	&:hover {
-		color: #ee8dd7;
+		color: $link-hover-color;
 	}
 }

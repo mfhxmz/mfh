@@ -10,6 +10,7 @@ app-nav {
 	position: relative;
 	border: 0;
 	margin-bottom: 0;
+	background-color: white;
 }
 
 .navbar-header {
@@ -78,6 +79,12 @@ app-nav {
 	}
 }
 
+@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+	.nav-content {
+		padding: 0 30px;
+	}
+}
+
 // 小屏导航样式
 @media screen and (max-width: $screen-sm-max) {
 	.navbar-fixed-top {
@@ -91,6 +98,10 @@ app-nav {
 
 	.navbar-content {
 		background-color: white;
+		.container {
+			width: auto;
+			margin: 0 15px;
+		}
 	}
 
 	.container > .navbar-header {
@@ -109,6 +120,7 @@ app-nav {
 	.navbar-header .hamburger {
 		line-height: 1em;
 		vertical-align: middle;
+		padding-right: 0;
 	}
 
 	.navbar-collapse {
