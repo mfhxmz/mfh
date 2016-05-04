@@ -62,6 +62,31 @@ exports.queryActivity = function (req, res) {
   connection.end();
 };
 
+exports.queryBrand = function (req, res) {
+  var startFrom = req.query.startFrom || 0;
+  var limitTo = req.query.limitTo || 100;
+
+  var sql = 'select ppsxx.*,ppsct.* from sp_ppsxx ppsxx,sp_ppsct ppsct where ppsxx.PPSID=ppsct.PPSID';
+  sql += ' limit ' + startFrom + ',' + limitTo;
+
+  console.log('[SQL]', sql);
+
+  var connection = mysql.createConnection(mysqlConfig.mysql);
+  connection.connect();
+  connection.query({
+    sql: sql,
+    nestTables: true
+  }, function (err, data) {
+    if (err) {
+      console.error(err);
+      res.json([]);
+    } else {
+      res.json(data);
+    }
+  });
+  connection.end();
+};
+
 exports.userRegister = function (req, res) {
   var sql = 'insert into hy_hydaxx set ?';
 
