@@ -33,8 +33,17 @@ module.exports = {
     profileUpload: {
       dest: './modules/users/client/img/profile/uploads/', // Profile upload destination path
       limits: {
-        fileSize: 1*1024*1024 // Max file size in bytes (1 MB)
+        fileSize: 1 * 1024 * 1024 // Max file size in bytes (1 MB)
       }
     }
+  },
+
+  mysql: {
+    host: '119.29.117.152',
+    port: 3338,
+    user: 'root',
+    password: '1234567',
+    database: 'adms_mfh',
+    multipleStatements: true
   }
 };
