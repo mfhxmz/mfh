@@ -11,4 +11,5 @@ require('./nav')
 require('./footer')
 require('./prod-card')
 require('./banner')
+require('./scroll-top')
 
