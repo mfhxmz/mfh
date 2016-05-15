@@ -59,6 +59,8 @@ angular.module('app.service', [])
 	 * 对匹配的http请求及响应进行中间处理
 	 * ----------------------------------------------------------- */
 	.factory('HttpInterceptor', function ($cookies, $q, AuthCache) {
+		const pattern = /^\/api.+/
+
 		return {
 			request: function (config) {
 				if (!config.timeout) {
@@ -70,6 +72,20 @@ angular.module('app.service', [])
 				}
 
 				return config || $q.when(config)
+			},
+			response: function (response) {
+				if (pattern.test(response.config.url)) {
+					return response.data
+				} else {
+					return response
+				}
+			},
+			responseError: function (rejection) {
+				if (pattern.test(rejection.config.url)) {
+					return $q.reject(rejection.data)
+				} else {
+					return $q.reject(rejection)
+				}
 			}
 		}
 	})
@@ -116,15 +132,15 @@ angular.module('app.service', [])
 			}
 		}
 	})
-	.factory('AuthService', function ($rootScope,AppEvents, APIService, session) {
+	.factory('AuthService', function ($rootScope, AppEvents, APIService, session) {
 		return {
-			isLogin: function() {
-			  return false  
+			isLogin: function () {
+				return false
 			},
-			
+
 			login: function (data) {
 				return APIService.login(data)
-					.then(function(response) {
+					.then(function (response) {
 						session.setUserInfo(response)
 
 						$rootScope.$broadcast(AppEvents.LOGIN)
@@ -135,20 +151,20 @@ angular.module('app.service', [])
 			},
 			logout: function () {
 				return APIService.logout()
-					.then(function() {
-					    session.reset()
+					.then(function () {
+						session.reset()
 						$rootScope.$broadcast(AppEvents.LOGOUT)
 					})
 			},
-			resetPassword: function(data) {
+			resetPassword: function (data) {
 				return APIService.resetPassword(data)
 			},
-			sendSms: function(data) {
+			sendSms: function (data) {
 				return APIService.sendSms(data)
 			}
 		}
 	})
-	.service('session', function() {
+	.service('session', function () {
 		const user = {}
 
 		return {
