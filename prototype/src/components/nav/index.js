@@ -14,11 +14,23 @@ angular.module('app.components')
 		bindings: {
 			collapsed: '=collapsed'
 		},
-		controller: function (NavList) {
+		controller: function ($scope, AppEvents, session, NavList, entranceModal, recoverModal) {
+			const vm = this
 			this.navList = NavList
 			this.collapsed = true
 			this.toggleCollapse = function () {
 				this.collapsed = !this.collapsed
 			}
+
+			this.entranceModal = entranceModal
+			this.recoverModal = entranceModal
+
+			$scope.$on(AppEvents.LOGIN, function () {
+				vm.userInfo = angular.copy(session.getUserInfo())
+			})
+			
+			$scope.$on(AppEvents.LOGOUT, function () {
+				vm.userInfo = null
+			})
 		}
 	})

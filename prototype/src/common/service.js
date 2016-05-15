@@ -148,32 +148,20 @@ angular.module('app.service', [])
 			}
 		}
 	})
-	/* -----------------------------------------------------------
-	 * 将modal与state整合封装成路由配置
-	 * ----------------------------------------------------------- */
-	.provider('modalState', function ($stateProvider) {
-		var provider = this
-		this.$get = function () {
-			return provider
-		}
-		this.state = function (stateName, options) {
-			var modalInstance
-			$stateProvider.state(stateName, {
-				url: options.url,
-				onEnter: function ($uibModal, $state) {
-					modalInstance = $uibModal.open(options)
-					modalInstance.result.finally(function () {
-						modalInstance = null
-						if ($state.$current.name === stateName) {
-							$state.go(options.toState || '^')
-						}
-					})
-				},
-				onExit: function () {
-					if (modalInstance) {
-						modalInstance.close()
-					}
-				}
-			})
+	.service('session', function() {
+		const user = {}
+
+		return {
+			setUserInfo: function (info) {
+				Object.assign(user, info)
+			},
+			getUserInfo: function () {
+				return angular.copy(user)
+			},
+			reset: function () {
+				Object.keys(user).forEach(function (key) {
+					delete user[key]
+				})
+			}
 		}
 	})

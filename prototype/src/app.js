@@ -14,6 +14,7 @@ import "angular-touch";
 import "angular-cookies";
 import "angular-ui-router";
 import "angular-ui-bootstrap";
+import "angular-ladda";
 //import "angular-viewport-watch";
 //import "angular-lazy-image";
 import "imports?this=>window!jquery.scrollbar";
@@ -25,6 +26,7 @@ import "./modules/hotProd";
 import "./modules/download";
 import "./modules/consult";
 import "./modules/aim";
+import "./modules/user";
 import bootstrap from "./bootstrap";
 //import "angular-sanitize";
 
@@ -38,6 +40,7 @@ let app = angular.module('app', [
 
 		'ui.router',
 		'ui.bootstrap',
+		'angular-ladda',
 		//'angularViewportWatch',
 		//'afkl.lazyImage',
 		'jQueryScrollbar',
@@ -52,7 +55,8 @@ let app = angular.module('app', [
 		'mf.hotProd',
 		'mf.download',
 		'mf.consult',
-		'mf.aim'
+		'mf.aim',
+		'mf.user'
 	])
 
 	.run(function ($rootScope, $log, $state, AppName) {

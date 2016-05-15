@@ -1,0 +1,47 @@
+
+<!-- loginForm -->
+<form class="form login"
+      role="form"
+      name="loginForm"
+      ng-submit="login.submitForm()"
+      novalidate
+      auto-fill-fix>
+	<div class="form-group has-feedback"
+	     ng-class="{'has-error':loginForm.username.$invalid && loginForm.username.$viewValue}">
+		<input class="form-control input-lg"
+		       type="text"
+		       placeholder="手机号"
+		       name="username"
+		       ng-model="login.user.username"
+		       ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"
+		       maxlength="11"
+		       required
+		       autofocus/>
+
+	</div>
+	<div class="form-group has-feedback"
+	     ng-class="{'has-error':loginForm.password.$invalid && loginForm.password.$viewValue}">
+		<input class="form-control input-lg"
+		       type="password" name="password"
+		       ng-model="login.user.password"
+		       ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"
+		       placeholder="密码"
+		       maxlength="20"
+		       required/>
+
+	</div>
+	<div class="form-group">
+		<button class="btn btn-lg btn-primary btn-block"
+		        type="submit"
+		        ng-disabled="loginForm.$invalid"
+		        ladda='login.loading'
+		        data-style="zoom-in"
+		        data-spinner-size="30"
+		        data-spinner-color="#123321">登录
+		</button>
+	</div>
+
+	<p class="error-message" ng-show="errorMessage">{{errorMessage}}</p>
+
+	<p class="text-center"><a href="" ng-click="login.gotoRecoverModal()">忘记密码？</a></p>
+</form>

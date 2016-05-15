@@ -2,6 +2,7 @@ $font-family: 'Microsoft YaHei Light', sans-serif;
 $page-background-color: #f0f0f0;
 $default-font-color: #2a2c35;
 $link-hover-color: #ee8dd7;
+$btn-primary-bg: #ad8fff;
 
 html {
 	height: 100%;
@@ -22,5 +23,34 @@ a {
 	transition: all .15s ease-in;
 	&:hover {
 		color: $link-hover-color;
+	}
+}
+
+.form-group:last-of-type {
+	margin-top: 25px;
+}
+
+.form-control {
+	border-radius: 0;
+}
+
+.btn {
+	border-radius: 0;
+	border: 1px solid $btn-primary-bg;
+}
+
+.btn-primary {
+	background-color: $btn-primary-bg;
+
+	&:hover {
+		background-color: darken($btn-primary-bg, 5%);
+	}
+
+	&[disabled]:hover {
+		background-color: $btn-primary-bg;
+	}
+
+	&:active, &:focus, &:active:hover {
+		background-color: darken($btn-primary-bg, 10%);
 	}
 }

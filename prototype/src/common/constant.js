@@ -30,4 +30,9 @@ angular.module('app.constant', [])
 	.constant('AuthCache', {
 		key: null
 	})
+	.constant('AppEvents', {
+		LOGIN: 'LOGIN',
+		REGISTER: 'REGISTER',
+		LOGOUT: 'LOGOUT'
+	})
 	.constant('PageIDs', {})
