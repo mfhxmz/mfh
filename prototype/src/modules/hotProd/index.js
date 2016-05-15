@@ -23,7 +23,7 @@ angular.module('mf.hotProd', [])
 	})
 	.component('mfHotProd', {
 		template: require('./hot-prod.html'),
-		controller: function (ProductService, PageIDs) {
+		controller: function (ProductService, AuthService, entranceModal, PageIDs) {
 			const vm = this
 
 			initMethods()
@@ -38,17 +38,14 @@ angular.module('mf.hotProd', [])
 				vm.list = [].constructor(8)
 				vm.captionTpl = url
 				vm.pageID = PageIDs.newProd
-				vm.vote = function (id) {
-					ProductService.vote(id)
-				}
-				
+
 				init()
 			}
 
 			function init() {
 				ProductService.hotProdList({
 					limitTo: 10,
-					startFrom:0
+					startFrom: 0
 				})
 					.then(function (list) {
 						vm.list = list

@@ -39,10 +39,6 @@ angular.module('mf.newProd', [])
 				vm.captionTpl = url
 				vm.pageID = PageIDs.newProd
 
-				vm.vote = function (id) {
-					ProductService.vote(id)
-				}
-
 				init()
 			}
 

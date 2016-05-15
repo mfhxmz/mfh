@@ -26,9 +26,6 @@ angular.module('mf.home')
 			function initScope() {
 				vm.list = [].constructor(4)
 				vm.captionTpl = captionUrl
-				vm.vote = function (id) {
-					ProductService.vote(id)
-				}
 				init()
 			}
 
