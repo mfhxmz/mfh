@@ -10,6 +10,10 @@ aim {
 	&:nth-child(even) {
 		background-color: white;
 	}
+
+	.content .index {
+		color: #ae8fff;
+	}
 }
 
 @media (min-width: $screen-md-min) {
