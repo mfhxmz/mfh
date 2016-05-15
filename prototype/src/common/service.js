@@ -22,20 +22,35 @@ angular.module('app.service', [])
 			activityProdList: function () {
 				return $http.get(ServerAPI.ACTIVITY_PROD_LIST)
 			},
-			linkList: function () {
-				return $http.get(ServerAPI.LINK_LIST)
+			downloadLink: function () {
+				return $http.get(ServerAPI.DOWNLOAD_LINK)
+			},
+			downloadQrcode: function () {
+				return $http.get(ServerAPI.DL_QRCODE)
+			},
+			shareLink: function () {
+				return $http.get(ServerAPI.SHARE_LINK)
+			},
+			appQrcode: function () {
+				return $http.get(ServerAPI.APP_QRCODE)
 			},
 			login: function (data) {
-				return $http.post(ServerAPI.LOGIN)
-			},
-			register: function (data) {
-				return $http.post(ServerAPI.REGISTER)
+				return $http.post(ServerAPI.LOGIN, data)
 			},
 			logout: function () {
-				return $http.put(ServerAPI.LOGOUT)
+				return $http.get(ServerAPI.LOGOUT)
+			},
+			register: function (data) {
+				return $http.post(ServerAPI.REGISTER, data)
+			},
+			resetPassword: function (data) {
+				return $http.post(ServerAPI.RESET_PWD, data)
+			},
+			sendSms: function (data) {
+				return $http.post(ServerAPI.SMS, data)
 			},
 			vote: function (data) {
-				return $http.put(ServerAPI.VOTE)
+				return $http.put(ServerAPI.VOTE, data)
 			}
 		}
 	})
@@ -60,21 +75,37 @@ angular.module('app.service', [])
 	})
 	.factory('ProductService', function (APIService) {
 		return {
-			vote: function () {
+			vote: function (data) {
+				return APIService.vote(data)
 			},
 			bannerList: function () {
+				return APIService.bannerList()
 			},
 			hotProdList: function () {
+				return APIService.hotProdList()
 			},
 			newProdList: function () {
+				return APIService.newProdList()
 			},
 			brandList: function () {
+				return APIService.brandList()
 			},
 			activityProdList: function () {
+				return APIService.activityProdList()
 			},
-			linkList: function () {
+			downloadLink: function () {
+				return APIService.downloadLink()
 			},
-			fakeSlides: function(ctrl) {
+			downloadQrcode: function () {
+				return APIService.downloadQrcode()
+			},
+			shareLink: function () {
+				return APIService.shareLink()
+			},
+			appQrcode: function () {
+				return APIService.appQrcode()
+			},
+			fakeSlides: function (ctrl) {
 				ctrl.slides = []
 				for (var i = 0; i < 4; i++) {
 					ctrl.slides.push({
@@ -85,14 +116,36 @@ angular.module('app.service', [])
 			}
 		}
 	})
-	.factory('AuthService', function (APIService) {
+	.factory('AuthService', function ($rootScope,AppEvents, APIService, session) {
 		return {
-			login: function () {
+			isLogin: function() {
+			  return false  
 			},
-			register: function () {
+			
+			login: function (data) {
+				return APIService.login(data)
+					.then(function(response) {
+						session.setUserInfo(response)
+
+						$rootScope.$broadcast(AppEvents.LOGIN)
+					})
+			},
+			register: function (data) {
+				return APIService.register(data)
 			},
 			logout: function () {
+				return APIService.logout()
+					.then(function() {
+					    session.reset()
+						$rootScope.$broadcast(AppEvents.LOGOUT)
+					})
 			},
+			resetPassword: function(data) {
+				return APIService.resetPassword(data)
+			},
+			sendSms: function(data) {
+				return APIService.sendSms(data)
+			}
 		}
 	})
 	/* -----------------------------------------------------------
