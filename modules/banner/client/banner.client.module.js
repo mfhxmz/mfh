@@ -1,3 +1,3 @@
 'use strict';
 
-ApplicationConfiguration.registerModule('banner', ['ngResource']);
+ApplicationConfiguration.registerModule('banner');

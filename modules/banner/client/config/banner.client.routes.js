@@ -17,15 +17,15 @@ angular.module('banner').config(['$stateProvider',
         templateUrl: 'modules/banner/client/views/banner-home.client.view.html'
       })
       .state('banner.hot', {
-        url: '/home',
+        url: '/hot',
         templateUrl: 'modules/banner/client/views/banner-hot.client.view.html'
       })
       .state('banner.new', {
-        url: '/home',
+        url: '/new',
         templateUrl: 'modules/banner/client/views/banner-new.client.view.html'
       })
       .state('banner.activity', {
-        url: '/home',
+        url: '/activity',
         templateUrl: 'modules/banner/client/views/banner-activity.client.view.html'
       });
   }
