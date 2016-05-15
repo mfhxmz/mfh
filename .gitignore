@@ -74,3 +74,6 @@ mongod
 *.sln
 bower_components/
 dist/
+
+
+public/upload/**
