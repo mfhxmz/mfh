@@ -3,7 +3,7 @@
 	              ng-pause="true">
 		<uib-slide ng-repeat="slide in $ctrl.slides track by slide.id"
 		           index="slide.id">
-			<img class="img-responsive" ng-src="{{slide.image}}">
+			<a class="banner-view" href="#" mfh-bg-image="slide.image"></a>
 		</uib-slide>
 	</uib-carousel>
 </section>

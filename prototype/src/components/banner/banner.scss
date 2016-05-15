@@ -1,3 +1,11 @@
 banner {
 	display: block;
 }
+
+.banner-view {
+	display: block;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: 400px;
+}
