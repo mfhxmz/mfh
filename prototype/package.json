@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.production.js",
-    "dev": "webpack-dev-server --config webpack.config.development.js",
+    "dev": "node ./dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -36,6 +36,7 @@
     "file-loader": "^0.8.5",
     "html-loader": "^0.4.3",
     "html-webpack-plugin": "^2.0.0",
+    "http-proxy-middleware": "^0.15.0",
     "image-webpack-loader": "^1.6.3",
     "imports-loader": "^0.6.5",
     "indexhtml-webpack-plugin": "^0.1.9",
@@ -75,6 +76,7 @@
     "babel-polyfill": "^6.3.14",
     "babel-runtime": "^6.3.19",
     "bluebird": "^3.1.1",
+    "bootstrap": "^3.3.2",
     "bootstrap-sass": "~3.3.6",
     "font-awesome": "^4.5.0",
     "hamburgers": "^0.5.0",
