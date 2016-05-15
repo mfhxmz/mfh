@@ -13,6 +13,7 @@ import "angular-messages";
 import "angular-touch";
 import "angular-cookies";
 import "angular-ui-router";
+import "angular-ui-router/release/stateEvents";
 import "angular-ui-bootstrap";
 import "angular-ladda";
 //import "angular-viewport-watch";
@@ -39,6 +40,7 @@ let app = angular.module('app', [
 		'ngTouch',
 
 		'ui.router',
+		'ui.router.state.events',
 		'ui.bootstrap',
 		'angular-ladda',
 		//'angularViewportWatch',
@@ -60,8 +62,10 @@ let app = angular.module('app', [
 	])
 
 	.run(function ($rootScope, $log, $state, AppName) {
-		$rootScope.$on('$stateChangeSuccess', function () {
+		$rootScope.$on('$stateChangeSuccess', function (event, toState, toStateParams, fromState, fromStateParams) {
 			$rootScope.pageTitle = $state.current.data.pageTitle + ' - ' + AppName
+
+			$rootScope.prevState = fromState.name
 		})
 
 		$rootScope.$on('$stateChangeStart', function (event, toState, toStateParams, fromState, fromStateParams) {
@@ -95,9 +99,13 @@ let app = angular.module('app', [
 			document.querySelector('head').appendChild(msViewPortStyle)
 		}
 	})
-	.controller('RootController', function ($scope) {
-
+	.controller('RootController', function () {
+		this.jqueryScrollbarOption = {
+			ignoreMobile: true,
+			ignoreOverlay: true
+		}
 	})
+
 	.component('app', {
 		template: require('./app.html'),
 		controller: function AppController($scope) {

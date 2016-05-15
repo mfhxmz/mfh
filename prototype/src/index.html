@@ -34,7 +34,7 @@
 	      rel="stylesheet">
 
 </head>
-<body>
+<body ng-controller="RootController as rootCtrl">
 	<!--[if lt IE 8]>
 	<p class="browserupgrade">You are using an <strong>outdated</strong>
 		browser. Please <a
@@ -54,10 +54,9 @@
 	</section>
 
 	<!-- Add your site or application content here -->
-	<section id="loadedContent" class="loading"
-	         ng-controller="RootController as rootCtrl">
+	<section id="loadedContent" class="loading">
 		<app class="scrollbar-dynamic"
-		     jquery-scrollbar
+		     jquery-scrollbar="rootCtrl.jqueryScrollbarOption"
 		     viewport-watch
 		     afkl-image-container></app>
 	</section>

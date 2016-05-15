@@ -4,7 +4,6 @@
 'use strict';
 
 const angular = require('angular')
-const $ = require('jquery')
 const Promise = require('bluebird')
 
 /*Promise.config({
@@ -15,18 +14,6 @@ const Promise = require('bluebird')
  });*/
 
 angular.module('app.directive', [])
-	.directive('scrollTop', function () {
-		return {
-			restrict: 'A',
-			link: function (scope, elem) {
-				elem.on('click', function () {
-					$('html, body').animate({
-						scrollTop: 0
-					}, "slow")
-				})
-			}
-		}
-	})
 	.directive('clickStop', function ($parse) {
 		return {
 			restrict: 'A',
