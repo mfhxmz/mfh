@@ -15,4 +15,8 @@ module.exports = function (app) {
   app.route('/api/user/register').post(common.userRegister);
   app.route('/api/user/login').post(common.userLogin);
   app.route('/api/user/logout').post(common.userLogout);
+
+  app.route('/api/app-download/url').get(common.queryAppDownloadUrl);
+  app.route('/api/app/qrcode').get(common.queryAppQrCode);
+  app.route('/api/share-link').get(common.queryShareLink);
 };

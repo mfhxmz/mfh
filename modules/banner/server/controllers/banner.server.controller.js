@@ -36,7 +36,7 @@ exports.createBanner = function (req, res) {
     } else {
       return Banner.create({
         scope: req.body.scope,
-        imgUrl: req.file.filename,
+        imgUrl: req.file.destination + req.file.filename,
         link: req.body.link
       }, function (err) {
         if (err) {
@@ -88,7 +88,7 @@ exports.updateBanner = function (req, res) {
         return Banner.findOneAndUpdate({
           '_id': req.body._id
         }, {
-          imgUrl: req.file.filename,
+          imgUrl: req.file.destination + req.file.filename,
           link: req.body.link
         }, function (err) {
           if (err) {

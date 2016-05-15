@@ -1,0 +1,78 @@
+<section ng-controller="OtherController">
+  <div class="page-header">
+    <h1>杂项管理</h1>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <form name="otherForm" ng-submit="update(otherForm.$valid)" novalidate>
+        <fieldset>
+          <legend>App 下载地址</legend>
+          <div class="form-group" show-errors>
+            <label for="appDownloadIos">IOS</label>
+            <input type="url" id="appDownloadIos" name="appDownloadIos" class="form-control"
+                   ng-model="other.appDownloadIos" placeholder="First Name" required/>
+
+            <div ng-messages="otherForm.appDownloadIos.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">请填写此字段</p>
+
+              <p class="help-block error-text" ng-message="url">请填写正确的链接地址</p>
+            </div>
+          </div>
+          <div class="form-group" show-errors>
+            <label for="appDownloadAndroid">Android</label>
+            <input type="url" id="appDownloadAndroid" name="appDownloadAndroid" class="form-control"
+                   ng-model="other.appDownloadAndroid" placeholder="Last Name" required/>
+
+            <div ng-messages="otherForm.appDownloadAndroid.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">请填写此字段</p>
+
+              <p class="help-block error-text" ng-message="url">请填写正确的链接地址</p>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>分享链接</legend>
+          <div class="form-group" show-errors>
+            <label for="shareLinkWechat">微信</label>
+            <input type="url" id="shareLinkWechat" name="shareLinkWechat" class="form-control"
+                   ng-model="other.shareLinkWechat" placeholder="First Name" required/>
+
+            <div ng-messages="otherForm.shareLinkWechat.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">请填写此字段</p>
+
+              <p class="help-block error-text" ng-message="url">请填写正确的链接地址</p>
+            </div>
+          </div>
+          <div class="form-group" show-errors>
+            <label for="shareLinkWeibo">微博</label>
+            <input type="url" id="shareLinkWeibo" name="shareLinkWeibo" class="form-control"
+                   ng-model="other.shareLinkWeibo" placeholder="Last Name" required/>
+
+            <div ng-messages="otherForm.shareLinkWeibo.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">请填写此字段</p>
+
+              <p class="help-block error-text" ng-message="url">请填写正确的链接地址</p>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>二维码</legend>
+          <div class="form-group" show-errors>
+            <label for="footerQrCode">页脚二维码</label>
+            <input type="file" id="footerQrCode" name="footerQrCode" class="form-control" nv-file-select
+                   uploader="uploader"/>
+            <br/>
+            <img class="thumbnail" ng-src="{{other.footerQrCodeImgUrl}}" height="200px" width="200px">
+          </div>
+        </fieldset>
+        <div class="form-group">
+          <input type="submit" value="保存" class="btn btn-default">
+        </div>
+        <div ng-show="error" class="text-danger">
+          <strong ng-bind="error"></strong>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</section>

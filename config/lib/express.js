@@ -181,7 +181,6 @@ module.exports.initModulesServerRoutes = function (app) {
 
   app.route('/api/admin/*').all(function (req, res, next) {
     if (req.user) {
-      console.log('login check');
       next();
     } else {
       res.sendStatus(401).end();

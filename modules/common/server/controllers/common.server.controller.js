@@ -4,7 +4,8 @@ var path = require('path'),
   mysqlConfig = require(path.resolve('./config/config.js')),
   mysql = require('mysql'),
   mongoose = require('mongoose'),
-  Banner = mongoose.model('Banner');
+  Banner = mongoose.model('Banner'),
+  Other = mongoose.model('Other');
 
 
 exports.queryHotProduct = function (req, res) {
@@ -95,7 +96,11 @@ exports.likeProduct = function (req, res) {
 exports.queryActivity = function (req, res) {
   var startFrom = req.query.startFrom || 0;
   var limitTo = req.query.limitTo || 10;
-  var sql = 'select DISTINCT base.HDXXID as id,base.HDMC as title,base.HDSM as intro,sp.ZKL as discount from sp_cxhdxx base left join sp_cxhdspxx sp on sp.HDXXID=base.HDXXID and sp.ZKL=(select min(sp2.ZKL) from sp_cxhdspxx sp2 where sp2.HDXXID=base.HDXXID) order by base.cjsj desc';
+  var sql = 'select DISTINCT base.HDXXID as id,base.HDMC as title,base.HDSM as intro,sp.ZKL as discount,aImg.imgUrl as imgUrl ' +
+    'from sp_cxhdxx base ' +
+    'left join web_activity_img aImg on aImg.activityId=base.hdxxid ' +
+    'left join sp_cxhdspxx sp on sp.HDXXID=base.HDXXID and sp.ZKL=(select min(sp2.ZKL) from sp_cxhdspxx sp2 where sp2.HDXXID=base.HDXXID) ' +
+    'order by base.cjsj desc';
   sql += ' limit ' + startFrom + ',' + limitTo;
   console.log('[SQL]', sql);
 
@@ -207,6 +212,47 @@ exports.queryBanner = function (req, res) {
         });
       }
       res.json(result);
+    }
+  });
+};
+
+exports.queryAppDownloadUrl = function (req, res) {
+  Other.findOne({}, function (err, doc) {
+    if (err) {
+      console.error(err);
+      res.sendStatus(500);
+    } else {
+      res.json({
+        ios: doc.appDownloadIos,
+        android: doc.appDownloadAndroid
+      });
+    }
+  });
+};
+
+exports.queryAppQrCode = function (req, res) {
+  Other.findOne({}, function (err, doc) {
+    if (err) {
+      console.error(err);
+      res.sendStatus(500);
+    } else {
+      res.json({
+        imgUrl: doc.footerQrCodeImgUrl
+      });
+    }
+  });
+};
+
+exports.queryShareLink = function (req, res) {
+  Other.findOne({}, function (err, doc) {
+    if (err) {
+      console.error(err);
+      res.sendStatus(500);
+    } else {
+      res.json({
+        wechat: doc.shareLinkWechat,
+        weibo: doc.shareLinkWeibo
+      });
     }
   });
 };

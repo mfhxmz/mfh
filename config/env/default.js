@@ -37,7 +37,13 @@ module.exports = {
       }
     },
     bannerUpload:{
-      dest: './public/upload/banner/',
+      dest: './modules/banner/client/img/uploads/',
+      limits: {
+        fileSize: 1024 * 1024
+      }
+    },
+    otherUpload:{
+      dest: './modules/other/client/img/uploads/',
       limits: {
         fileSize: 1024 * 1024
       }
