@@ -178,6 +178,14 @@ module.exports.initModulesServerPolicies = function (app) {
  * Configure the modules server routes
  */
 module.exports.initModulesServerRoutes = function (app) {
+
+  app.route('/api/admin/*').all(function (req, res, next) {
+    if (req.user) {
+      next();
+    } else {
+      res.sendStatus(401).end();
+    }
+  });
   // Globbing routing files
   config.files.server.routes.forEach(function (routePath) {
     require(path.resolve(routePath))(app);

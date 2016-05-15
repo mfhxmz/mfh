@@ -1,0 +1,46 @@
+<section class="row" ng-controller="BannerController">
+  <div class="col-xs-12">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>图片地址</th>
+        <th>链接</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><input type="file" class="form-control" nv-file-select uploader="createUploader"></td>
+        <td><input type="text" class="form-control" ng-model="newBanner.link"></td>
+        <td><a href="javascript:void(0)" ng-click="createNewBanner('new')">创建</a></td>
+      </tr>
+      <tr ng-repeat="banner in banners.new">
+        <td>
+          <input class="form-control" ng-show="updatedBanner._id==banner._id" type="file" nv-file-select uploader="updateUploader">
+
+          <div ng-hide="updatedBanner._id==banner._id">
+            <img class="pull-left" ng-src="{{banner.imgUrl}}" style="height: 20px;width: 40px">
+            <span class="pull-left" style="margin-left: 10px;">{{banner.imgUrl}}</span>
+
+            <div class="clearfix"></div>
+          </div>
+        </td>
+        <td>
+          <input class="form-control" ng-show="updatedBanner._id==banner._id" type="text" ng-model="updatedBanner.link">
+
+          <div ng-hide="updatedBanner._id==banner._id">{{banner.link}}</div>
+        </td>
+        <td>
+          <a href="javascript:void(0)" ng-click="updateBanner(banner)">
+            <span ng-show="updatedBanner._id==banner._id">保存</span>
+            <span ng-hide="updatedBanner._id==banner._id">更新</span>
+          </a>
+          &emsp;
+          <a href="javascript:void(0)" ng-click="deleteBanner(banner)">刪除</a>
+        </td>
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
