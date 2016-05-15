@@ -117,7 +117,8 @@ app-info {
 	z-index: 10
 }
 
-.dl-qrcode {
+// todo: animation
+/*.dl-qrcode {
 	opacity: 1;
 	&.ng-hide-add,
 	&.ng-hide-remove {
@@ -133,7 +134,7 @@ app-info {
 	&.ng-hide-remove {
 		animation: 0.5s fadeInDown;
 	}
-}
+}*/
 
 #app-info-6-1 {
 	@include stick-bottom-center();
