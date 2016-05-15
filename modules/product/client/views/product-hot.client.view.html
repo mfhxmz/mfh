@@ -4,15 +4,17 @@
       <thead>
       <tr>
         <th>图片地址</th>
-        <th>链接</th>
+        <th>标题</th>
+        <th>简介</th>
         <th>操作</th>
       </tr>
       </thead>
       <tbody>
       <tr>
         <td><input type="file" class="form-control"></td>
-        <td><input type="text" class="form-control" ng-model="newBanner.link"></td>
-        <td><a href="javascript:void(0)" ng-click="createNewBanner('hot')">创建</a></td>
+        <td><input type="text" class="form-control" ng-model="newProduct.title"></td>
+        <td><input type="text" class="form-control" ng-model="newProduct.intro"></td>
+        <td><a href="javascript:void(0)" ng-click="createNewProduct('hot')">创建</a></td>
       </tr>
       <tr ng-repeat="banner in banners.hot">
         <td>

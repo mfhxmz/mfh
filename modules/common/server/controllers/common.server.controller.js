@@ -4,18 +4,18 @@ var path = require('path'),
   mysqlConfig = require(path.resolve('./config/config.js')),
   mysql = require('mysql'),
   mongoose = require('mongoose'),
+  qrcode = require('qrcode-js'),
   Banner = mongoose.model('Banner'),
   Other = mongoose.model('Other');
-
 
 exports.queryHotProduct = function (req, res) {
   var startFrom = req.query.startFrom || 0;
   var limitTo = req.query.limitTo || 10;
 
-  var sql = 'select spec.spid as id,base.SPMC as title,base.SPGX as intro,pic.fjdz as imgUrl,count(pLike.userId) as likeNum ';
+  var sql = 'select spec.spid as id,base.SPMC as title,base.SPGX as intro,pic.imgUrl as imgUrl,count(pLike.userId) as likeNum ';
   sql += 'from sp_tjspxx spec ';
   sql += 'LEFT JOIN sp_spjbxx base on base.SPID=spec.SPID ';
-  sql += 'left join sp_spct pic on pic.SPID=spec.SPID and pic.SFZT=1 ';
+  sql += 'left join web_product_img pic on pic.productId=spec.SPID ';
   sql += 'LEFT JOIN web_product_like pLike on pLike.productId=spec.SPID ';
   sql += 'where spec.TCLB=3 ';
   sql += 'GROUP BY spec.SPID order by spec.cjsj desc ';
@@ -41,10 +41,10 @@ exports.queryNewProduct = function (req, res) {
   var startFrom = req.query.startFrom || 0;
   var limitTo = req.query.limitTo || 10;
 
-  var sql = 'select spec.spid as id,base.SPMC as title,base.SPGX as intro,pic.fjdz as imgUrl,count(pLike.userId) as likeNum ';
+  var sql = 'select spec.spid as id,base.SPMC as title,base.SPGX as intro,pic.imgUrl as imgUrl,count(pLike.userId) as likeNum ';
   sql += 'from sp_tjspxx spec ';
   sql += 'LEFT JOIN sp_spjbxx base on base.SPID=spec.SPID ';
-  sql += 'left join sp_spct pic on pic.SPID=spec.SPID and pic.SFZT=1 ';
+  sql += 'left join web_product_img pic on pic.productId=spec.SPID ';
   sql += 'LEFT JOIN web_product_like pLike on pLike.productId=spec.SPID ';
   sql += 'where spec.TCLB=1 ';
   sql += 'GROUP BY spec.SPID order by spec.cjsj desc ';
@@ -255,4 +255,29 @@ exports.queryShareLink = function (req, res) {
       });
     }
   });
+};
+
+exports.queryAppDownloadQrCode = function (req, res) {
+  var url = req.protocol + '://' + req.get('host') + '/api/app-download/qrcode/scan';
+  var base64 = qrcode.toBase64(url, 4);
+  res.json({
+    imgUrl: 'data:image/jpeg;base64,' + base64
+  });
+};
+
+exports.queryAppDownloadQrCodeScan = function (req, res) {
+  var ua = req.headers['user-agent'];
+  Other.findOne({}, function (err, doc) {
+    if (err) {
+      console.error(err);
+      res.sendStatus(500);
+    } else {
+      if (/like Mac OS X/.test(ua)) {
+        res.redirect(doc.appDownloadIos);
+      } else {
+        res.redirect(doc.appDownloadAndroid);
+      }
+    }
+  });
+
 };

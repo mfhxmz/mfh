@@ -17,6 +17,10 @@ module.exports = function (app) {
   app.route('/api/user/logout').post(common.userLogout);
 
   app.route('/api/app-download/url').get(common.queryAppDownloadUrl);
+  app.route('/api/app-download/qrcode').get(common.queryAppDownloadQrCode);
+  app.route('/api/app-download/qrcode/scan').get(common.queryAppDownloadQrCodeScan);
   app.route('/api/app/qrcode').get(common.queryAppQrCode);
   app.route('/api/share-link').get(common.queryShareLink);
+
+
 };
