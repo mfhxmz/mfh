@@ -13,7 +13,7 @@ angular.module('mf.download', [])
 			data: { pageTitle: 'download' },
 			onEnter: function ($rootScope, $location, $anchorScroll, scrollTo) {
 
-				scrollTo.to = 'app-dl'
+				scrollTo.to = 'app-info-6'
 
 				$rootScope.$broadcast('scrollTo', scrollTo.to)
 

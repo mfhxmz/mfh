@@ -29,12 +29,16 @@ angular.module('mf.home')
 				vm.vote = function (id) {
 					ProductService.vote(id)
 				}
+				init()
 			}
 
 			function init() {
-				ProductService.hotProdList()
+				ProductService.hotProdList({
+					limitTo: 8,
+					startFrom: 0
+				})
 					.then(function (list) {
-						vm.brandList = list
+						vm.list = list
 					})
 			}
 

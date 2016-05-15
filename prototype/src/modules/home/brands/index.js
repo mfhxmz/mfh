@@ -23,6 +23,7 @@ angular.module('mf.home')
 
 			function initScope() {
 				vm.brandList = [].constructor(20)
+				init()
 			}
 
 			function init() {

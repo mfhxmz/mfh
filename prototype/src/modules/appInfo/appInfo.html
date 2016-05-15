@@ -35,23 +35,25 @@
 	<div id="app-dl" class="download-content">
 		<h1 id="title6">从这里开始探索世界</h1>
 		<div class="dl-links">
-			<button class="btn btn-lg btn-default btn-apple-dl"><i
+			<a ng-href="{{$ctrl.dlLinks['ios']}}" class="btn btn-lg btn-default btn-apple-dl"><i
 				class="glyphicon glyphicon-heart"></i> AppStore 下载
-			</button>
-			<button class="btn btn-lg btn-default btn-android-dl"><i
+			</a>
+			<a ng-href="{{$ctrl.dlLinks['android']}}" class="btn btn-lg btn-default btn-android-dl"><i
 				class="glyphicon glyphicon-heart"></i> Android 下载
-			</button>
+			</a>
 			<button class="btn btn-lg btn-default btn-qr-code"
-			        ng-class="{active: $ctrl.showQrCode}"
-			        ng-click="$ctrl.showQrCode = !$ctrl.showQrCode"><i
+			        ng-class="{active: $ctrl.isShowQrCode}"
+			        ng-click="$ctrl.showQrcode()"><i
 				class="glyphicon glyphicon-qrcode"></i></button>
 		</div>
 	</div>
 
 	<img class="dl-qrcode"
-	     ng-show="$ctrl.showQrCode"
+	     ng-show="$ctrl.isShowQrCode"
+	     hide-on-outside-click="showQrcode"
 	     id="app-qr-code"
 	     src="//placeholder.cn/200x200/239d2e"
+	     ng-src="{{$ctrl.qrcodeUrl}}"
 	     alt="dl-qrcode">
 
 	<img id="app-info-6-1" src="img/下载页界面.png" alt="weibo">

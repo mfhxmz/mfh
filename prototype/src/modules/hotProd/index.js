@@ -19,7 +19,7 @@ angular.module('mf.hotProd', [])
 		})
 
 		NavList['hotProd'] = '爆品推荐'
-		PageIDs.hotProd = 'hotProd'
+		PageIDs.hot = 'hot'
 	})
 	.component('mfHotProd', {
 		template: require('./hot-prod.html'),
@@ -41,14 +41,17 @@ angular.module('mf.hotProd', [])
 				vm.vote = function (id) {
 					ProductService.vote(id)
 				}
-
-				ProductService.fakeSlides(vm)
+				
+				init()
 			}
 
 			function init() {
-				ProductService.hotProdList()
+				ProductService.hotProdList({
+					limitTo: 10,
+					startFrom:0
+				})
 					.then(function (list) {
-						
+						vm.list = list
 					})
 			}
 		}
