@@ -6,80 +6,51 @@ var path = require('path'),
   mongoose = require('mongoose'),
   qrcode = require('qrcode-js'),
   Banner = mongoose.model('Banner'),
+  Product = mongoose.model('Product'),
+  Activity = mongoose.model('Activity'),
   Other = mongoose.model('Other');
 
 exports.queryHotProduct = function (req, res) {
-  var startFrom = req.query.startFrom || 0;
-  var limitTo = req.query.limitTo || 10;
-
-  var sql = 'select spec.spid as id,base.SPMC as title,base.SPGX as intro,pic.imgUrl as imgUrl,count(pLike.userId) as likeNum ';
-  sql += 'from sp_tjspxx spec ';
-  sql += 'LEFT JOIN sp_spjbxx base on base.SPID=spec.SPID ';
-  sql += 'left join web_product_img pic on pic.productId=spec.SPID ';
-  sql += 'LEFT JOIN web_product_like pLike on pLike.productId=spec.SPID ';
-  sql += 'where spec.TCLB=3 ';
-  sql += 'GROUP BY spec.SPID order by spec.cjsj desc ';
-  sql += 'limit ' + startFrom + ',' + limitTo;
-  console.log('[SQL]', sql);
-
-  var connection = mysql.createConnection(mysqlConfig.mysql);
-  connection.connect();
-  connection.query({
-    sql: sql
-  }, function (err, data) {
+  Product.aggregate([{ $match: { type: 1 } }, {
+    $project: {
+      id: '$_id',
+      likeNum: { $size: '$like' },
+      imgUrl: '$imgUrl',
+      title: '$title',
+      intro: '$intro'
+    }
+  }], function (err, docs) {
     if (err) {
       console.error(err);
-      res.json([]);
+      res.sendStatus(500);
     } else {
-      res.json(data);
+      res.json(docs);
     }
   });
-  connection.end();
 };
 
 exports.queryNewProduct = function (req, res) {
-  var startFrom = req.query.startFrom || 0;
-  var limitTo = req.query.limitTo || 10;
-
-  var sql = 'select spec.spid as id,base.SPMC as title,base.SPGX as intro,pic.imgUrl as imgUrl,count(pLike.userId) as likeNum ';
-  sql += 'from sp_tjspxx spec ';
-  sql += 'LEFT JOIN sp_spjbxx base on base.SPID=spec.SPID ';
-  sql += 'left join web_product_img pic on pic.productId=spec.SPID ';
-  sql += 'LEFT JOIN web_product_like pLike on pLike.productId=spec.SPID ';
-  sql += 'where spec.TCLB=1 ';
-  sql += 'GROUP BY spec.SPID order by spec.cjsj desc ';
-  sql += 'limit ' + startFrom + ',' + limitTo;
-  console.log('[SQL]', sql);
-
-  var connection = mysql.createConnection(mysqlConfig.mysql);
-  connection.connect();
-  connection.query({
-    sql: sql
-  }, function (err, data) {
+  Product.aggregate([{ $match: { type: 2 } }, {
+    $project: {
+      id: '$_id',
+      likeNum: { $size: '$like' },
+      imgUrl: '$imgUrl',
+      title: '$title',
+      intro: '$intro'
+    }
+  }], function (err, docs) {
     if (err) {
       console.error(err);
-      res.json([]);
+      res.sendStatus(500);
     } else {
-      res.json(data);
+      res.json(docs);
     }
   });
-  connection.end();
 };
 
 exports.likeProduct = function (req, res) {
   if (req.session.mfh_user) {
-    console.log(req.session.mfh_user);
-    var insert = {
-      productId: req.body.pid,
-      userId: req.session.mfh_user.id
-    };
-    var sql = 'insert into web_product_like set ?';
-    sql = mysql.format(sql, [insert]);
-    console.log('[SQL]', sql);
-
-    var connection = mysql.createConnection(mysqlConfig.mysql);
-    connection.connect();
-    connection.query(sql, req.body, function (err, data) {
+    Product.update({ _id: req.body.pid }, { $push: { like: req.session.mfh_user.id } }, function (err) {
       if (err) {
         console.error(err);
         res.sendStatus(500);
@@ -87,36 +58,28 @@ exports.likeProduct = function (req, res) {
         res.sendStatus(200);
       }
     });
-    connection.end();
   } else {
     res.sendStatus(401);
   }
 };
 
 exports.queryActivity = function (req, res) {
-  var startFrom = req.query.startFrom || 0;
-  var limitTo = req.query.limitTo || 10;
-  var sql = 'select DISTINCT base.HDXXID as id,base.HDMC as title,base.HDSM as intro,sp.ZKL as discount,aImg.imgUrl as imgUrl ' +
-    'from sp_cxhdxx base ' +
-    'left join web_activity_img aImg on aImg.activityId=base.hdxxid ' +
-    'left join sp_cxhdspxx sp on sp.HDXXID=base.HDXXID and sp.ZKL=(select min(sp2.ZKL) from sp_cxhdspxx sp2 where sp2.HDXXID=base.HDXXID) ' +
-    'order by base.cjsj desc';
-  sql += ' limit ' + startFrom + ',' + limitTo;
-  console.log('[SQL]', sql);
-
-  var connection = mysql.createConnection(mysqlConfig.mysql);
-  connection.connect();
-  connection.query({
-    sql: sql
-  }, function (err, data) {
+  Activity.aggregate([{
+    $project: {
+      id: '$_id',
+      imgUrl: '$imgUrl',
+      title: '$title',
+      intro: '$intro',
+      discount: '$discount'
+    }
+  }], function (err, docs) {
     if (err) {
       console.error(err);
-      res.json([]);
+      res.sendStatus(500);
     } else {
-      res.json(data);
+      res.json(docs);
     }
   });
-  connection.end();
 };
 
 exports.queryBrand = function (req, res) {

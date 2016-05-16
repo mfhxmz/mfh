@@ -12,13 +12,13 @@ angular.module('product').config(['$stateProvider',
           roles: ['user', 'admin']
         }
       })
-      .state('product.hot', {
-        url: '/hot',
-        templateUrl: 'modules/product/client/views/product-hot.client.view.html'
-      })
       .state('product.new', {
         url: '/new',
         templateUrl: 'modules/product/client/views/product-new.client.view.html'
+      })
+      .state('product.hot', {
+        url: '/hot',
+        templateUrl: 'modules/product/client/views/product-hot.client.view.html'
       });
   }
 ]);

@@ -1,13 +1,13 @@
 'use strict';
 
 // Configuring the Chat module
-angular.module('banner').run(['Menus',
+angular.module('activity').run(['Menus',
   function (Menus) {
     // Set top bar menu items
     Menus.addMenuItem('topbar', {
-      title: 'Banner',
-      state: 'banner.home',
-      position: 2
+      title: '活动',
+      state: 'activity',
+      position: 1
     });
   }
 ]);

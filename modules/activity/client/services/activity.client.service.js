@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('product').factory('ProductService', ['$resource',
+angular.module('activity').factory('ActivityService', ['$resource',
   function ($resource) {
-    return $resource('/api/admin/product/:id', {
+    return $resource('/api/admin/activity/:id', {
       id: '@id'
     }, {
       update: {

@@ -23,6 +23,7 @@ exports.updateOther = function (req, res) {
   if (req.body && req.body._id) {
     Other.findOneAndUpdate({}, req.body, { upsert: true }, function (err) {
       if (err) {
+        console.error(err);
         res.sendStatus(500);
       } else {
         res.sendStatus(200);
@@ -37,6 +38,7 @@ exports.updateOther = function (req, res) {
         });
       } else {
         req.body.footerQrCodeImgUrl = req.file.destination + req.file.filename;
+        console.log(req.body);
         return Other.findOneAndUpdate({}, req.body, { upsert: true }, function (err) {
           if (err) {
             console.error(err);

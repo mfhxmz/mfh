@@ -36,13 +36,25 @@ module.exports = {
         fileSize: 1024 * 1024 // Max file size in bytes (1 MB)
       }
     },
-    bannerUpload:{
+    bannerUpload: {
       dest: './modules/banner/client/img/uploads/',
       limits: {
         fileSize: 1024 * 1024
       }
     },
-    otherUpload:{
+    productUpload: {
+      dest: './modules/product/client/img/uploads/',
+      limits: {
+        fileSize: 1024 * 1024
+      }
+    },
+    activityUpload: {
+      dest: './modules/activity/client/img/uploads/',
+      limits: {
+        fileSize: 1024 * 1024
+      }
+    },
+    otherUpload: {
       dest: './modules/other/client/img/uploads/',
       limits: {
         fileSize: 1024 * 1024
