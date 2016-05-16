@@ -4,7 +4,7 @@
 'use strict';
 
 const angular = require('angular')
-const Promise = require('bluebird')
+const $ = require('jquery')
 
 /*Promise.config({
  // Enables all warnings except forgotten return statements.
@@ -31,4 +31,24 @@ angular.module('app.directive', [])
 				}
 			}
 		}
+	})
+	.directive('dynamicViewport', function($window) {
+	    return {
+		    restrict: 'A',
+		    link: function(scope, element) {
+			    $($window).resize(resizeHandler)
+
+			    resizeHandler()
+
+
+			    function resizeHandler() {
+				    if($($window).width() <= 560){
+					    element.attr('content', 'width=560px,user-scalable=no')
+				    } else {
+					    element.attr('content', 'width=device-width,user-scalable=no')
+				    }
+			    }
+		    }
+
+	    }
 	})
