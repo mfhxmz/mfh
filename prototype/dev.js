@@ -14,13 +14,14 @@ const compiler = webpack(webpackConfig)
 
 const server = new WebpackDevServer(compiler, webpackConfig.devServer)
 
-server.use(proxy(['api'], {
-	target: 'localhost',
+server.use(proxy(['/api'], {
+	target: 'http://119.29.117.152:8443',
 	ws: true,
 	changeOrigin: true,
 	secure: false
 }))
 
+server.use(require('morgan')('dev'))
 
 server.listen(webpackConfig.devServer.port, webpackConfig.devServer.host, function () {
 	console.log('webpack-dev-server running...')
