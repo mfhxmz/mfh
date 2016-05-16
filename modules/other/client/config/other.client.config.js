@@ -6,7 +6,8 @@ angular.module('banner').run(['Menus',
     // Set top bar menu items
     Menus.addMenuItem('topbar', {
       title: '杂项',
-      state: 'other'
+      state: 'other',
+      position: 999
     });
   }
 ]);

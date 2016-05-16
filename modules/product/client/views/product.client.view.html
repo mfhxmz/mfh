@@ -3,18 +3,55 @@
     <h1>商品管理</h1>
   </div>
   <div class="row">
-    <nav class="col-sm-3">
-      <ul class="nav nav-pills nav-stacked">
-        <li ui-sref-active="active">
-          <a ui-sref="product.new">新品</a>
-        </li>
-        <li ui-sref-active="active">
-          <a ui-sref="product.hot">爆品</a>
-        </li>
-      </ul>
-    </nav>
-    <div class="col-sm-9">
-      <div ui-view></div>
+    <div class="col-xs-12">
+      <table class="table">
+        <thead>
+        <tr>
+          <td>标题</td>
+          <td>简介</td>
+          <th>图片</th>
+          <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><input type="text" class="form-control" ng-model="newProduct.title"></td>
+          <td><input type="text" class="form-control" ng-model="newProduct.intro"></td>
+          <td><input type="file" class="form-control"></td>
+          <td><a href="javascript:void(0)" ng-click="createNewProduct()">创建</a></td>
+        </tr>
+        <tr ng-repeat="product in products">
+          <td>
+            <input class="form-control" ng-show="updatedProduct.id==product.id" type="text"
+                   ng-model="updatedProduct.title">
+
+            <div ng-hide="updatedProduct.id==product.id">{{ product.title }}</div>
+          </td>
+          <td>
+            <input class="form-control" ng-show="updatedProduct.id==product.id" type="text"
+                   ng-model="updatedProduct.intro">
+
+            <div ng-hide="updatedProduct.id==product.id">{{ product.intro }}</div>
+          </td>
+          <td>
+            <input class="form-control" ng-show="updatedProduct.id==product.id" type="file">
+
+            <div ng-hide="updatedProduct.id==product.id">
+              <img class="thumbnail" ng-src="{{ product.imgUrl }}" style="height: 30px;width: 60px">
+            </div>
+          </td>
+          <td>
+            <a href="javascript:void(0)" ng-click="updateProduct(product)">
+              <span ng-show="updatedProduct.id==product.id">保存</span>
+              <span ng-hide="updatedProduct.id==product.id">更新</span>
+            </a>
+            &emsp;
+            <a href="javascript:void(0)" ng-click="deleteProduct(product)">刪除</a>
+          </td>
+
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>

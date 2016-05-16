@@ -19,10 +19,7 @@
           <input class="form-control" ng-show="updatedBanner._id==banner._id" type="file" nv-file-select uploader="updateUploader">
 
           <div ng-hide="updatedBanner._id==banner._id">
-            <img class="pull-left" ng-src="{{banner.imgUrl}}" style="height: 20px;width: 40px">
-            <span class="pull-left" style="margin-left: 10px;">{{banner.imgUrl}}</span>
-
-            <div class="clearfix"></div>
+            <img class="thumbnail" ng-src="{{ banner.imgUrl }}" style="height: 30px;width: 60px">
           </div>
         </td>
         <td>

@@ -1,0 +1,57 @@
+<section ng-controller="ActivityController">
+  <div class="page-header">
+    <h1>活动管理</h1>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <table class="table">
+        <thead>
+        <tr>
+          <td>标题</td>
+          <td>简介</td>
+          <th>图片</th>
+          <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><input type="text" class="form-control" ng-model="newActivity.title"></td>
+          <td><input type="text" class="form-control" ng-model="newActivity.intro"></td>
+          <td><input type="file" class="form-control"></td>
+          <td><a href="javascript:void(0)" ng-click="createNewActivity()">创建</a></td>
+        </tr>
+        <tr ng-repeat="activity in activitys">
+          <td>
+            <input class="form-control" ng-show="updatedActivity.id==activity.id" type="text"
+                   ng-model="updatedActivity.title">
+
+            <div ng-hide="updatedActivity.id==activity.id">{{ activity.title }}</div>
+          </td>
+          <td>
+            <input class="form-control" ng-show="updatedActivity.id==activity.id" type="text"
+                   ng-model="updatedActivity.intro">
+
+            <div ng-hide="updatedActivity.id==activity.id">{{ activity.intro }}</div>
+          </td>
+          <td>
+            <input class="form-control" ng-show="updatedActivity.id==activity.id" type="file">
+
+            <div ng-hide="updatedActivity.id==activity.id">
+              <img class="thumbnail" ng-src="{{ activity.imgUrl }}" style="height: 30px;width: 60px">
+            </div>
+          </td>
+          <td>
+            <a href="javascript:void(0)" ng-click="updateActivity(activity)">
+              <span ng-show="updatedActivity.id==activity.id">保存</span>
+              <span ng-hide="updatedActivity.id==activity.id">更新</span>
+            </a>
+            &emsp;
+            <a href="javascript:void(0)" ng-click="deleteActivity(activity)">刪除</a>
+          </td>
+
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
