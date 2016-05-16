@@ -3,43 +3,89 @@
 var _ = require('lodash'),
   fs = require('fs'),
   path = require('path'),
-  mysqlConfig = require(path.resolve('./config/config.js')),
-  mysql = require('mysql'),
   mongoose = require('mongoose'),
   multer = require('multer'),
-  config = require(path.resolve('./config/config'));
+  config = require(path.resolve('./config/config')),
+  Activity = mongoose.model('Activity');
 
 exports.findActivity = function (req, res) {
-  var sql = 'select DISTINCT base.HDXXID as id,base.HDMC as title,base.HDSM as intro,sp.ZKL as discount,aImg.imgUrl as imgUrl ' +
-    'from sp_cxhdxx base ' +
-    'left join web_activity_img aImg on aImg.activityId=base.hdxxid ' +
-    'left join sp_cxhdspxx sp on sp.HDXXID=base.HDXXID and sp.ZKL=(select min(sp2.ZKL) from sp_cxhdspxx sp2 where sp2.HDXXID=base.HDXXID) ' +
-    'order by base.cjsj desc';
-  console.log('[SQL]', sql);
-
-  var connection = mysql.createConnection(mysqlConfig.mysql);
-  connection.connect();
-  connection.query({
-    sql: sql
-  }, function (err, data) {
+  Activity.find({}, function (err, docs) {
     if (err) {
       console.error(err);
-      res.json([]);
+      res.sendStatus(500);
     } else {
-      res.json(data);
+      res.json(docs);
     }
   });
-  connection.end();
 };
 
 exports.createActivity = function (req, res) {
-
+  var upload = multer(config.uploads.activityUpload).single('file');
+  upload(req, res, function (uploadError) {
+    if (uploadError) {
+      return res.status(400).send({
+        message: 'Error occurred while uploading profile picture'
+      });
+    } else {
+      req.body.imgUrl = req.file.destination + req.file.filename;
+      var activity = new Activity(req.body);
+      return activity.save(function (err) {
+        if (err) {
+          console.error(err);
+          return res.sendStatus(500);
+        } else {
+          return res.sendStatus(200);
+        }
+      });
+    }
+  });
 };
 
 exports.deleteActivity = function (req, res) {
-
+  Activity.remove({
+    _id: req.params.id
+  }).exec(function (err) {
+    if (err) {
+      console.error(err);
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(200);
+    }
+  });
 };
 
 exports.updateActivity = function (req, res) {
-
+  if (req.body && req.body._id) {
+    Activity.findOneAndUpdate({
+      '_id': req.body._id
+    }, req.body, function (err) {
+      if (err) {
+        console.error(err);
+        res.sendStatus(500);
+      } else {
+        res.sendStatus(200);
+      }
+    });
+  } else {
+    var upload = multer(config.uploads.activityUpload).single('file');
+    upload(req, res, function (uploadError) {
+      if (uploadError) {
+        return res.status(400).send({
+          message: 'Error occurred while uploading profile picture'
+        });
+      } else {
+        req.body.imgUrl = req.file.destination + req.file.filename;
+        return Activity.findOneAndUpdate({
+          '_id': req.body._id
+        }, req.body, function (err) {
+          if (err) {
+            console.error(err);
+            return res.sendStatus(500);
+          } else {
+            return res.sendStatus(200);
+          }
+        });
+      }
+    });
+  }
 };

@@ -8,11 +8,15 @@ angular.module('banner').controller('BannerController', ['$scope', '$location', 
     $scope.updatedBanner = undefined;
 
     $scope.createUploader = new FileUploader({
-      url: 'api/admin/banner'
+      url: 'api/admin/banner',
+      queueLimit: 1,
+      removeAfterUpload: true
     });
     $scope.updateUploader = new FileUploader({
       url: 'api/admin/banner',
-      method: 'PUT'
+      method: 'PUT',
+      queueLimit: 1,
+      removeAfterUpload: true
     });
     $scope.createUploader.onBeforeUploadItem = function (item) {
       item.formData.push({

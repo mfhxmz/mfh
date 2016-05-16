@@ -7,7 +7,9 @@ angular.module('other').controller('OtherController', ['$scope', '$location', 'A
 
     $scope.uploader = new FileUploader({
       url: 'api/admin/other',
-      method: 'PUT'
+      method: 'PUT',
+      queueLimit: 1,
+      removeAfterUpload: true
     });
     $scope.uploader.onBeforeUploadItem = function (item) {
       var formData = {

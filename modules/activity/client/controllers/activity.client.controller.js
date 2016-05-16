@@ -9,11 +9,15 @@ angular.module('activity').controller('ActivityController', ['$scope', '$locatio
     $scope.updatedActivity = undefined;
 
     $scope.createUploader = new FileUploader({
-      url: 'api/admin/activity'
+      url: 'api/admin/activity',
+      queueLimit: 1,
+      removeAfterUpload: true
     });
     $scope.updateUploader = new FileUploader({
       url: 'api/admin/activity',
-      method: 'PUT'
+      method: 'PUT',
+      queueLimit: 1,
+      removeAfterUpload: true
     });
     $scope.createUploader.onBeforeUploadItem = function (item) {
       item.formData.push($scope.newActivity);
@@ -39,14 +43,17 @@ angular.module('activity').controller('ActivityController', ['$scope', '$locatio
 
     $scope.deleteActivity = function (activity) {
       ActivityService.remove({
-        id: activity.id
+        id: activity._id
       }, function () {
         $scope.findActivity();
       });
     };
 
     $scope.updateActivity = function (activity) {
-      if ($scope.updatedActivity && $scope.updatedActivity.id === activity.id) {
+      console.log($scope.updatedActivity);
+      console.log(activity);
+      if ($scope.updatedActivity && $scope.updatedActivity._id === activity._id) {
+        console.log('doupdated');
         if ($scope.updateUploader.queue && $scope.updateUploader.queue.length) {
           $scope.updateUploader.uploadAll();
         } else {

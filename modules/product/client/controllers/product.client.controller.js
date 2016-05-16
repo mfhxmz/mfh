@@ -6,14 +6,20 @@ angular.module('product').controller('ProductController', ['$scope', '$location'
 
     $scope.newProduct = {};
     $scope.products = [];
+    $scope.hotProducts = [];
+    $scope.newProducts = [];
     $scope.updatedProduct = undefined;
 
     $scope.createUploader = new FileUploader({
-      url: 'api/admin/product'
+      url: 'api/admin/product',
+      queueLimit: 1,
+      removeAfterUpload: true
     });
     $scope.updateUploader = new FileUploader({
       url: 'api/admin/product',
-      method: 'PUT'
+      method: 'PUT',
+      queueLimit: 1,
+      removeAfterUpload: true
     });
     $scope.createUploader.onBeforeUploadItem = function (item) {
       item.formData.push($scope.newProduct);
@@ -33,20 +39,21 @@ angular.module('product').controller('ProductController', ['$scope', '$location'
     };
     $scope.findProduct();
 
-    $scope.createNewProduct = function () {
+    $scope.createNewProduct = function (type) {
+      $scope.newProduct.type = type;
       $scope.createUploader.uploadAll();
     };
 
     $scope.deleteProduct = function (product) {
       ProductService.remove({
-        id: product.id
+        id: product._id
       }, function () {
         $scope.findProduct();
       });
     };
 
     $scope.updateProduct = function (product) {
-      if ($scope.updatedProduct && $scope.updatedProduct.id === product.id) {
+      if ($scope.updatedProduct && $scope.updatedProduct._id === product._id) {
         if ($scope.updateUploader.queue && $scope.updateUploader.queue.length) {
           $scope.updateUploader.uploadAll();
         } else {

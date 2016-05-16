@@ -6,7 +6,7 @@ angular.module('product').run(['Menus',
     // Set top bar menu items
     Menus.addMenuItem('topbar', {
       title: '商品',
-      state: 'product',
+      state: 'product.new',
       position: 0
     });
   }
