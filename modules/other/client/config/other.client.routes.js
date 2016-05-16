@@ -5,7 +5,7 @@ angular.module('banner').config(['$stateProvider',
   function ($stateProvider) {
     $stateProvider
       .state('other', {
-        url: '/other',
+        url: '/server-admin/other',
         templateUrl: 'modules/other/client/views/other.client.view.html',
         data: {
           roles: ['user', 'admin']

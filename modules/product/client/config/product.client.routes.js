@@ -6,7 +6,7 @@ angular.module('product').config(['$stateProvider',
     $stateProvider
       .state('product', {
         abstract: true,
-        url: '/product',
+        url: '/server-admin/product',
         templateUrl: 'modules/product/client/views/product.client.view.html',
         data: {
           roles: ['user', 'admin']
