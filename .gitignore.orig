@@ -73,8 +73,11 @@ mongod
 *.njsproj
 *.sln
 bower_components/
+<<<<<<< HEAD
 dist/
 
 
 public/upload/**
+=======
 prototype/
+>>>>>>> gh-pages
