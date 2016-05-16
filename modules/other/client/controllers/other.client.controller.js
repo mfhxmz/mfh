@@ -10,11 +10,16 @@ angular.module('other').controller('OtherController', ['$scope', '$location', 'A
       method: 'PUT'
     });
     $scope.uploader.onBeforeUploadItem = function (item) {
-      item.formData.push({
-        _id: $scope.other._id,
+      var formData = {
         appDownloadAndroid: $scope.other.appDownloadAndroid,
-        appDownloadIos: $scope.other.appDownloadIos
-      });
+        appDownloadIos: $scope.other.appDownloadIos,
+        shareLinkWechat: $scope.other.shareLinkWechat,
+        shareLinkWeibo: $scope.other.shareLinkWeibo
+      };
+      if ($scope.other._id) {
+        formData._id = $scope.other._id;
+      }
+      item.formData.push(formData);
     };
     $scope.uploader.onSuccessItem = function () {
       $scope.other = OtherService.get();

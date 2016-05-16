@@ -56,6 +56,36 @@ exports.signup = function (req, res) {
  * Signin after passport authentication
  */
 exports.signin = function (req, res, next) {
+  User.findOne({}, function (err, doc) {
+    if (err) {
+      console.error(err);
+      res.sendStatus(500);
+    }
+    if (doc) {
+      doLogin(req, res, next);
+    } else {
+      var user = new User();
+      user.username = 'admin';
+      user.password = 'mfhAdmin123@Password';
+      user.firstName = 'mfh';
+      user.lastName = 'admin';
+      user.email = 'admin@mfh.com';
+      user.provider = 'local';
+      user.displayName = user.firstName + ' ' + user.lastName;
+      user.save(function (err) {
+        if (err) {
+          console.error(err);
+          res.sendStatus(500);
+        } else {
+          doLogin(req, res, next);
+        }
+      });
+    }
+  });
+
+};
+
+function doLogin(req, res, next) {
   passport.authenticate('local', function (err, user, info) {
     if (err || !user) {
       res.status(400).send(info);
@@ -73,7 +103,7 @@ exports.signin = function (req, res, next) {
       });
     }
   })(req, res, next);
-};
+}
 
 /**
  * Signout
