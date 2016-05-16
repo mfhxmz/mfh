@@ -179,6 +179,11 @@ module.exports.initModulesServerPolicies = function (app) {
  */
 module.exports.initModulesServerRoutes = function (app) {
 
+  app.route('/api/*').all(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+  });
+
   app.route('/api/admin/*').all(function (req, res, next) {
     if (req.user) {
       next();
@@ -186,6 +191,7 @@ module.exports.initModulesServerRoutes = function (app) {
       res.sendStatus(401).end();
     }
   });
+
   // Globbing routing files
   config.files.server.routes.forEach(function (routePath) {
     require(path.resolve(routePath))(app);
