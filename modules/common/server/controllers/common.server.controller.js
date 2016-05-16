@@ -142,7 +142,7 @@ exports.userLogin = function (req, res) {
       console.error(err);
       res.sendStatus(500);
     } else {
-      if (data.length) {
+      if (data && data.length) {
         req.session.mfh_user = data[0];
         res.json(data[0]);
       } else {
@@ -163,7 +163,7 @@ exports.queryBanner = function (req, res) {
     if (err) {
       console.error(err);
       res.sendStatus(500);
-    } else {
+    } else if (docs && docs.length) {
       var result = {};
       for (var i = 0; i < docs.length; i++) {
         if (!result[docs[i].scope]) {
@@ -175,6 +175,8 @@ exports.queryBanner = function (req, res) {
         });
       }
       res.json(result);
+    } else {
+      res.json([]);
     }
   });
 };
@@ -184,11 +186,13 @@ exports.queryAppDownloadUrl = function (req, res) {
     if (err) {
       console.error(err);
       res.sendStatus(500);
-    } else {
+    } else if (doc) {
       res.json({
         ios: doc.appDownloadIos,
         android: doc.appDownloadAndroid
       });
+    } else {
+      res.json({});
     }
   });
 };
@@ -198,10 +202,12 @@ exports.queryAppQrCode = function (req, res) {
     if (err) {
       console.error(err);
       res.sendStatus(500);
-    } else {
+    } else if (doc) {
       res.json({
         imgUrl: doc.footerQrCodeImgUrl
       });
+    } else {
+      res.json({});
     }
   });
 };
@@ -211,11 +217,13 @@ exports.queryShareLink = function (req, res) {
     if (err) {
       console.error(err);
       res.sendStatus(500);
-    } else {
+    } else if (doc) {
       res.json({
         wechat: doc.shareLinkWechat,
         weibo: doc.shareLinkWeibo
       });
+    } else {
+      res.json({});
     }
   });
 };
@@ -234,12 +242,14 @@ exports.queryAppDownloadQrCodeScan = function (req, res) {
     if (err) {
       console.error(err);
       res.sendStatus(500);
-    } else {
+    } else if (doc) {
       if (/like Mac OS X/.test(ua)) {
         res.redirect(doc.appDownloadIos);
       } else {
         res.redirect(doc.appDownloadAndroid);
       }
+    } else {
+      res.redirect('/');
     }
   });
 
