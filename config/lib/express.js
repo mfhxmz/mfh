@@ -181,7 +181,9 @@ module.exports.initModulesServerPolicies = function (app) {
 module.exports.initModulesServerRoutes = function (app) {
 
   app.route('/api/*').all(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
     next();
   });
 
