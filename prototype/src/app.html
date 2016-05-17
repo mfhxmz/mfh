@@ -1,6 +1,11 @@
 <app-nav collapsed="$ctrl.isCollapsed"></app-nav>
 
-<ui-view class="main-ui-view"
-         ng-class="{'nav-no-collapsed': !$ctrl.isCollapsed}"></ui-view>
+<div class="ui-view-container">
+	<ui-view class="main-ui-view"
+	         ng-class="{'nav-no-collapsed': !$ctrl.isCollapsed}"></ui-view>
+</div>
+
+
+<div scroll-top="app.scrollbar-dynamic"></div>
 
 <app-footer></app-footer>

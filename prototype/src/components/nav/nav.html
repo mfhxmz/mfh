@@ -3,26 +3,49 @@
 	<div class="navbar-content">
 		<div class="container">
 			<div class="navbar-header">
-				<div class="share-links pull-left">
-					<img class="share-icon" src="//placeholder.cn/21x21/255/6e9"
-					     alt="weixin">
-					<img class="share-icon" src="//placeholder.cn/21x21/255/6e9"
-					     alt="weibo">
+				<div id="ckepop" class="share-links">
+					<!-- JiaThis Button BEGIN -->
+
+					<a class="jiathis_button_weixin share-icon clearfix"
+					   ng-hide-by-class=".jtico"><img class="share-icon"
+					                                  src="//placeholder.cn/21x21/255/6e9"
+					                                  alt="weixin"></a>
+					<a class="jiathis_button_tsina share-icon clearfix"
+					   ng-hide-by-class=".jtico"><img class="share-icon"
+					                                  src="//placeholder.cn/21x21/255/6e9"
+					                                  alt="weibo"></a>
+					<script type="text/javascript"
+					        src="http://v3.jiathis.com/code/jia.js?uid=1"
+					        charset="utf-8"></script>
+					<!-- JiaThis Button END -->
 				</div>
+
 				<img class="logo" src="./logo.png" alt="mfh">
 
-				<div class="user-links pull-right">
-					<a href="">登录</a> | <a href="">注册</a>
+				<div class="user-links" ng-hide="$ctrl.userInfo">
+					<a href=""
+					   ng-click="$ctrl.entranceModal.open('login')">登录</a> |
+					<a href=""
+					   ng-click="$ctrl.entranceModal.open('register')">注册</a>
 				</div>
 
-				<button class="hamburger hamburger--spring hidden-md hidden-lg"
-				        type="button"
-				        ng-class="{'is-active': !$ctrl.collapsed}"
-				        ng-click="$ctrl.collapsed = !$ctrl.collapsed">
+				<div class="user-info" ng-show="$ctrl.userInfo">
+					<span class="coin-count">魔币：{{$ctrl.userInfo.coin}}个</span>
+					<span class="user-alias">{{$ctrl.userInfo.nickname}}</span>
+				</div>
+
+				<button
+					class="hamburger hamburger--spring pull-right hidden-md hidden-lg"
+					type="button"
+					ng-class="{'is-active': !$ctrl.collapsed}"
+					ng-click="$ctrl.collapsed = !$ctrl.collapsed">
                     <span class="hamburger-box">
                         <span class="hamburger-inner"></span>
                     </span>
 				</button>
+
+				<a class="btn-user pull-right hidden-md hidden-lg"
+				   ng-click="$ctrl.entranceModal.open('login')"></a>
 			</div>
 		</div>
 	</div>

@@ -27,13 +27,61 @@ angular.module('mf.appInfo', [])
 	})
 	.component('appInfo', {
 		template: require('./appInfo.html'),
-		controller: function ($scope, $location, $anchorScroll, scrollTo) {
+		controller: function ($scope, $location, $anchorScroll, scrollTo, ProductService) {
+			var vm = this
+
 			$scope.$on('scrollTo', function (event, data) {
 				$location.hash(data)
 				$anchorScroll()
 				scrollTo.to = null
 			})
 
-			this.showQrCode = false
+			this.isShowQrCode = false
+
+			this.showQrcode = function () {
+				if (!this.isShowQrCode) {
+					$scope.$broadcast('showQrcode')
+				}
+				this.isShowQrCode = true
+			}
+			
+
+			$scope.$on('outsideClick', function () {
+				$scope.$apply(function () {
+					vm.isShowQrCode = false
+				})
+			})
+			
+			ProductService.downloadLink()
+				.then(function(data) {
+					vm.dlLinks = data
+				})
+			
+			ProductService.downloadQrcode()
+				.then(function(data) {
+					vm.qrcodeUrl = data
+				})
 		}
 	})
+	.directive('hideOnOutsideClick', function factory($timeout, $document) {
+		return {
+			restrict: 'A',
+			scope: true,
+			link: function postLink(scope, el, attrs, ctrl) {
+				scope.$on(attrs.hideOnOutsideClick, function () {
+					$timeout(function () {
+						const reg = angular.element($document[0].body).bind('click', handler)
+
+						function handler(event) {
+							if (event.originalTarget !== el[0]) {
+								scope.$emit('outsideClick')
+								reg.unbind('click', handler)
+							}
+						}
+					})
+
+				})
+			}
+		}
+	})
+

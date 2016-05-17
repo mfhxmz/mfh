@@ -1,0 +1,142 @@
+<div class="animate-switch-container" ng-switch="register.selection">
+	<div class="animate-switch" ng-switch-when="sendSms">
+
+		<!-- validateForm -->
+		<form class="form validateForm"
+		      name="validateForm"
+		      role="form"
+		      ng-submit="validateForm.$valid && register.submitValidateForm()"
+		      novalidate>
+
+			<!-- phone num -->
+			<div class="form-group has-feedback" ng-class="{
+	     'has-error': validateForm.username.$invalid && validateForm.username.$viewValue,
+	     'has-success': validateForm.username.$valid}">
+
+				<input class="form-control input-lg"
+				       type="text"
+				       placeholder="手机号"
+				       name="username"
+				       ng-model="register.user.username"
+				       ng-model-options="{ updateOn: 'default blur', debounce: {'default': 1000, 'blur': 500} }"
+				       maxlength="11"
+				       ng-minlength="11"
+				       required
+				       autofocus/>
+
+				<div class="help-block help-block-error"
+				     ng-messages="validateForm.username.$error">
+					<div ng-message="minlength">请使用11位手机号码注册</div>
+				</div>
+			</div>
+
+
+			<!-- submit button -->
+			<div class="form-group">
+				<button class="btn btn-lg btn-primary btn-block"
+				        type="submit"
+				        ng-disabled="validateForm.$invalid"
+				        ladda='register.regLoading'
+				        data-style="zoom-in"
+				        data-spinner-size="30"
+				        data-spinner-color="#123321">下一步
+				</button>
+			</div>
+		</form>
+
+	</div>
+
+	<div class="animate-switch" ng-switch-when="register">
+		<form class="form regForm"
+		      name="regForm"
+		      role="form"
+		      ng-submit="regForm.$valid && register.submitForm()"
+		      novalidate>
+			<!-- SMS verification code -->
+			<div class="form-group" ng-class="{
+				'has-success': regForm.captcha.$valid,
+				'has-error': regForm.captcha.$invalid && regForm.captcha.$viewValue}">
+				<div class="input-group sms-box">
+					<input class="form-control input-lg"
+					       type="text"
+					       name="captcha"
+					       ng-model="register.user.smsCode"
+					       ng-minlength="4"
+					       maxlength="12"
+					       ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500} }"
+					       ng-disabled="regForm.username.$invalid"
+					       placeholder="短信验证码"
+					       required/>
+
+					<div class="input-group-btn">
+						<a class="btn btn-lg btn-primary cd-btn"
+						   type="button"
+						   ng-click="register.sendSms()"
+						   ng-disabled="regForm.username.$invalid || register.countDown">
+							{{register.countDown?register.countDown +
+							's':'重获验证码'}}</a>
+					</div>
+				</div>
+				<div class="help-block help-block-error"
+				     ng-messages="regForm.captcha.$error">
+					<span ng-message="isSmsRight">{{register.smsError}}</span>
+				</div>
+			</div>
+
+
+			<!-- password -->
+			<div class="form-group has-feedback" ng-class="{
+	     'has-error':regForm.password.$invalid && regForm.password.$viewValue,
+	     'has-success':regForm.password.$valid}">
+				<input class="form-control input-lg"
+				       type="password"
+				       name="password"
+				       ng-model="register.user.password"
+				       ng-model-options="{ updateOn: 'default blur', debounce: {'default': 2000, 'blur': 500} }"
+				       ng-minlength="6"
+				       maxlength="20"
+				       placeholder="设置密码"
+				       required/>
+
+				<div class="help-block help-block-error"
+				     ng-messages="regForm.password.$error">
+					<div ng-message="minlength">请输入6-20位密码</div>
+				</div>
+			</div>
+
+			<!-- password confirm -->
+			<div class="form-group has-feedback" ng-class="{
+	     'has-error':regForm.confirmPwd.$invalid && regForm.confirmPwd.$viewValue,
+	     'has-success':regForm.confirmPwd.$valid}">
+				<input class="form-control input-lg"
+				       type="password"
+				       name="confirmPwd"
+				       ng-model="register.confirmPwd"
+				       ng-model-options="{ updateOn: 'default blur', debounce: {'default': 2000, 'blur': 500} }"
+				       consist-with="register.user.password"
+				       placeholder="确认密码"
+				       required/>
+
+				<div class="help-block help-block-error"
+				     ng-messages="regForm.confirmPwd.$error">
+					<div ng-message="consistWith">两次输入密码不一致，请重新输入</div>
+				</div>
+			</div>
+
+			<!-- submit button -->
+			<div class="form-group">
+				<button class="btn btn-lg btn-primary btn-block"
+				        type="submit"
+				        ng-disabled="regForm.$invalid"
+				        ladda='register.loading'
+				        data-style="zoom-in"
+				        data-spinner-size="30"
+				        data-spinner-color="#123321">注册
+				</button>
+			</div>
+
+			<p class="error-message" ng-show="errorMessage">{{errorMessage}}</p>
+		</form>
+	</div>
+</div>
+

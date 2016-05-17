@@ -5,7 +5,6 @@
 
 const angular = require('angular')
 const $ = require('jquery')
-const Promise = require('bluebird')
 
 /*Promise.config({
  // Enables all warnings except forgotten return statements.
@@ -15,18 +14,6 @@ const Promise = require('bluebird')
  });*/
 
 angular.module('app.directive', [])
-	.directive('scrollTop', function () {
-		return {
-			restrict: 'A',
-			link: function (scope, elem) {
-				elem.on('click', function () {
-					$('html, body').animate({
-						scrollTop: 0
-					}, "slow")
-				})
-			}
-		}
-	})
 	.directive('clickStop', function ($parse) {
 		return {
 			restrict: 'A',
@@ -44,4 +31,24 @@ angular.module('app.directive', [])
 				}
 			}
 		}
+	})
+	.directive('dynamicViewport', function($window) {
+	    return {
+		    restrict: 'A',
+		    link: function(scope, element) {
+			    $($window).resize(resizeHandler)
+
+			    resizeHandler()
+
+
+			    function resizeHandler() {
+				    if($($window).width() <= 560){
+					    element.attr('content', 'width=560px,user-scalable=no')
+				    } else {
+					    element.attr('content', 'width=device-width,user-scalable=no')
+				    }
+			    }
+		    }
+
+	    }
 	})

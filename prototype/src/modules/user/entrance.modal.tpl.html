@@ -1,0 +1,17 @@
+<div type="button" class="close-button" ng-click="$dismiss()">
+	<span class="sr-only">Close</span>
+</div>
+
+<div class="modal-body form-modal">
+
+	<uib-tabset class="entrance-tabset" active="emc.active">
+		<uib-tab index="0" heading="登录">
+			<login on-success="$close()"
+			       on-jump-recover="$dismiss(true)"></login>
+		</uib-tab>
+		<uib-tab index="1" heading="注册">
+			<register on-success="$close()"></register>
+		</uib-tab>
+	</uib-tabset>
+
+</div>

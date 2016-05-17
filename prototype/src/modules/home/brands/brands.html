@@ -7,7 +7,9 @@
 			<li class="brand-logo col-xs-4 col-md-2"
 			ng-repeat="item in $ctrl.brandList track by $index">
 				<img class="img-responsive"
-				     src="//placeholder.cn/166x76/ddd/666" alt="brand-logo">
+				     src="//placeholder.cn/166x76/ddd/666"
+				     ng-src="{{item.imgUrl}}"
+				     alt="brand-logo">
 			</li>
 		</ul>
 	</div>

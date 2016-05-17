@@ -18,7 +18,7 @@ angular.module('mf.consult', [])
 		})
 
 		NavList['consult'] = '活动咨询'
-		PageIDs.consult = 'consult'
+		PageIDs.activity = 'activity'
 	})
 	.component('consult', {
 		template: require('./consult.html'),
@@ -38,13 +38,17 @@ angular.module('mf.consult', [])
 				vm.list = [].constructor(8)
 				vm.captionTpl = url
 				vm.pageID = PageIDs.newProd
-				ProductService.fakeSlides(vm)
+				
+				init()
 			}
 
 			function init() {
-				ProductService.bannerList()
+				ProductService.bannerList({
+					limitTo: 10,
+					startFrom: 0
+				})
 					.then(function (list) {
-						
+
 					})
 			}
 		}

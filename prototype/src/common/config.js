@@ -7,9 +7,9 @@ const angular = require('angular')
 const _ = require('lodash')
 
 angular.module('app.config', [])
-	/* -----------------------------------------------------------
-	 * set up HttpInterceptor
-	 * ----------------------------------------------------------- */
+/* -----------------------------------------------------------
+ * set up HttpInterceptor
+ * ----------------------------------------------------------- */
 	.config(function ($httpProvider, DEBUG_MODE) {
 		// push an interceptor into the queue
 		$httpProvider.interceptors.push('HttpInterceptor')
@@ -50,8 +50,8 @@ angular.module('app.config', [])
 		$urlRouterProvider.otherwise('/')
 	})
 
-	.config(function (ServerAPI, APIVersion) {
+	.config(function (ServerAPI, ApiBase) {
 		angular.forEach(ServerAPI, function (api, name) {
-			ServerAPI[name] = `/${APIVersion}${api}`
+			ServerAPI[name] = ApiBase + api
 		})
 	})

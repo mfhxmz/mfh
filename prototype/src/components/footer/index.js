@@ -10,7 +10,13 @@ const angular = require('angular')
 angular.module('app.components')
 	.component('appFooter', {
 		template: require('./footer.html'),
-		controller: function ($scope) {
+		controller: function (ProductService) {
+			const vm = this
 
+			ProductService.appQrcode()
+				.then(function (data) {
+					vm.qrcodeUrl = data
+				})
+			
 		}
 	})

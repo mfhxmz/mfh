@@ -1,0 +1,30 @@
+.scroll-top {
+	position: fixed;
+	right: 50px;
+	bottom: 50px;
+	cursor: pointer;
+	width: 50px;
+	height: 50px;
+	background-color: #ae8fff;
+	opacity: 0.7;
+	text-indent: -9999px;
+	border-radius: 50%;
+	z-index: 250;
+	box-shadow: 0 0 10px white;
+}
+
+.scroll-top > span {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -8px;
+	margin-top: -12px;
+	height: 0;
+	width: 0;
+	border: 8px solid transparent;
+	border-bottom-color: #fff;
+}
+
+.scroll-top:hover {
+	opacity: 0.9;
+}

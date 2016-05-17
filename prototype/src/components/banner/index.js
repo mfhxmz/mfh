@@ -29,6 +29,7 @@ angular.module('app.components')
 
 			function initScope() {
 				ProductService.fakeSlides(vm)
+				init()
 			}
 
 			function init() {
@@ -37,5 +38,12 @@ angular.module('app.components')
 						vm.slides = list[vm.page]
 					})
 			}
+		}
+	})
+	.directive('mfhBgImage', function ($parse) {
+		return function (scope, element, attrs) {
+			element.css({
+				'background-image': 'url(' + $parse(attrs.mfhBgImage)(scope) + ')'
+			})
 		}
 	})

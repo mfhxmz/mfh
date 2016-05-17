@@ -1,0 +1,110 @@
+<div type="button" class="close-button" ng-click="$dismiss()">
+	<span class="sr-only">Close</span>
+</div>
+
+<div class="modal-body form-modal">
+	<h2 class="form-header text-center">忘记密码</h2>
+	<!-- resetForm -->
+	<form class="form resetForm"
+	      name="resetForm"
+	      role="form"
+	      ng-submit="resetForm.$valid && rmc.submitForm()"
+	      novalidate>
+
+		<div class="form-group" ng-class="{
+		'has-success': resetForm.username.$valid,
+		'has-error': resetForm.username.$invalid && resetForm.username.$viewValue}">
+			<input class="form-control input-lg"
+			       type="text"
+			       placeholder="手机号码"
+			       name="username"
+			       ng-model="rmc.user.username"
+			       ng-model-options="{ updateOn: 'default blur', debounce: {'default': 1000, 'blur': 500} }"
+			       maxlength="11"
+			       required
+			       autofocus/>
+		</div>
+
+		<div class="form-group has-feedback" ng-class="{
+	     'has-error': resetForm.captcha.$invalid && resetForm.captcha.$viewValue,
+	     'has-success': resetForm.captcha.$valid}">
+
+			<div class="input-group sms-box">
+				<input class="form-control input-lg"
+				       type="text"
+				       name="captcha"
+				       ng-model="rmc.captcha"
+				       ng-minlength="4"
+				       maxlength="12"
+				       ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500} }"
+				       placeholder="短信验证码"
+				       required/>
+
+				<div class="input-group-btn">
+					<a class="btn btn-lg btn-primary cd-btn"
+					   type="button"
+					   ng-click="resetForm.username.$valid && rmc.sendSms()"
+					   ng-disabled="resetForm.username.$invalid || rmc.countDown">
+						{{rmc.countDown?rmc.countDown +
+						's':'重获验证码'}}</a>
+				</div>
+			</div>
+
+		</div>
+
+
+		<!-- password -->
+		<div class="form-group has-feedback" ng-class="{
+	     'has-error':resetForm.password.$invalid && resetForm.password.$viewValue,
+	     'has-success':resetForm.password.$valid}">
+			<input class="form-control input-lg"
+			       type="password"
+			       name="password"
+			       ng-model="rmc.user.password"
+			       ng-model-options="{ updateOn: 'default blur', debounce: {'default': 2000, 'blur': 500} }"
+			       ng-minlength="8"
+			       maxlength="20"
+			       placeholder="设置密码"
+			       required/>
+
+
+			<div class="help-block help-block-error"
+			     ng-messages="resetForm.password.$error">
+				<div ng-message="minlength">请输入8-20位密码</div>
+			</div>
+		</div>
+
+		<!-- password confirm -->
+		<div class="form-group has-feedback" ng-class="{
+	     'has-error':resetForm.confirmPwd.$invalid && resetForm.confirmPwd.$viewValue,
+	     'has-success':resetForm.confirmPwd.$valid}">
+			<input class="form-control input-lg"
+			       type="password"
+			       name="confirmPwd"
+			       ng-model="rmc.confirmPwd"
+			       ng-model-options="{ updateOn: 'default blur', debounce: {'default': 2000, 'blur': 500} }"
+			       consist-with="rmc.user.password"
+			       placeholder="确认密码"
+			       required/>
+
+			<div class="help-block help-block-error"
+			     ng-messages="resetForm.confirmPwd.$error">
+				<div ng-message="consistWith">两次输入密码不一致，请重新输入</div>
+			</div>
+		</div>
+
+
+		<!-- submit button -->
+		<div class="form-group">
+			<button class="btn btn-lg btn-primary btn-block"
+			        type="submit"
+			        ng-disabled="resetForm.$invalid"
+			        ladda='rmc.loading'
+			        data-style="zoom-in"
+			        data-spinner-size="30"
+			        data-spinner-color="#123321">确定
+			</button>
+		</div>
+	</form>
+
+</div>

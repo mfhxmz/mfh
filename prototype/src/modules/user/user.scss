@@ -1,0 +1,52 @@
+@import "../../common-style/util";
+@import "tab-box";
+
+
+.close-button {
+	height: 30px;
+	width: 30px;
+	display: block;
+	position: absolute;
+	border-radius: 50%;
+	background-color: grey;
+
+	top: 1em;
+	right: 1em;
+	z-index: 1;
+
+	&:hover {
+		background-color: darkgrey;
+	}
+
+	&:active {
+		background-color: lightgrey;
+	}
+
+	&:before, &:after {
+		content: '';
+		height: 15%;
+		width: 70%;
+		display: block;
+		background: #fff;
+		border-radius: 10px;
+		position: absolute;
+		top: 42.5%;
+		left: 15%;
+	}
+
+	&:before {
+		transform: rotate(-45deg);
+	}
+
+	&:after {
+		transform: rotate(45deg);
+	}
+}
+
+.form-modal {
+	margin: 0 8em;
+}
+
+.form-header {
+	margin: 1em auto;
+}

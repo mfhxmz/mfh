@@ -9,6 +9,7 @@ app-info {
 	width: 100%;
 	position: relative;
 	overflow: hidden;
+	border-bottom: 1px solid #f0f0f0;
 }
 
 #app-info-1 {
@@ -116,7 +117,8 @@ app-info {
 	z-index: 10
 }
 
-.dl-qrcode {
+// todo: animation
+/*.dl-qrcode {
 	opacity: 1;
 	&.ng-hide-add,
 	&.ng-hide-remove {
@@ -132,7 +134,7 @@ app-info {
 	&.ng-hide-remove {
 		animation: 0.5s fadeInDown;
 	}
-}
+}*/
 
 #app-info-6-1 {
 	@include stick-bottom-center();
@@ -180,9 +182,8 @@ app-info {
 		max-height: 500px;
 	}
 
-
 	#app-info-6-1 {
-		max-height: 500px;
+		bottom: -165px;
 	}
 }
 
@@ -195,10 +196,6 @@ app-info {
 
 	.app-info-sec {
 		height: 900px;
-	}
-
-	.app-info-sec {
-		border-bottom: 1px solid #f0f0f0;
 	}
 
 	#app-info-1 {
@@ -226,5 +223,7 @@ app-info {
 
 	#app-info-6-1 {
 		bottom: 5%;
+		width: 100%;
+		max-width: 600px;
 	}
 }

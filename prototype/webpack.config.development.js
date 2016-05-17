@@ -159,8 +159,11 @@ module.exports = {
 		new BrowserSyncPlugin({
 				host: 'localhost',
 				port: 3000,
-				proxy: webpackServerURL,
-				ws: true
+				ghostMode: false,
+				proxy: {
+					target: webpackServerURL,
+					ws: true
+				}
 			},
 			{
 				reload: false

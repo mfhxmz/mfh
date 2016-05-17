@@ -16,29 +16,56 @@ app-nav {
 .navbar-header {
 	width: 100%;
 	display: inline-block;
-	line-height: 61px;
 	font-size: 0;
 	clear: both;
+	position: relative;
 }
 
-.logo {
-	height: 60px;
+.share-links {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.share-links .share-icon {
+	display: block;
+	height: auto;
+	position: relative;
+	float: left;
 }
 
 .share-links .share-icon:nth-child(n+2) {
-	margin-left: 21px;
+	margin-left: 10px;
 }
 
 .user-links {
-	font-size: 1rem;
+	font-size: 2rem;
+	position: absolute;
+	top: 0;
+	right: 0;
 }
 
 .navbar > .content {
 	padding-bottom: 0;
 }
 
-.nav-item.active a {
-	color: rebeccapurple;
+.navbar-nav-list {
+
+	.nav-item a {
+		color: black;
+		font-size: 1.5em;
+	}
+
+	.nav-item.active a {
+		color: #ad8fff;
+	}
+}
+
+#ckepop .share-icon .jtico {
+
+	height: 20px!important;
+	padding: 0!important;
+	background-image: none;
 }
 
 // 大屏导航样式
@@ -46,7 +73,12 @@ app-nav {
 	.navbar-header {
 		margin-top: 60px;
 		margin-bottom: 40px;
+		line-height: 60px;
 		text-align: center;
+	}
+
+	.logo {
+		height: 40px;
 	}
 
 	.navbar-collapse.collapse {
@@ -64,18 +96,17 @@ app-nav {
 		display: table-cell;
 		text-align: center;
 		position: relative;
-	}
-
-	.nav-item:not(:first-child):before {
-		content: '';
-		display: block;
-		position: absolute;
-		width: 3px;
-		height: 3px;
-		left: 0;
-		top: 50%;
-		background-color: grey;
-		transform: translate(-50%, -50%);
+		&:not(:first-child):before {
+			content: '';
+			display: block;
+			position: absolute;
+			width: 3px;
+			height: 3px;
+			left: 0;
+			top: 50%;
+			background-color: grey;
+			transform: translate(-50%, -50%);
+		}
 	}
 }
 
@@ -105,7 +136,7 @@ app-nav {
 	}
 
 	.container > .navbar-header {
-		text-align: right;
+		line-height: 44px;
 		margin: 15px 0;
 	}
 
@@ -114,13 +145,25 @@ app-nav {
 	}
 
 	.logo {
-		float: left;
+		height: 34px;
 	}
 
-	.navbar-header .hamburger {
-		line-height: 1em;
-		vertical-align: middle;
-		padding-right: 0;
+	.navbar-header {
+		.hamburger {
+			line-height: 1em;
+			vertical-align: middle;
+			padding: 10px 0 10px 15px;
+		}
+		.btn-user {
+			display: inline-block;
+			height: 44px;
+			width: 40px;
+			background-image: url("./user.png");
+			background-repeat: no-repeat;
+			background-size: contain;
+			margin-left: 15px;
+			cursor: pointer;
+		}
 	}
 
 	.navbar-collapse {
@@ -139,15 +182,15 @@ app-nav {
 
 	.navbar-nav-list {
 		display: block;
-	}
 
-	.nav-item {
-		display: block;
-		width: 100%;
-		padding: 15px;
+		.nav-item {
+			display: block;
+			width: 100%;
+			padding: 15px;
 
-		&:not(:last-child) {
-			border-bottom: 1px solid #ccc;
+			&:not(:last-child) {
+				border-bottom: 1px solid #ccc;
+			}
 		}
 	}
 
@@ -157,6 +200,9 @@ app-nav {
 	}
 }
 
-
-
+@media screen and (max-width: $screen-sm-max) and (max-height: 440px) {
+	.navbar-collapse.collapse {
+		height: calc(100vh - 74px) !important;
+	}
+}
 
