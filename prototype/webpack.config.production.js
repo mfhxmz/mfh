@@ -8,12 +8,12 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const SplitByPathPlugin = require('webpack-split-by-path')
 const projectConf = require('./project-conf')
 
-const extractCSS = new ExtractTextPlugin('[contentHash:8].css', {
+const extractCSS = new ExtractTextPlugin('/style/[contentHash:8].css', {
 	disable: false,
 	allChunks: true
 })
 
-const extractSASS = new ExtractTextPlugin('[contentHash:8].css', {
+const extractSASS = new ExtractTextPlugin('/style/[contentHash:8].css', {
 	disable: false,
 	allChunks: true
 })
@@ -31,7 +31,7 @@ module.exports = {
 		path: path.join(__dirname, 'dist'),
 		publicPath: '',
 		pathinfo: true,
-		filename: '[name]_[chunkHash:10].js',
+		filename: 'js/[name]_[chunkHash:10].js',
 		chunkFilename: "[id]-[chunkHash:10].js"
 	},
 	debug: false,
@@ -103,7 +103,7 @@ module.exports = {
 					path.resolve(__dirname, './src')
 				],
 				loaders: [
-					'file?hash=sha512&digest=hex&name=[hash:10].[ext]',
+					'file?hash=sha512&digest=hex&name=img/[hash:10].[ext]',
 					'image-webpack?' + JSON.stringify({
 						progressive: true, // for jpg
 						optimizationLevel: 7, // for png
