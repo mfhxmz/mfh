@@ -19,26 +19,24 @@ home {
 	text-align: center;
 	margin: 40px 0 30px;
 }
-
+.cn-title {
+	letter-spacing: 0.5em;
+	> .title-decorate:last-child {
+		letter-spacing: 0;
+	}
+}
 .cn-title, .cn-title-sm {
 	font-weight: bold;
-	display: none;
 }
 
 .eng-title {
 	margin-top: 0;
 }
 
-@media (min-width: $screen-md-min) {
-	.cn-title {
-		display: inherit;
-	}
-}
+@media screen and (max-width: $screen-sm-max) {
 
-@media (max-width: $screen-sm-max) {
-
-	.cn-title-sm {
-		display: inherit;
+	.title-decorate {
+		display: none;
 	}
 
 	home {
@@ -52,6 +50,7 @@ home {
 			width: auto;
 		}
 	}
+
 	.prod-pane {
 		.section-title {
 			background-color: white;
@@ -69,7 +68,7 @@ home {
 				width: 250px;
 				@include stick-center()
 			}
-			.cn-title-sm {
+			.cn-title {
 				line-height: 2em;
 				position: relative;
 				z-index: 1;
@@ -94,5 +93,5 @@ home {
 			margin: 0 0 0 30px;
 		}
 	}
-
 }
+
