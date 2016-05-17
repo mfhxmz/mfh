@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 var path = require('path'),
+  config = require(path.resolve('./config/config.js')),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   mongoose = require('mongoose'),
   passport = require('passport'),
@@ -65,11 +66,11 @@ exports.signin = function (req, res, next) {
       doLogin(req, res, next);
     } else {
       var user = new User();
-      user.username = 'admin';
-      user.password = 'mfhAdmin123@Password';
-      user.firstName = 'mfh';
-      user.lastName = 'admin';
-      user.email = 'admin@mfh.com';
+      user.username = config.serverAdmin.username;
+      user.password = config.serverAdmin.password;
+      user.firstName = config.serverAdmin.firstName;
+      user.lastName = config.serverAdmin.lastName;
+      user.email = config.serverAdmin.email;
       user.provider = 'local';
       user.displayName = user.firstName + ' ' + user.lastName;
       user.save(function (err) {

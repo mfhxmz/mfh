@@ -74,12 +74,23 @@ module.exports = {
     }
   },
 
+  //This should be on local config file for secure reason
   mysql: {
-    host: '119.29.117.152',
-    port: 3338,
-    user: 'root',
-    password: '1234567',
-    database: 'adms_mfh',
+    host: 'xxx',
+    port: 1,
+    user: 'xxx',
+    password: 'xxx',
+    database: 'xxx',
     multipleStatements: true
+  },
+
+  //This should be on local config file for secure reason
+  serverAdmin: {
+    username: 'xxx',
+    password: 'xxx',
+    firstName: 'xxx',
+    lastName: 'xxx',
+    email: 'xxx'
   }
+
 };
