@@ -24,7 +24,7 @@ angular.module('mf.home')
 			function initMethods() {}
 
 			function initScope() {
-				vm.list = [].constructor(4)
+				//vm.list = [].constructor(4)
 				vm.captionTpl = captionUrl
 				init()
 			}
@@ -32,7 +32,7 @@ angular.module('mf.home')
 			function init() {
 				ProductService.newProdList({
 					limitTo: 8,
-					startFrom:0
+					startFrom: 0
 				})
 					.then(function (list) {
 						vm.list = list

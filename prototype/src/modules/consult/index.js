@@ -35,20 +35,20 @@ angular.module('mf.consult', [])
 			function initMethods() {}
 
 			function initScope() {
-				vm.list = [].constructor(8)
+				//vm.list = [].constructor(8)
 				vm.captionTpl = url
 				vm.pageID = PageIDs.newProd
-				
+
 				init()
 			}
 
 			function init() {
-				ProductService.bannerList({
+				ProductService.activityProdList({
 					limitTo: 10,
 					startFrom: 0
 				})
 					.then(function (list) {
-
+						vm.list = list
 					})
 			}
 		}

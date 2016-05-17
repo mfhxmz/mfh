@@ -17,7 +17,7 @@ angular.module('mf.newProd', [])
 		})
 
 		NavList['newProd'] = '新品推荐'
-		PageIDs.new = 'new'
+		PageIDs.newProd = 'new'
 	})
 	.component('mfNewProd', {
 		template: require('./new-prod.html'),
@@ -35,7 +35,7 @@ angular.module('mf.newProd', [])
 			function initMethods() {}
 
 			function initScope() {
-				vm.list = [].constructor(8)
+				//vm.list = [].constructor(8)
 				vm.captionTpl = url
 				vm.pageID = PageIDs.newProd
 
@@ -45,7 +45,7 @@ angular.module('mf.newProd', [])
 			function init() {
 				ProductService.newProdList({
 					limitTo: 10,
-					startFrom:0
+					startFrom: 0
 				})
 					.then(function (list) {
 						vm.list = list

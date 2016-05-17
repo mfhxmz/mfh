@@ -34,7 +34,7 @@ angular.module('mf.home', [])
 			function initMethods() {}
 
 			function initScope() {
-				vm.pageID = PageIDs.newProd
+				vm.pageID = PageIDs.home
 			}
 		}
 	})

@@ -28,7 +28,7 @@ angular.module('app.components')
 			}
 
 			function initScope() {
-				ProductService.fakeSlides(vm)
+				//ProductService.fakeSlides(vm)
 				init()
 			}
 

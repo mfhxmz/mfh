@@ -33,33 +33,33 @@ import bootstrap from "./bootstrap";
 
 const angular = require('angular')
 let app = angular.module('app', [
-		'ngCookies',
-		'ngAnimate',
-		//'ngSanitize',
-		'ngMessages',
-		'ngTouch',
+	'ngCookies',
+	'ngAnimate',
+	//'ngSanitize',
+	'ngMessages',
+	'ngTouch',
 
-		'ui.router',
-		'ui.router.state.events',
-		'ui.bootstrap',
-		'angular-ladda',
-		//'angularViewportWatch',
-		//'afkl.lazyImage',
-		'jQueryScrollbar',
+	'ui.router',
+	'ui.router.state.events',
+	'ui.bootstrap',
+	'angular-ladda',
+	//'angularViewportWatch',
+	//'afkl.lazyImage',
+	'jQueryScrollbar',
 
-		'app.common',
-		'app.components',
+	'app.common',
+	'app.components',
 
-		'mf.home',
-		'mf.appInfo',
-		'mf.coinInfo',
-		'mf.newProd',
-		'mf.hotProd',
-		'mf.download',
-		'mf.consult',
-		'mf.aim',
-		'mf.user'
-	])
+	'mf.home',
+	'mf.appInfo',
+	'mf.coinInfo',
+	'mf.newProd',
+	'mf.hotProd',
+	'mf.download',
+	'mf.consult',
+	'mf.aim',
+	'mf.user'
+])
 
 	.run(function ($rootScope, $log, $state, AppName) {
 		$rootScope.$on('$stateChangeSuccess', function (event, toState, toStateParams, fromState, fromStateParams) {

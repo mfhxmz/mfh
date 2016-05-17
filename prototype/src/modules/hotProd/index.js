@@ -19,7 +19,7 @@ angular.module('mf.hotProd', [])
 		})
 
 		NavList['hotProd'] = '爆品推荐'
-		PageIDs.hot = 'hot'
+		PageIDs.hotProd = 'hot'
 	})
 	.component('mfHotProd', {
 		template: require('./hot-prod.html'),
@@ -35,9 +35,9 @@ angular.module('mf.hotProd', [])
 			function initMethods() {}
 
 			function initScope() {
-				vm.list = [].constructor(8)
+				//vm.list = [].constructor(8)
 				vm.captionTpl = url
-				vm.pageID = PageIDs.newProd
+				vm.pageID = PageIDs.hotProd
 
 				init()
 			}
