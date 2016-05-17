@@ -54,6 +54,18 @@ module.exports = {
         fileSize: 1024 * 1024
       }
     },
+    brandUpload: {
+      dest: './modules/brand/client/img/uploads/',
+      limits: {
+        fileSize: 1024 * 1024
+      }
+    },
+    aimUpload: {
+      dest: './modules/aim/client/img/uploads/',
+      limits: {
+        fileSize: 1024 * 1024
+      }
+    },
     otherUpload: {
       dest: './modules/other/client/img/uploads/',
       limits: {

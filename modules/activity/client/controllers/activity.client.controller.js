@@ -50,10 +50,7 @@ angular.module('activity').controller('ActivityController', ['$scope', '$locatio
     };
 
     $scope.updateActivity = function (activity) {
-      console.log($scope.updatedActivity);
-      console.log(activity);
       if ($scope.updatedActivity && $scope.updatedActivity._id === activity._id) {
-        console.log('doupdated');
         if ($scope.updateUploader.queue && $scope.updateUploader.queue.length) {
           $scope.updateUploader.uploadAll();
         } else {

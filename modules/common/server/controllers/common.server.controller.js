@@ -6,6 +6,7 @@ var path = require('path'),
   mongoose = require('mongoose'),
   qrcode = require('qrcode-js'),
   Banner = mongoose.model('Banner'),
+  Brand = mongoose.model('Brand'),
   Product = mongoose.model('Product'),
   Activity = mongoose.model('Activity'),
   Other = mongoose.model('Other');
@@ -83,22 +84,14 @@ exports.queryActivity = function (req, res) {
 };
 
 exports.queryBrand = function (req, res) {
-  var sql = 'select DISTINCT ppsxx.PPSID as id,ppsxx.PPSMC as name,ppsct.FJDZ as imgUrl from sp_ppsxx ppsxx left join sp_ppsct ppsct on ppsxx.PPSID=ppsct.PPSID and ppsct.SFZT=1 order by ppsxx.SXH';
-  console.log('[SQL]', sql);
-
-  var connection = mysql.createConnection(mysqlConfig.mysql);
-  connection.connect();
-  connection.query({
-    sql: sql
-  }, function (err, data) {
+  Brand.find({}, function (err, docs) {
     if (err) {
       console.error(err);
-      res.json([]);
+      res.sendStatus(500);
     } else {
-      res.json(data);
+      res.json(docs);
     }
   });
-  connection.end();
 };
 
 exports.userRegister = function (req, res) {
