@@ -12,6 +12,8 @@ module.exports = function (app) {
 
   app.route('/api/banner').get(common.queryBanner);
 
+  app.route('/api/aim').get(common.queryAim);
+
   app.route('/api/user/register').post(common.userRegister);
   app.route('/api/user/login').post(common.userLogin);
   app.route('/api/user/logout').post(common.userLogout);

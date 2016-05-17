@@ -12,4 +12,5 @@ module.exports = function (app) {
 
   // Define application route
   app.route('/server-admin/*').get(core.renderIndex);
+
 };

@@ -9,6 +9,7 @@ var path = require('path'),
   Brand = mongoose.model('Brand'),
   Product = mongoose.model('Product'),
   Activity = mongoose.model('Activity'),
+  Aim = mongoose.model('Aim'),
   Other = mongoose.model('Other');
 
 exports.queryHotProduct = function (req, res) {
@@ -170,6 +171,17 @@ exports.queryBanner = function (req, res) {
       res.json(result);
     } else {
       res.json([]);
+    }
+  });
+};
+
+exports.queryAim = function (req, res) {
+  Aim.find({}, function (err, docs) {
+    if (err) {
+      console.error(err);
+      res.sendStatus(500);
+    } else {
+      res.json(docs);
     }
   });
 };
