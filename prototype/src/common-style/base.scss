@@ -1,3 +1,4 @@
+@import "util";
 $font-family: 'Microsoft YaHei Light', sans-serif;
 $page-background-color: #f0f0f0;
 $default-font-color: #2a2c35;
@@ -12,11 +13,17 @@ body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	font-size: 1rem;
+	font-size: 14px;
 	user-select: none;
 	color: $default-font-color;
 	background-color: $page-background-color;
 	font-family: $font-family;
+}
+
+@media (max-width: $screen-sm-max) {
+	body {
+		font-size: 16px;
+	}
 }
 
 a {

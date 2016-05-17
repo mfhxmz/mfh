@@ -22,8 +22,13 @@ services {
 	margin-bottom: 0;
 }
 
-.service-card .service-intro {
-	margin-bottom: 0;
+.service-card {
+	.service-intro {
+		margin-bottom: 0;
+	}
+	.service-slogan {
+		font-weight: bold;
+	}
 }
 
 @media (min-width: $screen-md-min) {
@@ -33,7 +38,6 @@ services {
 
 	.service-pic-box {
 		height: 135px;
-		background-image: url(http://placeholder.cn/192x135/325/629);
 		background-color: lightgrey;
 		background-size: cover;
 		position: relative;

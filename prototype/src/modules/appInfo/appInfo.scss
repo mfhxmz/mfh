@@ -38,8 +38,6 @@ app-info {
 }
 
 #title4 {
-	top: 156px;
-	width: 100%;
 	text-align: center;
 	z-index: 2;
 }
@@ -58,8 +56,6 @@ app-info {
 }
 
 #title5 {
-	top: 127px;
-	width: 100%;
 	text-align: center;
 	z-index: 2;
 }
@@ -170,6 +166,16 @@ app-info {
 		z-index: 3;
 	}
 
+	#title4 {
+		top: 156px;
+		width: 100%;
+	}
+
+	#title5 {
+		top: 127px;
+		width: 100%;
+	}
+
 	#app-info-3-1 {
 		position: absolute;
 		top: 225px;
@@ -190,7 +196,7 @@ app-info {
 @media (max-width: $screen-sm-max) {
 
 	app-info h1 {
-		margin-top: 120px;
+		margin: 120px 2em 0;
 		text-align: center;
 	}
 
