@@ -32,23 +32,25 @@ angular.module('app.directive', [])
 			}
 		}
 	})
-	.directive('dynamicViewport', function($window) {
-	    return {
-		    restrict: 'A',
-		    link: function(scope, element) {
-			    $($window).resize(resizeHandler)
+	.directive('dynamicViewport', function ($window) {
 
-			    resizeHandler()
+		const viewWidth = 560
+		return {
+			restrict: 'A',
+			link: function (scope, element) {
+				$window.addEventListener('resize', resizeHandler)
+				$window.addEventListener('orientationchange', resizeHandler)
 
+				resizeHandler()
 
-			    function resizeHandler() {
-				    if($($window).width() <= 560){
-					    element.attr('content', 'width=560px,user-scalable=no')
-				    } else {
-					    element.attr('content', 'width=device-width,user-scalable=no')
-				    }
-			    }
-		    }
+				function resizeHandler() {
+					if ($window.screen.width <= viewWidth) {
+						element.attr('content', `width=${viewWidth},user-scalable=no`)
+					} else {
+						element.attr('content', 'width=device-width,user-scalable=no')
+					}
+				}
+			}
 
-	    }
+		}
 	})

@@ -119,3 +119,10 @@ services {
 		}
 	}
 }
+
+
+@media (max-width: $screen-xs-max) {
+	.service-card .caption {
+		width: 125px;
+	}
+}
