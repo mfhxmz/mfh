@@ -7,7 +7,7 @@ angular.module('brand').run(['Menus',
     Menus.addMenuItem('topbar', {
       title: '品牌',
       state: 'brand',
-      position: 1
+      position: 2
     });
   }
 ]);

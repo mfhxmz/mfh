@@ -7,7 +7,7 @@ angular.module('banner').run(['Menus',
     Menus.addMenuItem('topbar', {
       title: 'Banner',
       state: 'banner.home',
-      position: 2
+      position: 3
     });
   }
 ]);
