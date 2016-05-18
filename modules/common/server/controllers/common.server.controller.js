@@ -13,39 +13,45 @@ var path = require('path'),
   Other = mongoose.model('Other');
 
 exports.queryHotProduct = function (req, res) {
-  Product.aggregate([{ $match: { type: 1 } }, {
-    $project: {
-      id: '$_id',
-      likeNum: { $size: '$like' },
-      imgUrl: '$imgUrl',
-      title: '$title',
-      intro: '$intro'
-    }
-  }], function (err, docs) {
+  Product.find({ type: 1 }, function (err, docs) {
     if (err) {
       console.error(err);
       res.sendStatus(500);
     } else {
-      res.json(docs);
+      var result = [];
+      for (var i = 0; i < docs.length; i++) {
+        result.push({
+          id: docs[i]._id,
+          imgUrl: docs[i].imgUrl,
+          title: docs[i].title,
+          intro: docs[i].intro,
+          likeNum: docs[i].like && docs[i].like.length ? docs[i].like.length : 0
+        });
+
+      }
+      res.json(result);
     }
   });
 };
 
 exports.queryNewProduct = function (req, res) {
-  Product.aggregate([{ $match: { type: 2 } }, {
-    $project: {
-      id: '$_id',
-      likeNum: { $size: '$like' },
-      imgUrl: '$imgUrl',
-      title: '$title',
-      intro: '$intro'
-    }
-  }], function (err, docs) {
+  Product.find({ type: 2 }, function (err, docs) {
     if (err) {
       console.error(err);
       res.sendStatus(500);
     } else {
-      res.json(docs);
+      var result = [];
+      for (var i = 0; i < docs.length; i++) {
+        result.push({
+          id: docs[i]._id,
+          imgUrl: docs[i].imgUrl,
+          title: docs[i].title,
+          intro: docs[i].intro,
+          likeNum: docs[i].like && docs[i].like.length ? docs[i].like.length : 0
+        });
+
+      }
+      res.json(result);
     }
   });
 };
