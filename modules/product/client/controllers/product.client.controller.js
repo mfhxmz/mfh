@@ -5,7 +5,6 @@ angular.module('product').controller('ProductController', ['$scope', '$location'
     $scope.user = Authentication.user;
 
     $scope.newProduct = {};
-    $scope.products = [];
     $scope.hotProducts = [];
     $scope.newProducts = [];
     $scope.updatedProduct = undefined;
@@ -35,7 +34,9 @@ angular.module('product').controller('ProductController', ['$scope', '$location'
       $scope.findProduct();
     };
     $scope.findProduct = function () {
-      $scope.products = ProductService.query();
+      ProductService.query().$promise.then(function (data) {
+        $scope.$broadcast('setGridData', data);
+      });
     };
     $scope.findProduct();
 

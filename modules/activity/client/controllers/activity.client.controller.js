@@ -5,7 +5,6 @@ angular.module('activity').controller('ActivityController', ['$scope', '$locatio
     $scope.user = Authentication.user;
 
     $scope.newActivity = {};
-    $scope.activitys = [];
     $scope.updatedActivity = undefined;
 
     $scope.createUploader = new FileUploader({
@@ -33,7 +32,9 @@ angular.module('activity').controller('ActivityController', ['$scope', '$locatio
       $scope.findActivity();
     };
     $scope.findActivity = function () {
-      $scope.activitys = ActivityService.query();
+      ActivityService.query().$promise.then(function (data) {
+        $scope.$broadcast('setGridData', data);
+      });
     };
     $scope.findActivity();
 

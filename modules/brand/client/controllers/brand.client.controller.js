@@ -33,7 +33,9 @@ angular.module('brand').controller('BrandController', ['$scope', '$location', 'A
       $scope.findBrand();
     };
     $scope.findBrand = function () {
-      $scope.brands = BrandService.query();
+      BrandService.query().$promise.then(function (data) {
+        $scope.$broadcast('setGridData', data);
+      });
     };
     $scope.findBrand();
 

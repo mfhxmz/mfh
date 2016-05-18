@@ -33,7 +33,9 @@ angular.module('aim').controller('AimController', ['$scope', '$location', 'Authe
       $scope.findAim();
     };
     $scope.findAim = function () {
-      $scope.aims = AimService.query();
+      AimService.query().$promise.then(function (data) {
+        $scope.$broadcast('setGridData', data);
+      });
     };
     $scope.findAim();
 

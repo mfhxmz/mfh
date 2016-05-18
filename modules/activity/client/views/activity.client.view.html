@@ -2,64 +2,100 @@
   <div class="page-header">
     <h1>活动管理</h1>
   </div>
-  <div class="row">
+  <div class="row form-inline" ng-controller="GridCtrl as grid">
+    <div class="col-xs-6 angular-data-table">
+      <select class="form-control input-sm" ng-model="grid.dataTable.pageSize">
+        <option value="10">10</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+      <label class="control-label">条记录每页</label>
+    </div>
+    <div class="col-xs-6">
+      <input type="search" name="filter" class="form-control input-sm pull-right" ng-model="grid.dataTable.filter"
+             ng-change="grid.dataTable.resetPaging()">
+      <label class="control-label pull-right">搜索: &nbsp;</label>
+    </div>
     <div class="col-xs-12">
-      <table class="table">
-        <thead>
-        <tr>
-          <th>标题</th>
-          <th>简介</th>
-          <th>折扣</th>
-          <th>图片</th>
-          <th>操作</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td><input type="text" class="form-control" ng-model="newActivity.title"></td>
-          <td><input type="text" class="form-control" ng-model="newActivity.intro"></td>
-          <td><input type="number" class="form-control" ng-model="newActivity.discount"></td>
-          <td><input type="file" class="form-control" nv-file-select uploader="createUploader"></td>
-          <td><a href="javascript:void(0)" ng-click="createNewActivity()">创建</a></td>
-        </tr>
-        <tr ng-repeat="activity in activitys">
-          <td>
-            <input class="form-control" ng-show="updatedActivity._id==activity._id" type="text"
-                   ng-model="updatedActivity.title">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th ng-click="grid.dataTable.sort('title')">标题</th>
+            <th ng-click="grid.dataTable.sort('intro')">简介</th>
+            <th ng-click="grid.dataTable.sort('discount')">折扣</th>
+            <th>图片</th>
+            <th>操作</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><input type="text" class="form-control" ng-model="newActivity.title"></td>
+            <td><input type="text" class="form-control" ng-model="newActivity.intro"></td>
+            <td><input type="number" class="form-control" ng-model="newActivity.discount"></td>
+            <td><input type="file" class="form-control" nv-file-select uploader="createUploader"></td>
+            <td><a href="javascript:void(0)" ng-click="createNewActivity()">创建</a></td>
+          </tr>
+          <tr
+            ng-repeat="activity in grid.dataTable.filteredData = (grid.dataTable.data | filter:grid.dataTable.filter) | orderBy:grid.dataTable.sortColumn:grid.dataTable.sortDescending | startFrom:grid.dataTable.currentPageStart() | limitTo:grid.dataTable.pageSize">
+            <td>
+              <input class="form-control" ng-show="updatedActivity._id==activity._id" type="text"
+                     ng-model="updatedActivity.title">
 
-            <div ng-hide="updatedActivity._id==activity._id">{{ activity.title }}</div>
-          </td>
-          <td>
-            <input class="form-control" ng-show="updatedActivity._id==activity._id" type="text"
-                   ng-model="updatedActivity.intro">
+              <div ng-hide="updatedActivity._id==activity._id">{{ activity.title }}</div>
+            </td>
+            <td>
+              <input class="form-control" ng-show="updatedActivity._id==activity._id" type="text"
+                     ng-model="updatedActivity.intro">
 
-            <div ng-hide="updatedActivity._id==activity._id">{{ activity.intro }}</div>
-          </td>
-          <td>
-            <input class="form-control" ng-show="updatedActivity._id==activity._id" type="number"
-                   ng-model="updatedActivity.discount">
+              <div ng-hide="updatedActivity._id==activity._id">{{ activity.intro }}</div>
+            </td>
+            <td>
+              <input class="form-control" ng-show="updatedActivity._id==activity._id" type="number"
+                     ng-model="updatedActivity.discount">
 
-            <div ng-hide="updatedActivity._id==activity._id">{{ activity.discount }}</div>
-          </td>
-          <td>
-            <input class="form-control" ng-show="updatedActivity._id==activity._id" type="file" nv-file-select uploader="updateUploader">
+              <div ng-hide="updatedActivity._id==activity._id">{{ activity.discount }}</div>
+            </td>
+            <td>
+              <input class="form-control" ng-show="updatedActivity._id==activity._id" type="file" nv-file-select
+                     uploader="updateUploader">
 
-            <div ng-hide="updatedActivity._id==activity._id">
-              <img class="thumbnail" ng-src="{{ activity.imgUrl }}" style="height: 30px;width: 60px">
-            </div>
-          </td>
-          <td>
-            <a href="javascript:void(0)" ng-click="updateActivity(activity)">
-              <span ng-show="updatedActivity._id==activity._id">保存</span>
-              <span ng-hide="updatedActivity._id==activity._id">更新</span>
-            </a>
-            &emsp;
-            <a href="javascript:void(0)" ng-click="deleteActivity(activity)">刪除</a>
-          </td>
-
-        </tr>
-        </tbody>
-      </table>
+              <div ng-hide="updatedActivity._id==activity._id">
+                <img class="thumbnail" ng-src="{{ activity.imgUrl }}" style="height: 30px;width: 60px">
+              </div>
+            </td>
+            <td>
+              <a href="javascript:void(0)" ng-click="updateActivity(activity)">
+                <span ng-show="updatedActivity._id==activity._id">保存</span>
+                <span ng-hide="updatedActivity._id==activity._id">更新</span>
+              </a>
+              &emsp;
+              <a href="javascript:void(0)" ng-click="deleteActivity(activity)">刪除</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <p><b>正在显示 {{grid.dataTable.currentPageStart()}} 至 {{grid.dataTable.currentPageEnd()}} 条记录，共
+        {{grid.dataTable.filteredData.length}}
+        条</b></p>
+    </div>
+    <div class="col-xs-6">
+      <ul class="pagination pull-right">
+        <li class="prev" ng-class="{ disabled: grid.dataTable.onFirstPage()}">
+          <a href="#" ng-click="grid.dataTable.previous()"><i class="glyphicon glyphicon-chevron-left"></i></a>
+        </li>
+        <li ng-repeat-start="page in grid.dataTable.pages()" ng-repeat-end
+            ng-class="{active: grid.dataTable.currentPage === page - 1}">
+          <a ng-click="grid.dataTable.goToPage(page)">{{page}}</a>
+        </li>
+        <li class="next" ng-class="{ disabled: grid.dataTable.onLastPage()}">
+          <a href="#" ng-click="grid.dataTable.next()"><i class="glyphicon glyphicon-chevron-right"></i></a>
+        </li>
+      </ul>
     </div>
   </div>
 </section>
