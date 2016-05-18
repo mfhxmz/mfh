@@ -8,12 +8,12 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const SplitByPathPlugin = require('webpack-split-by-path')
 const projectConf = require('./project-conf')
 
-const extractCSS = new ExtractTextPlugin('/style/[contentHash:8].css', {
+const extractCSS = new ExtractTextPlugin('style/[contentHash:8].css', {
 	disable: false,
 	allChunks: true
 })
 
-const extractSASS = new ExtractTextPlugin('/style/[contentHash:8].css', {
+const extractSASS = new ExtractTextPlugin('style/[contentHash:8].css', {
 	disable: false,
 	allChunks: true
 })
