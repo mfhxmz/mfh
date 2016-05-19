@@ -77,6 +77,6 @@ angular.module('banner').controller('BannerController', ['$scope', '$location', 
         default:
           return '';
       }
-    }
+    };
   }
 ]);
