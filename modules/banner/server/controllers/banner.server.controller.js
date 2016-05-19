@@ -1,7 +1,6 @@
 'use strict';
 
-var _ = require('lodash'),
-  fs = require('fs'),
+var fs = require('fs'),
   path = require('path'),
   mongoose = require('mongoose'),
   multer = require('multer'),
@@ -37,7 +36,8 @@ exports.createBanner = function (req, res) {
       return Banner.create({
         scope: req.body.scope,
         imgUrl: req.file.destination + req.file.filename,
-        link: req.body.link
+        link: req.body.link,
+        display: req.body.display
       }, function (err) {
         if (err) {
           console.error(err);
@@ -68,7 +68,8 @@ exports.updateBanner = function (req, res) {
     Banner.findOneAndUpdate({
       '_id': req.body._id
     }, {
-      link: req.body.link
+      link: req.body.link,
+      display: req.body.display
     }, function (err) {
       if (err) {
         console.error(err);
@@ -89,7 +90,8 @@ exports.updateBanner = function (req, res) {
           '_id': req.body._id
         }, {
           imgUrl: req.file.destination + req.file.filename,
-          link: req.body.link
+          link: req.body.link,
+          display: req.body.display
         }, function (err) {
           if (err) {
             console.error(err);

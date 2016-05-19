@@ -21,7 +21,8 @@ angular.module('banner').controller('BannerController', ['$scope', '$location', 
     $scope.createUploader.onBeforeUploadItem = function (item) {
       item.formData.push({
         link: $scope.newBanner.link ? $scope.newBanner.link : '',
-        scope: $scope.newBanner.scope
+        scope: $scope.newBanner.scope,
+        display: $scope.newBanner.display
       });
     };
     $scope.updateUploader.onBeforeUploadItem = function (item) {
@@ -66,5 +67,16 @@ angular.module('banner').controller('BannerController', ['$scope', '$location', 
         $scope.updatedBanner = angular.copy(banner);
       }
     };
+
+    $scope.convertDisplayToReadable = function (str) {
+      switch (str) {
+        case 'desktop':
+          return '桌面端';
+        case 'mobile':
+          return '移动端';
+        default:
+          return '';
+      }
+    }
   }
 ]);

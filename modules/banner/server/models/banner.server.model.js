@@ -9,7 +9,11 @@ var mongoose = require('mongoose'),
 var BannerSchema = new Schema({
   imgUrl: String,
   link: String,
-  scope: String
+  scope: String,
+  display: {
+    type: String, // desktop mobile
+    default: 'desktop'
+  }
 });
 
 mongoose.model('Banner', BannerSchema);

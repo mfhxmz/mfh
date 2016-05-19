@@ -4,6 +4,7 @@
       <thead>
       <tr>
         <th>图片地址</th>
+        <th>显示类型</th>
         <th>链接</th>
         <th style="width: 100px">操作</th>
       </tr>
@@ -11,6 +12,12 @@
       <tbody>
       <tr>
         <td><input type="file" class="form-control" nv-file-select uploader="createUploader"></td>
+        <td>
+          <select class="form-control" ng-model="newBanner.display">
+            <option value="desktop">桌面端</option>
+            <option value="mobile">移动端</option>
+          </select>
+        </td>
         <td><input type="text" class="form-control" ng-model="newBanner.link"></td>
         <td><a href="javascript:void(0)" ng-click="createNewBanner('activity')">创建</a></td>
       </tr>
@@ -22,6 +29,14 @@
           <div ng-hide="updatedBanner._id==banner._id">
             <img class="thumbnail" ng-src="{{ banner.imgUrl }}" style="height: 30px;width: 60px">
           </div>
+        </td>
+        <td>
+          <select ng-show="updatedBanner._id==banner._id" class="form-control" ng-model="updatedBanner.display">
+            <option value="desktop">桌面端</option>
+            <option value="mobile">移动端</option>
+          </select>
+
+          <div ng-hide="updatedBanner._id==banner._id">{{ convertDisplayToReadable(banner.display) }}</div>
         </td>
         <td>
           <input class="form-control" ng-show="updatedBanner._id==banner._id" type="text" ng-model="updatedBanner.link">

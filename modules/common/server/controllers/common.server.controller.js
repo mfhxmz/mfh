@@ -159,7 +159,11 @@ exports.userLogout = function (req, res) {
 };
 
 exports.queryBanner = function (req, res) {
-  Banner.find().exec(function (err, docs) {
+  var ua = req.header('user-agent');
+  var display = /mobile/i.test(ua) ? 'mobile' : 'desktop';
+  Banner.find({
+    display: display
+  }).exec(function (err, docs) {
     if (err) {
       console.error(err);
       res.sendStatus(500);
