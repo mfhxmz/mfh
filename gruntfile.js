@@ -190,7 +190,7 @@ module.exports = function (grunt) {
           coverage: true,
           require: 'test.js',
           coverageFolder: 'coverage/server',
-          reportFormats: ['cobertura','lcovonly'],
+          reportFormats: ['cobertura', 'lcovonly'],
           check: {
             lines: 40,
             statements: 40
@@ -223,13 +223,23 @@ module.exports = function (grunt) {
           return !fs.existsSync('config/env/local.js');
         }
       }
+    },
+    forever: {
+      server: {
+        options: {
+          index: 'server.js',
+          logFile: 'log.log',
+          outFile: 'out.log',
+          errFile: 'err.log'
+        }
+      }
     }
   });
 
-  grunt.event.on('coverage', function(lcovFileContents, done) {
+  grunt.event.on('coverage', function (lcovFileContents, done) {
     // Set coverage config so karma-coverage knows to run coverage
     testConfig.coverage = true;
-    require('coveralls').handleInput(lcovFileContents, function(err) {
+    require('coveralls').handleInput(lcovFileContents, function (err) {
       if (err) {
         return done(err);
       }
@@ -317,5 +327,5 @@ module.exports = function (grunt) {
   grunt.registerTask('debug', ['env:dev', 'lint', 'mkdir:upload', 'copy:localConfig', 'concurrent:debug']);
 
   // Run the project in production mode
-  grunt.registerTask('prod', ['build', 'env:prod', 'mkdir:upload', 'copy:localConfig', 'concurrent:default']);
+  grunt.registerTask('prod', ['build', 'env:prod', 'mkdir:upload', 'copy:localConfig', 'forever:server:start']);
 };
