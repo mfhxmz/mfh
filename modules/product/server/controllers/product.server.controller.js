@@ -6,6 +6,7 @@ var _ = require('lodash'),
   mongoose = require('mongoose'),
   multer = require('multer'),
   config = require(path.resolve('./config/config')),
+  UploadUtil = require(path.resolve('./modules/common/server/util/upload.common.server.util.js')),
   Product = mongoose.model('Product');
 
 exports.findProduct = function (req, res) {
@@ -20,7 +21,9 @@ exports.findProduct = function (req, res) {
 };
 
 exports.createProduct = function (req, res) {
-  var upload = multer(config.uploads.productUpload).single('file');
+  var upload = multer({
+    storage: UploadUtil.buildMulterStorageByUploadPath(config.uploads.productUpload.dest)
+  }).single('file');
   upload(req, res, function (uploadError) {
     if (uploadError) {
       return res.status(400).send({
@@ -67,7 +70,9 @@ exports.updateProduct = function (req, res) {
       }
     });
   } else {
-    var upload = multer(config.uploads.productUpload).single('file');
+    var upload = multer({
+      storage: UploadUtil.buildMulterStorageByUploadPath(config.uploads.productUpload.dest)
+    }).single('file');
     upload(req, res, function (uploadError) {
       if (uploadError) {
         return res.status(400).send({

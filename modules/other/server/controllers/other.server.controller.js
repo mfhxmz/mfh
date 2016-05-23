@@ -6,6 +6,7 @@ var _ = require('lodash'),
   mongoose = require('mongoose'),
   multer = require('multer'),
   config = require(path.resolve('./config/config')),
+  UploadUtil = require(path.resolve('./modules/common/server/util/upload.common.server.util.js')),
   Other = mongoose.model('Other');
 
 exports.findOther = function (req, res) {
@@ -30,7 +31,9 @@ exports.updateOther = function (req, res) {
       }
     });
   } else {
-    var upload = multer(config.uploads.otherUpload).single('file');
+    var upload = multer({
+      storage: UploadUtil.buildMulterStorageByUploadPath(config.uploads.otherUpload.dest)
+    }).single('file');
     upload(req, res, function (uploadError) {
       if (uploadError) {
         return res.status(400).send({
@@ -38,7 +41,6 @@ exports.updateOther = function (req, res) {
         });
       } else {
         req.body.footerQrCodeImgUrl = req.file.destination + req.file.filename;
-        console.log(req.body);
         return Other.findOneAndUpdate({}, req.body, { upsert: true }, function (err) {
           if (err) {
             console.error(err);

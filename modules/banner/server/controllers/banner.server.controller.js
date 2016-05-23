@@ -5,6 +5,7 @@ var fs = require('fs'),
   mongoose = require('mongoose'),
   multer = require('multer'),
   config = require(path.resolve('./config/config')),
+  UploadUtil = require(path.resolve('./modules/common/server/util/upload.common.server.util.js')),
   Banner = mongoose.model('Banner');
 
 exports.findBannerByScope = function (req, res) {
@@ -26,7 +27,9 @@ exports.findBannerByScope = function (req, res) {
 };
 
 exports.createBanner = function (req, res) {
-  var upload = multer(config.uploads.bannerUpload).single('file');
+  var upload = multer({
+    storage: UploadUtil.buildMulterStorageByUploadPath(config.uploads.bannerUpload.dest)
+  }).single('file');
   upload(req, res, function (uploadError) {
     if (uploadError) {
       return res.status(400).send({
@@ -79,7 +82,9 @@ exports.updateBanner = function (req, res) {
       }
     });
   } else {
-    var upload = multer(config.uploads.bannerUpload).single('file');
+    var upload = multer({
+      storage: UploadUtil.buildMulterStorageByUploadPath(config.uploads.bannerUpload.dest)
+    }).single('file');
     upload(req, res, function (uploadError) {
       if (uploadError) {
         return res.status(400).send({

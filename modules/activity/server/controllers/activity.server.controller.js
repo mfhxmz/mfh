@@ -6,6 +6,7 @@ var _ = require('lodash'),
   mongoose = require('mongoose'),
   multer = require('multer'),
   config = require(path.resolve('./config/config')),
+  UploadUtil = require(path.resolve('./modules/common/server/util/upload.common.server.util.js')),
   Activity = mongoose.model('Activity');
 
 exports.findActivity = function (req, res) {
@@ -20,7 +21,10 @@ exports.findActivity = function (req, res) {
 };
 
 exports.createActivity = function (req, res) {
-  var upload = multer(config.uploads.activityUpload).single('file');
+  console.log(UploadUtil);
+  var upload = multer({
+    storage: UploadUtil.buildMulterStorageByUploadPath(config.uploads.activityUpload.dest)
+  }).single('file');
   upload(req, res, function (uploadError) {
     if (uploadError) {
       return res.status(400).send({
@@ -67,7 +71,9 @@ exports.updateActivity = function (req, res) {
       }
     });
   } else {
-    var upload = multer(config.uploads.activityUpload).single('file');
+    var upload = multer({
+      storage: UploadUtil.buildMulterStorageByUploadPath(config.uploads.activityUpload.dest)
+    }).single('file');
     upload(req, res, function (uploadError) {
       if (uploadError) {
         return res.status(400).send({

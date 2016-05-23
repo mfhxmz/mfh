@@ -6,6 +6,7 @@ var _ = require('lodash'),
   mongoose = require('mongoose'),
   multer = require('multer'),
   config = require(path.resolve('./config/config')),
+  UploadUtil = require(path.resolve('./modules/common/server/util/upload.common.server.util.js')),
   Brand = mongoose.model('Brand');
 
 exports.findBrand = function (req, res) {
@@ -20,7 +21,9 @@ exports.findBrand = function (req, res) {
 };
 
 exports.createBrand = function (req, res) {
-  var upload = multer(config.uploads.brandUpload).single('file');
+  var upload = multer({
+    storage: UploadUtil.buildMulterStorageByUploadPath(config.uploads.brandUpload.dest)
+  }).single('file');
   upload(req, res, function (uploadError) {
     if (uploadError) {
       return res.status(400).send({
@@ -67,7 +70,9 @@ exports.updateBrand = function (req, res) {
       }
     });
   } else {
-    var upload = multer(config.uploads.brandUpload).single('file');
+    var upload = multer({
+      storage: UploadUtil.buildMulterStorageByUploadPath(config.uploads.brandUpload.dest)
+    }).single('file');
     upload(req, res, function (uploadError) {
       if (uploadError) {
         return res.status(400).send({

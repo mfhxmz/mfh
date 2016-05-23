@@ -6,6 +6,7 @@ var _ = require('lodash'),
   mongoose = require('mongoose'),
   multer = require('multer'),
   config = require(path.resolve('./config/config')),
+  UploadUtil = require(path.resolve('./modules/common/server/util/upload.common.server.util.js')),
   Aim = mongoose.model('Aim');
 
 exports.findAim = function (req, res) {
@@ -20,7 +21,9 @@ exports.findAim = function (req, res) {
 };
 
 exports.createAim = function (req, res) {
-  var upload = multer(config.uploads.aimUpload).single('file');
+  var upload = multer({
+    storage: UploadUtil.buildMulterStorageByUploadPath(config.uploads.aimUpload.dest)
+  }).single('file');
   upload(req, res, function (uploadError) {
     if (uploadError) {
       return res.status(400).send({
@@ -67,7 +70,9 @@ exports.updateAim = function (req, res) {
       }
     });
   } else {
-    var upload = multer(config.uploads.aimUpload).single('file');
+    var upload = multer({
+      storage: UploadUtil.buildMulterStorageByUploadPath(config.uploads.aimUpload.dest)
+    }).single('file');
     upload(req, res, function (uploadError) {
       if (uploadError) {
         return res.status(400).send({
