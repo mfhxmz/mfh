@@ -27,7 +27,10 @@ module.exports = {
 		path: outputPath,
 		pathinfo: true,
 		publicPath: webpackServerURL + '/',
-		filename: '[name].js'
+		filename: '[name].js',
+		devtoolModuleFilenameTemplate: function (info) {
+			return 'file:///' + info.absoluteResourcePath.replace(/\\/g, '/')
+		}
 	},
 	debug: true,
 	devtool: 'source-map',
