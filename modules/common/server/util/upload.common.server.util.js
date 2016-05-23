@@ -8,7 +8,7 @@ var crypto = require('crypto');
 exports.buildMulterStorageByUploadPath = function (uploadPath) {
   return multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, uploadPath)
+      cb(null, uploadPath);
     },
     filename: function (req, file, cb) {
       crypto.pseudoRandomBytes(16, function (err, raw) {
