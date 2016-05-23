@@ -99,6 +99,11 @@ let app = angular.module('app', [
 			document.querySelector('head').appendChild(msViewPortStyle)
 		}
 	})
+	.run(function($cookies, CookieNames) {
+	    if(!$cookies.get(CookieNames.DevID)){
+		    $cookies.put(CookieNames.DevID, Date.now * (Math.random()%1))
+	    }
+	})
 	.controller('RootController', function () {
 		this.jqueryScrollbarOption = {
 			ignoreMobile: true,
@@ -108,8 +113,12 @@ let app = angular.module('app', [
 
 	.component('app', {
 		template: require('./app.html'),
-		controller: function AppController($scope) {
-
+		controller: function AppController($scope, AuthService) {
+			this.$onInit = function() {
+			    if(AuthService.hasSessionBefore()){
+				    AuthService.tryGetUserInfo()
+			    }
+			}
 		}
 	})
 

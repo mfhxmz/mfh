@@ -38,11 +38,24 @@ app-nav {
 	margin-left: 10px;
 }
 
-.user-links {
+.user-links, .user-info {
 	font-size: 2rem;
 	position: absolute;
 	top: 0;
 	right: 0;
+}
+
+.user-info.has-info {
+	line-height: 30px;
+	text-align: right;
+}
+
+.user-alias {
+	color: lightblue;
+}
+
+.coin-count {
+	color: gold;
 }
 
 .navbar > .content {

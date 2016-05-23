@@ -110,7 +110,8 @@ app-info {
 
 #app-qr-code {
 	@include stick-top-center(260px);
-	z-index: 10
+	z-index: 10;
+	box-shadow: 0 0 35px #C6B0FF;
 }
 
 // todo: animation

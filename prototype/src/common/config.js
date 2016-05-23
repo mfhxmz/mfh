@@ -7,9 +7,9 @@ const angular = require('angular')
 const _ = require('lodash')
 
 angular.module('app.config', [])
-/* -----------------------------------------------------------
- * set up HttpInterceptor
- * ----------------------------------------------------------- */
+	/* -----------------------------------------------------------
+	 * set up HttpInterceptor
+	 * ----------------------------------------------------------- */
 	.config(function ($httpProvider, DEBUG_MODE) {
 		// push an interceptor into the queue
 		$httpProvider.interceptors.push('HttpInterceptor')

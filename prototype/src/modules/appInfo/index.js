@@ -44,22 +44,22 @@ angular.module('mf.appInfo', [])
 				}
 				this.isShowQrCode = true
 			}
-			
+
 
 			$scope.$on('outsideClick', function () {
 				$scope.$apply(function () {
 					vm.isShowQrCode = false
 				})
 			})
-			
+
 			ProductService.downloadLink()
 				.then(function(data) {
 					vm.dlLinks = data
 				})
-			
+
 			ProductService.downloadQrcode()
 				.then(function(data) {
-					vm.qrcodeUrl = data
+					vm.qrcodeUrl = data.imgUrl
 				})
 		}
 	})

@@ -29,9 +29,9 @@
 					   ng-click="$ctrl.entranceModal.open('register')">注册</a>
 				</div>
 
-				<div class="user-info hidden-sm hidden-xs" ng-show="$ctrl.userInfo">
-					<span class="coin-count">魔币：{{$ctrl.userInfo.coin}}个</span>
-					<span class="user-alias">{{$ctrl.userInfo.nickname}}</span>
+				<div class="user-info hidden-sm hidden-xs" ng-class="{'has-info':$ctrl.userInfo}" ng-show="$ctrl.userInfo">
+					您好，用户<span class="user-alias">{{$ctrl.userInfo.nickname}}</span><br>
+					您拥有魔币：<span class="coin-count">{{$ctrl.userInfo.coin}}个</span>
 				</div>
 
 				<button

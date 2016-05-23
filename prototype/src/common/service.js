@@ -49,7 +49,10 @@ angular.module('app.service', [])
 			sendSms: function (data) {
 				return $http.post(ServerAPI.SMS, data)
 			},
-			vote: function (data) {
+			vote: function (id) {
+				var data = {
+					pid: id
+				}
 				return $http.put(ServerAPI.VOTE, data)
 			}
 		}
@@ -91,8 +94,8 @@ angular.module('app.service', [])
 	})
 	.factory('ProductService', function (APIService) {
 		return {
-			vote: function (data) {
-				return APIService.vote(data)
+			vote: function (id) {
+				return APIService.vote(id)
 			},
 			bannerList: function () {
 				return APIService.bannerList()
@@ -132,10 +135,14 @@ angular.module('app.service', [])
 			}
 		}
 	})
-	.factory('AuthService', function ($rootScope, AppEvents, APIService, session) {
+	.factory('AuthService', function ($rootScope, $cookies, CookieNames, AppEvents, APIService, session) {
 		return {
 			isLogin: function () {
-				return false
+				return !_.isEmpty(session.getUserInfo())
+			},
+
+			hasSessionBefore: function () {
+				return $cookies.get(CookieNames.isLoggedIn) === 'true'
 			},
 
 			login: function (data) {
@@ -143,7 +150,16 @@ angular.module('app.service', [])
 					.then(function (response) {
 						session.setUserInfo(response)
 
+						$cookies.put(CookieNames.isLoggedIn, true, {
+							expires: new Date(Date.now + 1000 * 3600 * 24 * 3)
+						})
+
+						$cookies.put(CookieNames.uid, data.username)
+
 						$rootScope.$broadcast(AppEvents.LOGIN)
+					}, function () {
+						$cookies.remove(CookieNames.isLoggedIn)
+						$cookies.remove(CookieNames.UID)
 					})
 			},
 			register: function (data) {
@@ -154,6 +170,7 @@ angular.module('app.service', [])
 					.then(function () {
 						session.reset()
 						$rootScope.$broadcast(AppEvents.LOGOUT)
+						$cookies.remove(CookieNames.isLoggedIn)
 					})
 			},
 			resetPassword: function (data) {
@@ -161,6 +178,9 @@ angular.module('app.service', [])
 			},
 			sendSms: function (data) {
 				return APIService.sendSms(data)
+			},
+			tryGetUserInfo: function () {
+
 			}
 		}
 	})
@@ -170,6 +190,8 @@ angular.module('app.service', [])
 		return {
 			setUserInfo: function (info) {
 				Object.assign(user, info)
+				user.coin = user.coin || 0
+				user.nickname = user.nickname || user.username
 			},
 			getUserInfo: function () {
 				return angular.copy(user)

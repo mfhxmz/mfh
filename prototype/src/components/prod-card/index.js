@@ -14,14 +14,16 @@ angular.module('app.components')
 			prodInfo: '<',
 			template: '<'
 		},
-		controller: function (ProductService, AuthService, entranceModal) {
+		controller: function ($log, ProductService, AuthService, entranceModal) {
 			const vm = this
 
 			vm.vote = function (id) {
 				if (AuthService.isLogin()) {
 					ProductService.vote(id)
 						.then(function () {
-							// xxx.likeNum +1
+							vm.prodInfo.likeNum ++
+						}, function() {
+							$log.debug('like failed')
 						})
 				} else {
 					entranceModal.open('login')

@@ -36,3 +36,8 @@ angular.module('app.constant', [])
 		LOGOUT: 'LOGOUT'
 	})
 	.constant('PageIDs', {})
+	.constant('CookieNames', {
+		DevID:            'devid',
+		isLoggedIn:       'isLoggedIn',
+		UID:              'uid'
+	})

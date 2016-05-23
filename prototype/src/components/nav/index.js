@@ -18,9 +18,6 @@ angular.module('app.components')
 			const vm = this
 			this.navList = NavList
 			this.collapsed = true
-			this.toggleCollapse = function () {
-				this.collapsed = !this.collapsed
-			}
 
 			this.entranceModal = entranceModal
 			this.recoverModal = entranceModal
@@ -28,7 +25,7 @@ angular.module('app.components')
 			$scope.$on(AppEvents.LOGIN, function () {
 				vm.userInfo = angular.copy(session.getUserInfo())
 			})
-			
+
 			$scope.$on(AppEvents.LOGOUT, function () {
 				vm.userInfo = null
 			})
