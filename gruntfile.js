@@ -230,7 +230,8 @@ module.exports = function (grunt) {
           index: 'server.js',
           logFile: 'log.log',
           outFile: 'out.log',
-          errFile: 'err.log'
+          errFile: 'err.log',
+          logDir: 'logs'
         }
       }
     }
