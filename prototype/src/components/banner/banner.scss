@@ -7,5 +7,6 @@ banner {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
+	transition: background-image 0.5s ease-in;
 	height: 400px;
 }

@@ -9,7 +9,7 @@ prod-card.wide .thumbnail {
 }
 
 prod-card.wide .thumbnail .caption {
-	margin: 27px 5px;
+	margin: 27px 16px;
 	padding: 0;
 	position: relative;
 }
@@ -31,4 +31,10 @@ prod-card.wide .prod-name {
 
 prod-card.wide .prod-intro {
 	height: $line-height-base*4em;
+}
+
+@media screen and (max-width: $screen-sm-max) {
+	prod-card.wide .caption .prod-intro {
+		margin-right: 1em;
+	}
 }

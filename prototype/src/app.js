@@ -60,6 +60,12 @@ let app = angular.module('app', [
 	'mf.aim',
 	'mf.user'
 ])
+	.config(function(jQueryScrollbarProvider) {
+		jQueryScrollbarProvider.setOptions({
+			ignoreMobile: true,
+			ignoreOverlay: true
+		})
+	})
 
 	.run(function ($rootScope, $log, $state, AppName) {
 		$rootScope.$on('$stateChangeSuccess', function (event, toState, toStateParams, fromState, fromStateParams) {
@@ -105,10 +111,6 @@ let app = angular.module('app', [
 	    }
 	})
 	.controller('RootController', function () {
-		this.jqueryScrollbarOption = {
-			ignoreMobile: true,
-			ignoreOverlay: true
-		}
 	})
 
 	.component('app', {

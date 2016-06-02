@@ -28,7 +28,7 @@ angular.module('app.components')
 			}
 
 			function initScope() {
-				//ProductService.fakeSlides(vm)
+				ProductService.fakeSlides(vm)
 				init()
 			}
 
@@ -42,8 +42,14 @@ angular.module('app.components')
 	})
 	.directive('mfhBgImage', function ($parse) {
 		return function (scope, element, attrs) {
-			element.css({
-				'background-image': 'url(' + $parse(attrs.mfhBgImage)(scope) + ')'
+			scope.$watch(function () {
+				return $parse(attrs.mfhBgImage)(scope)
+			}, function (newVal, oldVal) {
+
+					element.css({
+						'background-image': 'url(' + newVal + ')'
+					})
+				
 			})
 		}
 	})

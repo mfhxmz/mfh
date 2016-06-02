@@ -125,13 +125,10 @@ angular.module('app.service', [])
 				return APIService.appQrcode()
 			},
 			fakeSlides: function (ctrl) {
-				ctrl.slides = []
-				for (var i = 0; i < 4; i++) {
-					ctrl.slides.push({
-						image: `http://placeholder.cn/1600x400/fe${i * 2 + 1}d38`,
-						id: i
-					})
-				}
+				ctrl.slides = [{
+					imgUrl: 'http://placeholder.cn/1600x400',
+					id: 1
+				}]
 			}
 		}
 	})
