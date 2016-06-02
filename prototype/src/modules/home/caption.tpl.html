@@ -1,5 +1,5 @@
-<h4 class="prod-name" ng-bind="$ctrl.prodInfo.title">允许对长的不可分割</h4>
-<p class="prod-intro" ng-bind="$ctrl.prodInfo.intro">允许对长的不可分割的单词进行分割并换行到下一行</p>
+<h4 class="prod-name" clamp="2" ng-bind="$ctrl.prodInfo.title">允许对长的不可分割</h4>
+<p class="prod-intro" clamp="10" ng-bind="$ctrl.prodInfo.intro">允许对长的不可分割的单词进行分割并换行到下一行</p>
 <span>
 	<i class="vote glyphicon glyphicon-heart"
 	   ng-click="$ctrl.vote($ctrl.prodInfo.id)"

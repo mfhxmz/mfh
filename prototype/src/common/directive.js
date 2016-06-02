@@ -5,6 +5,8 @@
 
 const angular = require('angular')
 const $ = require('jquery')
+const clamp = require('clamp-js')
+
 
 /*Promise.config({
  // Enables all warnings except forgotten return statements.
@@ -54,3 +56,22 @@ angular.module('app.directive', [])
 
 		}
 	})
+	.directive('dclamp', function($timeout) {
+		return function link(scope, element, attrs) {
+			var line = parseInt(attrs.clamp, 10);
+
+			if (attrs.ngBind) {
+				scope.$watch(attrs.ngBind, doClamp);
+			}
+
+			doClamp();
+
+			function doClamp() {
+				$timeout(function() {
+					clamp(element[0], {
+						clamp: line
+					});
+				}, 0, false);
+			}
+		}
+	});

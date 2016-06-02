@@ -36,4 +36,27 @@ prod-card .thumbnail .caption {
 	cursor: auto;
 }
 
+prod-card .prod-name {
+	display: inline-block;
+	height: $headings-line-height*2em;
+	font-weight: bold;
+}
+
+prod-card .prod-intro {
+	display: inline-block;
+	height: $line-height-base*10em;
+	overflow: hidden;
+	position: relative;
+	/*&:after {
+		content: "";
+		text-align: right;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		width: 70%;
+		height: $line-height-base*1em;
+		background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+	}*/
+}
+
 @import "prod-card-wide";

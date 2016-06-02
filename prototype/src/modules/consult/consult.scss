@@ -1,5 +1,16 @@
+@import "../../common-style/util";
+
 consult {
 	display: block;
+
+
+	prod-card.wide .prod-name {
+		height: $headings-line-height*1em;
+	}
+
+	prod-card.wide .prod-intro {
+		height: $line-height-base*1em;
+	}
 }
 
 .caption .discount .count {
