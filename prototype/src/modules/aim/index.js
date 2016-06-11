@@ -20,7 +20,12 @@ angular.module('mf.aim', [])
 	})
 	.component('aim', {
 		template: require('./aim.html'),
-		controller: function () {
-
+		controller: function (ProductService) {
+			const vm = this
+			
+			ProductService.aimList()
+				.then(function(list) {
+				    vm.aimList = list
+				})
 		}
 	})

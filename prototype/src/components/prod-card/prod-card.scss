@@ -44,7 +44,7 @@ prod-card .prod-name {
 
 prod-card .prod-intro {
 	display: inline-block;
-	height: $line-height-base*10em;
+	height: ($line-height-base*10em);
 	overflow: hidden;
 	position: relative;
 	/*&:after {
@@ -57,6 +57,14 @@ prod-card .prod-intro {
 		height: $line-height-base*1em;
 		background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
 	}*/
+}
+
+@media (max-width: $screen-sm-max) {
+	prod-card .prod-intro {
+		display: inline-block;
+		height: (1.4*10em);
+		line-height: 1.4;
+	}
 }
 
 @import "prod-card-wide";

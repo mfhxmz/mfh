@@ -10,3 +10,13 @@ banner {
 	transition: background-image 0.5s ease-in;
 	height: 400px;
 }
+
+.carousel-indicators li {
+	width: 12px;
+	height: 12px;
+	margin: 0;
+
+	&:not(:first-child) {
+		margin-left: 5px;
+	}
+}

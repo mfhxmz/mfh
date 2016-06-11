@@ -19,6 +19,9 @@ angular.module('app.service', [])
 			brandList: function () {
 				return $http.get(ServerAPI.BRAND_LIST)
 			},
+			aimList: function () {
+				return $http.get(ServerAPI.AIM_LIST)
+			},
 			activityProdList: function () {
 				return $http.get(ServerAPI.ACTIVITY_PROD_LIST)
 			},
@@ -100,6 +103,9 @@ angular.module('app.service', [])
 			bannerList: function () {
 				return APIService.bannerList()
 			},
+			aimList: function () {
+				return APIService.aimList()
+			},
 			hotProdList: function () {
 				return APIService.hotProdList()
 			},
@@ -124,7 +130,7 @@ angular.module('app.service', [])
 			appQrcode: function () {
 				return APIService.appQrcode()
 			},
-			fakeSlides: function (ctrl) {
+			fakeSlides: function (ctrl, imageUrl) {
 				ctrl.slides = [{
 					imgUrl: 'http://placeholder.cn/1600x400',
 					id: 1

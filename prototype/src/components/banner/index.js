@@ -28,7 +28,7 @@ angular.module('app.components')
 			}
 
 			function initScope() {
-				ProductService.fakeSlides(vm)
+				ProductService.fakeSlides(vm, require('./1600x400.png'))
 				init()
 			}
 
@@ -45,11 +45,9 @@ angular.module('app.components')
 			scope.$watch(function () {
 				return $parse(attrs.mfhBgImage)(scope)
 			}, function (newVal, oldVal) {
-
-					element.css({
-						'background-image': 'url(' + newVal + ')'
-					})
-				
+				element.css({
+					'background-image': 'url(' + newVal + ')'
+				})
 			})
 		}
 	})

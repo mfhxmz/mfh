@@ -14,6 +14,7 @@ angular.module('app.constant', [])
 		NEW_PROD_LIST: '/product/new',
 		ACTIVITY_PROD_LIST: '/activity',
 		BANNER_LIST: '/banner',
+		AIM_LIST: '/aim',
 		LOGIN: '/user/login',
 		LOGOUT: '/user/logout',
 		REGISTER: '/user/register',

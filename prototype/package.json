@@ -79,11 +79,11 @@
     "bluebird": "^3.1.1",
     "bootstrap": "^3.3.6",
     "bootstrap-sass": "~3.3.6",
-    "clamp-js": "^0.7.0",
     "font-awesome": "^4.5.0",
     "hamburgers": "^0.5.0",
     "jquery": "^2.2.0",
     "jquery.scrollbar": "^0.2.10",
+    "jquery.dotdotdot": "git@github.com:FrDH/jQuery.dotdotdot.git",
     "lodash": "^3.10.1",
     "modernizr": "^3.3.1"
   }

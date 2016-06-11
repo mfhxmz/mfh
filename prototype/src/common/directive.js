@@ -5,7 +5,7 @@
 
 const angular = require('angular')
 const $ = require('jquery')
-const clamp = require('clamp-js')
+require('jquery.dotdotdot')
 
 
 /*Promise.config({
@@ -56,7 +56,7 @@ angular.module('app.directive', [])
 
 		}
 	})
-	.directive('dclamp', function($timeout) {
+	.directive('clamp', function($timeout) {
 		return function link(scope, element, attrs) {
 			var line = parseInt(attrs.clamp, 10);
 
@@ -68,9 +68,7 @@ angular.module('app.directive', [])
 
 			function doClamp() {
 				$timeout(function() {
-					clamp(element[0], {
-						clamp: line
-					});
+					$(element).dotdotdot()
 				}, 0, false);
 			}
 		}
