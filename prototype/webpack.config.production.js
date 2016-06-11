@@ -30,7 +30,6 @@ module.exports = {
 	output: {
 		path: path.join(__dirname, 'dist'),
 		publicPath: '',
-		pathinfo: true,
 		filename: 'js/[name]_[chunkHash:10].js',
 		chunkFilename: "[id]-[chunkHash:10].js"
 	},
@@ -176,7 +175,8 @@ module.exports = {
 		root: [path.join(__dirname, 'bower_components')],
 		alias: {
 			'blueimp-load-image': 'blueimp-load-image/js/load-image.js',
-			angular: require.resolve('angular')
+			angular: require.resolve('angular'),
+			jQuery: "jquery"
 		}
 	},
 	node: {

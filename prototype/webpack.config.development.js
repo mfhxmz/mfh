@@ -26,11 +26,8 @@ module.exports = {
 	output: {
 		path: outputPath,
 		pathinfo: true,
-		publicPath: webpackServerURL + '/',
+		publicPath: '',
 		filename: '[name].js',
-		devtoolModuleFilenameTemplate: function (info) {
-			return 'file:///' + info.absoluteResourcePath.replace(/\\/g, '/')
-		}
 	},
 	debug: true,
 	devtool: 'source-map',
@@ -181,7 +178,8 @@ module.exports = {
 		root: [path.join(__dirname, 'bower_components')],
 		alias: {
 			'blueimp-load-image': 'blueimp-load-image/js/load-image.js',
-			angular: require.resolve('angular')
+			angular: require.resolve('angular'),
+			jQuery: "jquery"
 		}
 	},
 	node: {
