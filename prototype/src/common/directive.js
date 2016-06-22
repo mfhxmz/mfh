@@ -5,7 +5,6 @@
 
 const angular = require('angular')
 const $ = require('jquery')
-require('jquery.dotdotdot')
 
 
 /*Promise.config({
@@ -56,20 +55,3 @@ angular.module('app.directive', [])
 
 		}
 	})
-	.directive('clamp', function($timeout) {
-		return function link(scope, element, attrs) {
-			var line = parseInt(attrs.clamp, 10);
-
-			if (attrs.ngBind) {
-				scope.$watch(attrs.ngBind, doClamp);
-			}
-
-			doClamp();
-
-			function doClamp() {
-				$timeout(function() {
-					$(element).dotdotdot()
-				}, 0, false);
-			}
-		}
-	});

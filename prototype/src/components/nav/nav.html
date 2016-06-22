@@ -45,7 +45,10 @@
 				</button>
 
 				<a class="btn-user pull-right hidden-md hidden-lg"
-				   ng-click="$ctrl.entranceModal.open('login')"></a>
+				   ng-click="$ctrl.entranceModal.open('login')"
+				ng-hide="$ctrl.userInfo"></a>
+
+				<span class="coin-box pull-right hidden-md hidden-lg" ng-show="$ctrl.userInfo">魔币：<span class="coin-count">{{$ctrl.userInfo.coin}}个</span></span>
 			</div>
 		</div>
 	</div>

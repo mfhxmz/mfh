@@ -212,6 +212,10 @@ app-nav {
 		display: block;
 		width: 100%;
 	}
+
+	.coin-box {
+		font-size: 2rem;
+	}
 }
 
 @media screen and (max-width: $screen-sm-max) and (max-height: 440px) {
