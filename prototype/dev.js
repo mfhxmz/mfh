@@ -15,7 +15,7 @@ const compiler = webpack(webpackConfig)
 const server = new WebpackDevServer(compiler, webpackConfig.devServer)
 
 server.use(proxy(['/api', '/modules'], {
-	target: 'http://119.29.117.152:3000',
+	target: 'http://www.mofaclub.com',
 	ws: true,
 	changeOrigin: true,
 	secure: false
