@@ -24,5 +24,6 @@ module.exports = function (app) {
   app.route('/api/app/qrcode').get(common.queryAppQrCode);
   app.route('/api/share-link').get(common.queryShareLink);
 
+  app.route('/api/sms').get(common.sendSms);
 
 };

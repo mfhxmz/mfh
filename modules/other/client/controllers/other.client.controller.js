@@ -55,7 +55,7 @@ angular.module('other').controller('OtherController', ['$scope', '$location', 'A
 
       var file = this.files[0];
       if (!/image\/\w+/.test(file.type)) {
-        alert("请确保文件为图像类型");
+        alert('请确保文件为图像类型');
         return false;
       }
 

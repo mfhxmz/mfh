@@ -10,7 +10,9 @@ var path = require('path'),
   Product = mongoose.model('Product'),
   Activity = mongoose.model('Activity'),
   Aim = mongoose.model('Aim'),
-  Other = mongoose.model('Other');
+  Other = mongoose.model('Other'),
+  ref = require('ref'),
+  ffi = require('ffi');
 
 exports.queryHotProduct = function (req, res) {
   Product.find({ type: 1 }, function (err, docs) {
@@ -269,3 +271,37 @@ exports.queryAppDownloadQrCodeScan = function (req, res) {
   });
 
 };
+
+exports.sendSms = function (req, res) {
+  try {
+    /*var EUCPComm = new ffi.Library(__dirname + '\\EUCPComm.dll', {
+     SendSMS: [ref.types.int32, [
+     ref.types.CString,
+     ref.types.CString,
+     ref.types.CString,
+     ref.types.CString
+     ]]
+     });
+
+     result = EUCPComm.SendSMS('3SDK-EMY-0130-RFWUR', '13360231633', '123456', '5');*/
+
+    var user32 = new ffi.Library('user32', {
+      'MessageBoxW': [
+        'int32', ['int32', 'string', 'string', 'int32']
+      ]
+    });
+
+    user32.MessageBoxW(
+      0, cString('【恭喜发财】 888 abcxyz!'), cString('Hello, World!'), 1
+    );
+    res.sendStatus(200);
+  } catch (e) {
+    console.error(e);
+    res.sendStatus(200);
+  }
+
+};
+
+function cString(str) {
+  return str;
+}
