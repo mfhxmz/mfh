@@ -180,7 +180,9 @@ angular.module('app.service', [])
 				return APIService.resetPassword(data)
 			},
 			sendSms: function (data) {
-				return APIService.sendSms(data)
+				return APIService.sendSms({
+					username: data
+				})
 			},
 			tryGetUserInfo: function () {
 
